@@ -110,7 +110,7 @@ export async function sendEmail({
   }
 
   const { data, error } = await r.emails.send({
-    from: "Calpe SEO <onboarding@resend.dev>",
+    from: "Costa Blanca Leads <onboarding@resend.dev>",
     to,
     subject,
     html,

@@ -16,7 +16,7 @@ export async function POST(request: Request) {
     const adminEmail = process.env.CONTACT_EMAIL || "jf.termenon@gmail.com";
 
     const emailHtml = `
-      <h2>Nuevo lead desde Calpe SEO</h2>
+      <h2>Nuevo lead desde Costa Blanca Leads</h2>
       <table style="border-collapse:collapse;width:100%">
         <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Nombre</td><td style="padding:8px;border:1px solid #ddd">${name}</td></tr>
         <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Email</td><td style="padding:8px;border:1px solid #ddd">${email}</td></tr>
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
       html: emailHtml,
     });
 
-    const whatsappMessage = `Nuevo lead Calpe SEO\n\nNombre: ${name}\nEmail: ${email}${phone ? `\nTeléfono: ${phone}` : ""}\nMensaje: ${message}`;
+    const whatsappMessage = `Nuevo lead Costa Blanca Leads\n\nNombre: ${name}\nEmail: ${email}${phone ? `\nTeléfono: ${phone}` : ""}\nMensaje: ${message}`;
 
     const whatsappResult = await sendWhatsApp({
       to: adminEmail,

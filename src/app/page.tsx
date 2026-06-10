@@ -61,7 +61,7 @@ const steps = [
   {
     num: "02",
     title: "Creamos tu web",
-    desc: "Diseño profesional con catálogo, SEO local, Google Maps y WhatsApp. En 48h.",
+    desc: "Diseño profesional con catálogo, SEO local, Google Maps y WhatsApp. Primera versión en 48h.",
   },
   {
     num: "03",
@@ -135,10 +135,10 @@ export default function Home() {
               </a>
             </div>
             <p className="mt-4 text-sm text-slate-500">
-              Sin contrato de permanencia · Web en 48h · Soporte directo por WhatsApp
+              Sin contrato de permanencia · Primera versión en 48h · Soporte directo por WhatsApp
             </p>
             <p className="mt-2 text-sm font-medium text-amber-700">
-              Lanzamiento: 790 € las primeras 5 agencias (habitual 1.290 €)
+              Precio de lanzamiento para los primeros proyectos, mientras completamos nuestros primeros casos de éxito.
             </p>
           </div>
         </div>
@@ -249,7 +249,7 @@ export default function Home() {
           </div>
 
           <div className="mx-auto mt-10 max-w-lg rounded-2xl border-2 border-blue-700 bg-blue-50 p-8 text-center">
-            <span className="inline-block rounded-full bg-amber-500 px-4 py-1 text-xs font-bold text-white uppercase tracking-wide">Lanzamiento</span>
+            <span className="inline-block rounded-full bg-amber-500 px-4 py-1 text-xs font-bold text-white uppercase tracking-wide">Precio de lanzamiento</span>
             <p className="mt-3 text-sm font-medium text-blue-700 uppercase tracking-wide">Inversión inicial</p>
             <p className="mt-2">
               <span className="text-2xl text-slate-400 line-through">1.290 €</span>
@@ -258,7 +258,7 @@ export default function Home() {
               <span className="text-4xl font-bold text-slate-900">790 €</span>
               <span className="text-slate-500"> una sola vez</span>
             </p>
-            <p className="mt-1 text-sm text-amber-700 font-medium">Para las primeras 5 inmobiliarias</p>
+            <p className="mt-1 text-sm text-amber-700 font-medium">Para los primeros proyectos mientras construimos casos de éxito</p>
             <p className="mt-3 text-sm text-slate-600">Incluye: diseño web, dominio, configuración SEO, Google Maps y WhatsApp</p>
           </div>
 
@@ -418,7 +418,7 @@ export default function Home() {
                 <span className="text-blue-700 transition-transform group-open:rotate-45">+</span>
               </summary>
               <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                Sí. Sin permanencia. Si no te gusta o no recibes clientes, cancelas y te quedas
+                Sí. Sin permanencia. Cancelas cuando quieras y te quedas
                 con tu dominio. Sin preguntas ni comisiones de salida.
               </p>
             </details>
@@ -456,9 +456,29 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="border-t border-slate-200 bg-blue-700 py-16">
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <h2 className="text-2xl font-bold text-white">
+            ¿Cuánto te cuesta no aparecer en Google?
+          </h2>
+          <p className="mt-4 text-lg text-blue-100">
+            Cada día hay compradores buscando propiedades en la Costa Blanca.
+            Si no encuentran tu inmobiliaria, encuentran la de tu competencia.
+            Cuanto antes empieces, antes empiezan a llegar los leads.
+          </p>
+          <a
+            href="#contacto"
+            className="mt-8 inline-flex items-center gap-2 rounded-lg bg-amber-500 px-8 py-3.5 text-base font-semibold text-blue-900 transition-colors hover:bg-amber-400"
+          >
+            Quiero empezar
+            <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
+      </section>
+
       <section
         id="contacto"
-        className="scroll-mt-20 border-t border-slate-200 bg-slate-50 py-20"
+        className="scroll-mt-20 bg-slate-50 py-20"
       >
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">

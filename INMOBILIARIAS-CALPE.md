@@ -55,7 +55,7 @@ Fuente: https://www.inmocalpe.es/asociados/
 
 ## Guión de llamada (60 segundos)
 
-"Buenos días, soy [nombre] de Calpe SEO. Somos especialistas en ayudar a inmobiliarias de Calpe a aparecer en Google cuando los clientes buscan pisos en la zona. Trabajamos con [menciona alguna agencia conocida si ya tienes clientes].
+"Buenos días, soy [nombre] de Costa Blanca Leads. Somos especialistas en ayudar a inmobiliarias de Calpe a aparecer en Google cuando los clientes buscan pisos en la zona. Trabajamos con [menciona alguna agencia conocida si ya tienes clientes].
 
 Le llamaba porque he visto que [nombre agencia] tiene un catálogo de propiedades muy interesante, pero quizás os está costando que os encuentren online.
 
@@ -71,5 +71,5 @@ Si dice SÍ: "Genial, ¿qué tal el jueves a las 10:00 o el viernes a las 11:00?
 
 - Llama de **martes a jueves** (mejor disposición)
 - Horario: **10:00-12:00** o **17:00-18:30**
-- Si no cogen, deja WhatsApp: "Hola [nombre], soy [tu nombre] de Calpe SEO. Te he llamado para contarte cómo estamos ayudando a inmobiliarias de Calpe a captar más clientes por internet. Cuando puedas, dime si te interesa que te cuente más. Gracias!"
+- Si no cogen, deja WhatsApp: "Hola [nombre], soy [tu nombre] de Costa Blanca Leads. Te he llamado para contarte cómo estamos ayudando a inmobiliarias de Calpe a captar más clientes por internet. Cuando puedas, dime si te interesa que te cuente más. Gracias!"
 - Si te piden precio: "El plan básico son 197€ al año, pero tenemos opciones según el tamaño de tu cartera. Mejor te lo explico en 5 minutos y te enseño un ejemplo."
