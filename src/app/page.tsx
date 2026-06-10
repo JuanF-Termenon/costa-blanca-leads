@@ -89,6 +89,7 @@ export default function Home() {
             <a href="#servicios">Servicios</a>
             <a href="#como-funciona">Cómo funciona</a>
             <a href="#precios">Precios</a>
+            <a href="/demo" className="text-blue-700">Ver demo</a>
             <a href="#contacto">Contacto</a>
           </nav>
           <a
@@ -227,23 +228,21 @@ export default function Home() {
               Precios simples y sin sorpresas
             </h2>
             <p className="mt-4 text-lg text-slate-600">
-              Elige el plan según el tamaño de tu inmobiliaria.
+              Sin permanencia. Cancela cuando quieras.
             </p>
           </div>
           <div className="mt-12 grid gap-8 md:grid-cols-3">
             <div className="rounded-2xl border border-slate-200 bg-white p-8">
-              <h3 className="text-lg font-semibold text-slate-900">Starter</h3>
+              <h3 className="text-lg font-semibold text-slate-900">Básico</h3>
               <p className="mt-2 text-sm text-slate-500">
-                Para autónomos y agentes individuales
+                Para agentes individuales o startups
               </p>
               <p className="mt-6">
-                <span className="text-3xl font-bold text-slate-900">
-                  197 €
-                </span>
-                <span className="text-slate-500">/año</span>
+                <span className="text-3xl font-bold text-slate-900">29 €</span>
+                <span className="text-slate-500">/mes</span>
               </p>
               <p className="mt-1 text-sm text-slate-500">
-                o 19 €/mes (facturación anual)
+                o 290 €/año (ahorra 58 €)
               </p>
               <ul className="mt-6 space-y-3 text-sm text-slate-600">
                 <li className="flex items-center gap-2">
@@ -252,7 +251,7 @@ export default function Home() {
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-4 w-4 shrink-0 text-blue-700" />
-                  Hasta 10 propiedades
+                  Catálogo de propiedades
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-4 w-4 shrink-0 text-blue-700" />
@@ -260,14 +259,14 @@ export default function Home() {
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-4 w-4 shrink-0 text-blue-700" />
-                  Formulario de contacto
+                  Formulario de contacto + WhatsApp
                 </li>
               </ul>
               <a
                 href="#contacto"
                 className="mt-8 flex w-full items-center justify-center rounded-lg border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
               >
-                Elegir Starter
+                Elegir Básico
               </a>
             </div>
             <div className="relative rounded-2xl border-2 border-blue-700 bg-white p-8 shadow-lg shadow-blue-700/10">
@@ -278,23 +277,23 @@ export default function Home() {
                 Profesional
               </h3>
               <p className="mt-2 text-sm text-slate-500">
-                Para inmobiliarias consolidadas
+                Para inmobiliarias Consolidadas
               </p>
               <p className="mt-6">
-                <span className="text-3xl font-bold text-slate-900">497 €</span>
-                <span className="text-slate-500">/año</span>
+                <span className="text-3xl font-bold text-slate-900">59 €</span>
+                <span className="text-slate-500">/mes</span>
               </p>
               <p className="mt-1 text-sm text-slate-500">
-                o 49 €/mes (facturación anual)
+                o 590 €/año (ahorra 118 €)
               </p>
               <ul className="mt-6 space-y-3 text-sm text-slate-600">
                 <li className="flex items-center gap-2">
                   <Check className="h-4 w-4 shrink-0 text-blue-700" />
-                  Landing page + catálogo completo
+                  Todo el plan Básico
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-4 w-4 shrink-0 text-blue-700" />
-                  Propiedades ilimitadas
+                  Catálogo ilimitado
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-4 w-4 shrink-0 text-blue-700" />
@@ -302,7 +301,11 @@ export default function Home() {
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-4 w-4 shrink-0 text-blue-700" />
-                  WhatsApp integrado
+                  Blog SEO integrado
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-4 w-4 shrink-0 text-blue-700" />
+                  Gestión Google Business Profile
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-4 w-4 shrink-0 text-blue-700" />
@@ -318,19 +321,17 @@ export default function Home() {
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-8">
               <h3 className="text-lg font-semibold text-slate-900">
-                Enterprise
+                Premium
               </h3>
               <p className="mt-2 text-sm text-slate-500">
                 Para grupos y grandes carteras
               </p>
               <p className="mt-6">
-                <span className="text-3xl font-bold text-slate-900">
-                  997 €
-                </span>
-                <span className="text-slate-500">/año</span>
+                <span className="text-3xl font-bold text-slate-900">99 €</span>
+                <span className="text-slate-500">/mes</span>
               </p>
               <p className="mt-1 text-sm text-slate-500">
-                o 99 €/mes (facturación anual)
+                o 990 €/año (ahorra 198 €)
               </p>
               <ul className="mt-6 space-y-3 text-sm text-slate-600">
                 <li className="flex items-center gap-2">
@@ -339,22 +340,22 @@ export default function Home() {
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-4 w-4 shrink-0 text-blue-700" />
-                  Blog SEO + artículos mensuales
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700" />
-                  Gestión de Google Business Profile
+                  Contenido SEO mensual (2 artículos)
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-4 w-4 shrink-0 text-blue-700" />
                   Soporte prioritario 24/7
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-4 w-4 shrink-0 text-blue-700" />
+                  Dominio personalizado incluido
                 </li>
               </ul>
               <a
                 href="#contacto"
                 className="mt-8 flex w-full items-center justify-center rounded-lg border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
               >
-                Elegir Enterprise
+                Elegir Premium
               </a>
             </div>
           </div>
