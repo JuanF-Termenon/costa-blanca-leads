@@ -47,11 +47,18 @@ No es una web genérica. Es una **máquina de captar clientes** optimizada para 
 ## ¿Cómo se gana dinero?
 
 ### Modelo recurrente (SAAS)
-| Plan | Ingreso/cliente/mes | Con 10 clientes | Con 20 clientes |
-|------|:-------------------:|:---------------:|:---------------:|
-| Básico | 29€ | 290€/mes | 580€/mes |
-| Profesional | 59€ | 590€/mes | 1.180€/mes |
-| Premium | 99€ | 990€/mes | 1.980€/mes |
+| Concepto | Precio |
+|----------|--------|
+| Setup único | 990€ |
+| Básico | 79€/mes |
+| Profesional | 149€/mes |
+| Premium | 249€/mes |
+
+| Plan | Ingreso/cliente/mes | Setup | Con 10 clientes (Profesional) |
+|------|:-------------------:|:-----:|:---------------------------:|
+| Básico | 79€ | 990€ | — |
+| Profesional | 149€ | 990€ | 1.490€/mes recurrentes |
+| Premium | 249€ | 990€ | — |
 
 **Costes por cliente:**
 - Dominio: ~10€/año (<1€/mes)
@@ -60,9 +67,9 @@ No es una web genérica. Es una **máquina de captar clientes** optimizada para 
 - **Margen: ~95-98%**
 
 ### Ingresos adicionales
-- **Setup inicial** (opcional): 150-300€ por crear la web la primera vez
-- **Contenido SEO extra** (si no están en Premium): 50€/artículo
-- **Gestión de Google Ads** (opcional): 100-300€/mes + inversión en ads
+- **Setup inicial**: 990€ por crear la web + dominio + SEO inicial
+- **Contenido SEO extra**: consultar
+- **Gestión de Google Ads**: consultar
 
 ## ¿Qué le dices al cliente en la llamada?
 

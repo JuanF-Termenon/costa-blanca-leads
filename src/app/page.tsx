@@ -228,21 +228,24 @@ export default function Home() {
               Precios simples y sin sorpresas
             </h2>
             <p className="mt-4 text-lg text-slate-600">
-              Sin permanencia. Cancela cuando quieras.
+              Setup único de <strong>990 €</strong> (web + dominio + SEO inicial).
+            </p>
+            <p className="mt-1 text-sm text-slate-500">
+              Cuotas mensuales sin permanencia. Cancela cuando quieras.
             </p>
           </div>
           <div className="mt-12 grid gap-8 md:grid-cols-3">
             <div className="rounded-2xl border border-slate-200 bg-white p-8">
               <h3 className="text-lg font-semibold text-slate-900">Básico</h3>
               <p className="mt-2 text-sm text-slate-500">
-                Para agentes individuales o startups
+                Para agentes individuales
               </p>
               <p className="mt-6">
-                <span className="text-3xl font-bold text-slate-900">29 €</span>
+                <span className="text-3xl font-bold text-slate-900">79 €</span>
                 <span className="text-slate-500">/mes</span>
               </p>
               <p className="mt-1 text-sm text-slate-500">
-                o 290 €/año (ahorra 58 €)
+                + 990 € setup único
               </p>
               <ul className="mt-6 space-y-3 text-sm text-slate-600">
                 <li className="flex items-center gap-2">
@@ -266,7 +269,7 @@ export default function Home() {
                 href="#contacto"
                 className="mt-8 flex w-full items-center justify-center rounded-lg border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
               >
-                Elegir Básico
+                Solicitar
               </a>
             </div>
             <div className="relative rounded-2xl border-2 border-blue-700 bg-white p-8 shadow-lg shadow-blue-700/10">
@@ -277,14 +280,14 @@ export default function Home() {
                 Profesional
               </h3>
               <p className="mt-2 text-sm text-slate-500">
-                Para inmobiliarias Consolidadas
+                Para inmobiliarias consolidadas
               </p>
               <p className="mt-6">
-                <span className="text-3xl font-bold text-slate-900">59 €</span>
+                <span className="text-3xl font-bold text-slate-900">149 €</span>
                 <span className="text-slate-500">/mes</span>
               </p>
               <p className="mt-1 text-sm text-slate-500">
-                o 590 €/año (ahorra 118 €)
+                + 990 € setup único
               </p>
               <ul className="mt-6 space-y-3 text-sm text-slate-600">
                 <li className="flex items-center gap-2">
@@ -293,7 +296,7 @@ export default function Home() {
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-4 w-4 shrink-0 text-blue-700" />
-                  Catálogo ilimitado
+                  Nuevas páginas SEO mensuales
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-4 w-4 shrink-0 text-blue-700" />
@@ -305,7 +308,7 @@ export default function Home() {
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-4 w-4 shrink-0 text-blue-700" />
-                  Gestión Google Business Profile
+                  Optimización de velocidad
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-4 w-4 shrink-0 text-blue-700" />
@@ -316,7 +319,7 @@ export default function Home() {
                 href="#contacto"
                 className="mt-8 flex w-full items-center justify-center rounded-lg bg-blue-700 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-800"
               >
-                Elegir Profesional
+                Solicitar
               </a>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-8">
@@ -327,11 +330,11 @@ export default function Home() {
                 Para grupos y grandes carteras
               </p>
               <p className="mt-6">
-                <span className="text-3xl font-bold text-slate-900">99 €</span>
+                <span className="text-3xl font-bold text-slate-900">249 €</span>
                 <span className="text-slate-500">/mes</span>
               </p>
               <p className="mt-1 text-sm text-slate-500">
-                o 990 €/año (ahorra 198 €)
+                + 990 € setup único
               </p>
               <ul className="mt-6 space-y-3 text-sm text-slate-600">
                 <li className="flex items-center gap-2">
@@ -340,22 +343,22 @@ export default function Home() {
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-4 w-4 shrink-0 text-blue-700" />
-                  Contenido SEO mensual (2 artículos)
+                  SEO local avanzado + contenido continuo
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-4 w-4 shrink-0 text-blue-700" />
+                  Gestión Google Business Profile
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-4 w-4 shrink-0 text-blue-700" />
                   Soporte prioritario 24/7
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700" />
-                  Dominio personalizado incluido
                 </li>
               </ul>
               <a
                 href="#contacto"
                 className="mt-8 flex w-full items-center justify-center rounded-lg border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
               >
-                Elegir Premium
+                Solicitar
               </a>
             </div>
           </div>
