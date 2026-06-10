@@ -10,6 +10,7 @@ import {
   Target,
   BarChart,
   Users,
+  Monitor,
 } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 
@@ -42,7 +43,7 @@ const benefits = [
     icon: Smartphone,
     title: "Web rápida y profesional",
     description:
-      "Diseño responsive, optimizado para móvil y velocidad. Una web lenta ahuyenta clientes. La tuya cargará en menos de 2 segundos.",
+      "Diseño responsive, optimizado para móvil y velocidad. Una web lenta ahuyenta clientes. La tuya estará optimizada para una carga rápida.",
   },
   {
     icon: TrendingUp,
@@ -124,7 +125,7 @@ export default function Home() {
                 href="#contacto"
                 className="inline-flex items-center gap-2 rounded-lg bg-blue-700 px-8 py-3.5 text-base font-semibold text-white transition-colors hover:bg-blue-800"
               >
-                Quiero más clientes
+                Solicitar demo gratuita
                 <ArrowRight className="h-4 w-4" />
               </a>
               <a
@@ -140,6 +141,77 @@ export default function Home() {
             <p className="mt-2 text-sm font-medium text-amber-700">
               Precio de lanzamiento para los primeros proyectos, mientras completamos nuestros primeros casos de éxito.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-slate-200 bg-slate-50 py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold text-slate-900">
+              Así podría verse tu inmobiliaria
+            </h2>
+            <p className="mt-4 text-lg text-slate-600">
+              Una demo interactiva con propiedades, mapas y WhatsApp. Haz clic y pruébala.
+            </p>
+            <a
+              href="/demo"
+              className="mt-6 inline-flex items-center gap-2 text-blue-700 font-semibold hover:underline"
+            >
+              Ver demo completa <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
+          <div className="mt-10 mx-auto max-w-5xl overflow-hidden rounded-xl border border-slate-200 bg-white shadow-lg">
+            <div className="flex items-center gap-2 border-b border-slate-200 bg-slate-100 px-5 py-3">
+              <div className="h-3 w-3 rounded-full bg-red-400" />
+              <div className="h-3 w-3 rounded-full bg-amber-400" />
+              <div className="h-3 w-3 rounded-full bg-green-400" />
+              <div className="ml-4 flex-1 rounded-md bg-white px-4 py-1.5 text-xs text-slate-400 border border-slate-200">
+                tuinmobiliaria.com
+              </div>
+            </div>
+            <div className="p-6">
+              <div className="mb-6 flex items-center justify-between">
+                <div className="h-5 w-40 rounded bg-slate-200" />
+                <div className="flex gap-3">
+                  <div className="h-5 w-16 rounded bg-slate-200" />
+                  <div className="h-5 w-16 rounded bg-slate-200" />
+                  <div className="h-5 w-16 rounded bg-slate-200" />
+                </div>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-3">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="rounded-lg border border-slate-200 overflow-hidden">
+                    <div className={`h-32 bg-gradient-to-br ${["from-blue-400 to-blue-600", "from-emerald-400 to-emerald-600", "from-amber-400 to-amber-600"][i - 1]}`} />
+                    <div className="p-4 space-y-2">
+                      <div className="h-4 w-3/4 rounded bg-slate-200" />
+                      <div className="h-3 w-1/2 rounded bg-slate-200" />
+                      <div className="h-5 w-1/3 rounded bg-blue-100" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="mx-auto mt-10 max-w-2xl">
+              <h3 className="text-center text-lg font-semibold text-slate-900">Lo que incluye la demo</h3>
+              <div className="mt-6 grid grid-cols-2 gap-3 text-sm">
+                {[
+                  "Página principal con tu marca",
+                  "Catálogo de propiedades",
+                  "Fichas individuales con precio y mapa",
+                  "WhatsApp integrado",
+                  "Formulario de contacto",
+                  "SEO local optimizado",
+                  "Google Maps por propiedad",
+                  "Diseño responsive",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-2 rounded-lg bg-white p-3 border border-slate-200">
+                    <Check className="h-4 w-4 shrink-0 text-blue-700" />
+                    <span className="text-slate-700">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
