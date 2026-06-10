@@ -7,68 +7,71 @@ import {
   MessageSquare,
   Check,
   ArrowRight,
+  Target,
+  BarChart,
+  Users,
 } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 
 const benefits = [
   {
     icon: Search,
-    title: "SEO local para Calpe",
+    title: "SEO local para inmobiliarias",
     description:
-      "Apareces el primero cuando buscan 'comprar piso en Calpe' o 'inmobiliarias Calpe'. Posicionamiento garantizado en Google Maps y búsqueda orgánica.",
-  },
-  {
-    icon: Smartphone,
-    title: "Web rápida y moderna",
-    description:
-      "Diseño profesional, responsive y optimizado para móvil. Tus clientes ven tus propiedades sin esperas.",
+      "Optimizamos tu web para que aparezcas cuando buscan 'comprar piso en Calpe', 'inmobiliaria en Benidorm' o 'chalet en Altea'. Más visitantes = más clientes.",
   },
   {
     icon: FileText,
-    title: "Catálogo de propiedades",
+    title: "Catálogo con páginas individuales",
     description:
-      "Sube tus pisos con fotos, descripción y precio. Cada propiedad tiene su propia página SEO.",
+      "Cada propiedad tiene su propia página con fotos, descripción, precio y mapa. Posicionas cada piso por separado en Google.",
   },
   {
     icon: MessageSquare,
     title: "Captación de leads automática",
     description:
-      "Formulario de contacto, WhatsApp integrado y llamada a la acción en cada página. No pierdes ni un cliente.",
+      "Cada visita puede convertirse en cliente. Formulario, WhatsApp integrado y CTA en cada página. Los leads te llegan al móvil al instante.",
   },
   {
     icon: MapPin,
-    title: "Google Maps integrado",
+    title: "Google Maps + perfil de negocio",
     description:
-      "Cada propiedad muestra su ubicación en el mapa de Calpe. Tus clientes ven la cercanía al mar, centros comerciales y servicios.",
+      "Apareces en Google Maps con tus propiedades. Gestionamos tu perfil de Google Business para que te encuentren también desde el mapa.",
+  },
+  {
+    icon: Smartphone,
+    title: "Web rápida y profesional",
+    description:
+      "Diseño responsive, optimizado para móvil y velocidad. Una web lenta ahuyenta clientes. La tuya cargará en menos de 2 segundos.",
   },
   {
     icon: TrendingUp,
-    title: "Estadísticas mensuales",
+    title: "Informes y mejora continua",
     description:
-      "Te enviamos informe mensual con visitas, leads generados y posicionamiento. Sabes lo que funciona.",
+      "Cada mes te enviamos un informe con visitas, leads generados y posicionamiento. Sabes lo que funciona y lo que no.",
   },
 ];
 
 const steps = [
   {
     num: "01",
-    title: "Nos reunimos",
-    desc: "Vemos tu catálogo, tu zona y qué necesitas. Sin compromiso.",
+    title: "Analizamos tu mercado",
+    desc: "Vemos tu cartera, tu zona, tu competencia y definimos la estrategia SEO.",
   },
   {
     num: "02",
     title: "Creamos tu web",
-    desc: "Landing page con todas tus propiedades, SEO y Google Maps. En 48h.",
+    desc: "Diseño profesional con catálogo, SEO local, Google Maps y WhatsApp. En 48h.",
   },
   {
     num: "03",
-    title: "Te posicionamos",
-    desc: "Optimizamos para que aparezcas en Google local. Resultados en semanas.",
+    title: "Posicionamos en Google",
+    desc: "Optimización técnica y contenido para que aparezcas en búsquedas locales.",
   },
   {
     num: "04",
-    title: "Recibes leads",
-    desc: "Clientes te contactan directamente desde tu web. Te avisamos al WhatsApp.",
+    title: "Recibes clientes",
+    desc: "Los leads llegan directos a tu WhatsApp o email. Sin esfuerzo por tu parte.",
   },
 ];
 
@@ -79,10 +82,10 @@ export default function Home() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-2">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-700 text-white text-sm font-bold">
-              CS
+              CBL
             </div>
             <span className="text-lg font-bold text-slate-900">
-              Calpe <span className="text-blue-700">SEO</span>
+              Costa Blanca <span className="text-blue-700">Leads</span>
             </span>
           </div>
           <nav className="hidden items-center gap-6 text-sm font-medium text-slate-600 md:flex">
@@ -106,35 +109,36 @@ export default function Home() {
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-1.5 text-sm font-medium text-blue-800">
               <MapPin className="h-4 w-4" />
-              Especialistas en Calpe y la Costa Blanca
+              Especialistas en inmobiliarias de Calpe y Costa Blanca
             </div>
             <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-              La primera página de Google para tu inmobiliaria en{" "}
-              <span className="text-blue-700">Calpe</span>
+              Consigue más compradores para tus propiedades desde{" "}
+              <span className="text-blue-700">Google</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-600">
-              Creamos tu landing page con SEO local, catálogo de propiedades y
-              captación automática de clientes. Empieza a recibir leads desde el
-              primer mes.
+              Creamos tu web con SEO local para que aparezcas cuando buscan pisos, chalets o
+              apartamentos en tu zona. Leads directos a tu WhatsApp sin complicaciones.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <a
                 href="#contacto"
                 className="inline-flex items-center gap-2 rounded-lg bg-blue-700 px-8 py-3.5 text-base font-semibold text-white transition-colors hover:bg-blue-800"
               >
-                Quiero aparecer en Google
+                Quiero más clientes
                 <ArrowRight className="h-4 w-4" />
               </a>
               <a
-                href="#servicios"
+                href="/demo"
                 className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-8 py-3.5 text-base font-semibold text-slate-700 transition-colors hover:bg-slate-50"
               >
-                Ver servicios
+                Ver demo
               </a>
             </div>
             <p className="mt-4 text-sm text-slate-500">
-              Sin contrato de permanencia · Web en 48h · Soporte directo por
-              WhatsApp
+              Sin contrato de permanencia · Web en 48h · Soporte directo por WhatsApp
+            </p>
+            <p className="mt-2 text-sm font-medium text-amber-700">
+              Lanzamiento: 790 € las primeras 5 agencias (habitual 1.290 €)
             </p>
           </div>
         </div>
@@ -144,10 +148,11 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold text-slate-900">
-              Todo lo que tu inmobiliaria necesita online
+              Convierte Google en tu mejor comercial
             </h2>
             <p className="mt-4 text-lg text-slate-600">
-              No es solo una web. Es una máquina de captar clientes en Calpe.
+              Más del 90% de compradores busca online antes de contactar con una inmobiliaria.
+              Si no apareces, no existes.
             </p>
           </div>
           <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -173,22 +178,33 @@ export default function Home() {
 
       <section className="bg-blue-700 py-20">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="text-center text-white">
-              <div className="text-4xl font-bold">50+</div>
-              <div className="mt-2 text-blue-200">Inmobiliarias en Calpe</div>
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-2xl font-bold text-white">¿Por qué funciona?</h2>
+          </div>
+          <div className="mt-12 grid gap-8 md:grid-cols-3">
+            <div className="rounded-xl bg-white/10 p-8 text-center text-white backdrop-blur-sm">
+              <Target className="mx-auto h-8 w-8 text-amber-300" />
+              <h3 className="mt-4 text-lg font-semibold">SEO local real</h3>
+              <p className="mt-2 text-sm text-blue-100">
+                No prometemos posiciones. Optimizamos tu web para que Google entienda
+                que eres la inmobiliaria de referencia en tu zona.
+              </p>
             </div>
-            <div className="text-center text-white">
-              <div className="text-4xl font-bold">3.200+</div>
-              <div className="mt-2 text-blue-200">
-                Búsquedas al mes "inmobiliarias Calpe"
-              </div>
+            <div className="rounded-xl bg-white/10 p-8 text-center text-white backdrop-blur-sm">
+              <Users className="mx-auto h-8 w-8 text-amber-300" />
+              <h3 className="mt-4 text-lg font-semibold">Diseñado para inmobiliarias</h3>
+              <p className="mt-2 text-sm text-blue-100">
+                No es una web genérica. Cada propiedad tiene su página, su mapa y su
+                botón de contacto. Pensado para convertir visitas en leads.
+              </p>
             </div>
-            <div className="text-center text-white">
-              <div className="text-4xl font-bold">85%</div>
-              <div className="mt-2 text-blue-200">
-                De compradores empieza por Google
-              </div>
+            <div className="rounded-xl bg-white/10 p-8 text-center text-white backdrop-blur-sm">
+              <BarChart className="mx-auto h-8 w-8 text-amber-300" />
+              <h3 className="mt-4 text-lg font-semibold">Medición y mejora</h3>
+              <p className="mt-2 text-sm text-blue-100">
+                Cada mes sabrás cuántas visitas has tenido, de dónde vienen y cuántos
+                leads has generado. Sin adivinar.
+              </p>
             </div>
           </div>
         </div>
@@ -204,7 +220,7 @@ export default function Home() {
               Cómo empezamos
             </h2>
             <p className="mt-4 text-lg text-slate-600">
-              En 4 pasos tienes tu web funcionando y captando clientes.
+              En 4 pasos tienes tu web captando clientes.
             </p>
           </div>
           <div className="mt-16 grid gap-8 md:grid-cols-4">
@@ -225,15 +241,27 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold text-slate-900">
-              Precios simples y sin sorpresas
+              Inversión clara, sin sorpresas
             </h2>
             <p className="mt-4 text-lg text-slate-600">
-              Setup único de <strong>990 €</strong> (web + dominio + SEO inicial).
-            </p>
-            <p className="mt-1 text-sm text-slate-500">
-              Cuotas mensuales sin permanencia. Cancela cuando quieras.
+              Paga una vez por tu web. Luego solo la cuota mensual.
             </p>
           </div>
+
+          <div className="mx-auto mt-10 max-w-lg rounded-2xl border-2 border-blue-700 bg-blue-50 p-8 text-center">
+            <span className="inline-block rounded-full bg-amber-500 px-4 py-1 text-xs font-bold text-white uppercase tracking-wide">Lanzamiento</span>
+            <p className="mt-3 text-sm font-medium text-blue-700 uppercase tracking-wide">Inversión inicial</p>
+            <p className="mt-2">
+              <span className="text-2xl text-slate-400 line-through">1.290 €</span>
+            </p>
+            <p className="mt-1">
+              <span className="text-4xl font-bold text-slate-900">790 €</span>
+              <span className="text-slate-500"> una sola vez</span>
+            </p>
+            <p className="mt-1 text-sm text-amber-700 font-medium">Para las primeras 5 inmobiliarias</p>
+            <p className="mt-3 text-sm text-slate-600">Incluye: diseño web, dominio, configuración SEO, Google Maps y WhatsApp</p>
+          </div>
+
           <div className="mt-12 grid gap-8 md:grid-cols-3">
             <div className="rounded-2xl border border-slate-200 bg-white p-8">
               <h3 className="text-lg font-semibold text-slate-900">Básico</h3>
@@ -243,9 +271,6 @@ export default function Home() {
               <p className="mt-6">
                 <span className="text-3xl font-bold text-slate-900">79 €</span>
                 <span className="text-slate-500">/mes</span>
-              </p>
-              <p className="mt-1 text-sm text-slate-500">
-                + 990 € setup único
               </p>
               <ul className="mt-6 space-y-3 text-sm text-slate-600">
                 <li className="flex items-center gap-2">
@@ -285,9 +310,6 @@ export default function Home() {
               <p className="mt-6">
                 <span className="text-3xl font-bold text-slate-900">149 €</span>
                 <span className="text-slate-500">/mes</span>
-              </p>
-              <p className="mt-1 text-sm text-slate-500">
-                + 990 € setup único
               </p>
               <ul className="mt-6 space-y-3 text-sm text-slate-600">
                 <li className="flex items-center gap-2">
@@ -333,9 +355,6 @@ export default function Home() {
                 <span className="text-3xl font-bold text-slate-900">249 €</span>
                 <span className="text-slate-500">/mes</span>
               </p>
-              <p className="mt-1 text-sm text-slate-500">
-                + 990 € setup único
-              </p>
               <ul className="mt-6 space-y-3 text-sm text-slate-600">
                 <li className="flex items-center gap-2">
                   <Check className="h-4 w-4 shrink-0 text-blue-700" />
@@ -365,6 +384,78 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="border-t border-slate-200 bg-white py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold text-slate-900">
+              Preguntas frecuentes
+            </h2>
+          </div>
+          <div className="mx-auto mt-12 max-w-3xl space-y-6">
+            <details className="group cursor-pointer rounded-xl border border-slate-200 p-5 open:border-blue-200 open:bg-blue-50/50">
+              <summary className="flex items-center justify-between font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
+                ¿Necesito tener una web ya?
+                <span className="text-blue-700 transition-transform group-open:rotate-45">+</span>
+              </summary>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                No. Nosotros la creamos desde cero con tu marca, tus propiedades y tu dominio.
+                No necesitas nada más que tus fotos y descripciones.
+              </p>
+            </details>
+            <details className="group cursor-pointer rounded-xl border border-slate-200 p-5 open:border-blue-200 open:bg-blue-50/50">
+              <summary className="flex items-center justify-between font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
+                ¿Cuánto tardáis en tenerla lista?
+                <span className="text-blue-700 transition-transform group-open:rotate-45">+</span>
+              </summary>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                Entre 24 y 48 horas desde que nos das tu información. El mismo día te enviamos un
+                enlace para que veas cómo queda.
+              </p>
+            </details>
+            <details className="group cursor-pointer rounded-xl border border-slate-200 p-5 open:border-blue-200 open:bg-blue-50/50">
+              <summary className="flex items-center justify-between font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
+                ¿Puedo cancelar cuando quiera?
+                <span className="text-blue-700 transition-transform group-open:rotate-45">+</span>
+              </summary>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                Sí. Sin permanencia. Si no te gusta o no recibes clientes, cancelas y te quedas
+                con tu dominio. Sin preguntas ni comisiones de salida.
+              </p>
+            </details>
+            <details className="group cursor-pointer rounded-xl border border-slate-200 p-5 open:border-blue-200 open:bg-blue-50/50">
+              <summary className="flex items-center justify-between font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
+                ¿Aparezco en Google Maps?
+                <span className="text-blue-700 transition-transform group-open:rotate-45">+</span>
+              </summary>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                Sí. En los planes Profesional y Premium gestionamos tu perfil de Google Business
+                Profile para que aparezcas en Google Maps con tus propiedades.
+              </p>
+            </details>
+            <details className="group cursor-pointer rounded-xl border border-slate-200 p-5 open:border-blue-200 open:bg-blue-50/50">
+              <summary className="flex items-center justify-between font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
+                ¿Puedo actualizar las propiedades yo mismo?
+                <span className="text-blue-700 transition-transform group-open:rotate-45">+</span>
+              </summary>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                De momento nos las envías por WhatsApp o email y las actualizamos en menos de 24h.
+                Pronto tendrás un panel para gestionarlo tú mismo.
+              </p>
+            </details>
+            <details className="group cursor-pointer rounded-xl border border-slate-200 p-5 open:border-blue-200 open:bg-blue-50/50">
+              <summary className="flex items-center justify-between font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
+                ¿Qué pasa si un cliente contacta desde la web?
+                <span className="text-blue-700 transition-transform group-open:rotate-45">+</span>
+              </summary>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                Te llega un WhatsApp y un email automáticamente con el nombre, teléfono y mensaje
+                del interesado. Contestas directamente desde tu móvil.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
       <section
         id="contacto"
         className="scroll-mt-20 border-t border-slate-200 bg-slate-50 py-20"
@@ -387,15 +478,14 @@ export default function Home() {
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex items-center gap-2">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-700 text-white text-xs font-bold">
-                CS
+                CBL
               </div>
               <span className="text-sm font-semibold text-slate-900">
-                Calpe SEO
+                Costa Blanca Leads
               </span>
             </div>
             <p className="text-sm text-slate-500">
-              © 2026 Calpe SEO · Especialistas en inmobiliarias de Calpe y la
-              Costa Blanca
+              © 2026 Costa Blanca Leads · Especialistas en inmobiliarias de Calpe y la Costa Blanca
             </p>
           </div>
         </div>

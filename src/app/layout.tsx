@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Calpe SEO · Landing pages para inmobiliarias",
+  title: "Costa Blanca Leads · Más clientes para tu inmobiliaria",
   description:
-    "Creamos landing pages con SEO local para inmobiliarias en Calpe. Aparece en Google y capta más clientes.",
+    "Creamos tu web con SEO local para que tu inmobiliaria aparezca en Google cuando buscan propiedades en Calpe, Altea, Benidorm y toda la Costa Blanca.",
 };
 
 export default function RootLayout({

@@ -9,6 +9,10 @@ const propertyColors = [
   "from-rose-400 to-rose-600",
   "from-violet-400 to-violet-600",
   "from-teal-400 to-teal-600",
+  "from-orange-400 to-orange-600",
+  "from-cyan-400 to-cyan-600",
+  "from-pink-400 to-pink-600",
+  "from-lime-400 to-lime-600",
 ];
 
 export default function DemoPage() {
@@ -18,10 +22,10 @@ export default function DemoPage() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-2">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-700 text-white text-sm font-bold">
-              CP
+              IC
             </div>
             <div>
-              <span className="text-base font-bold text-slate-900">Calpe Propiedades</span>
+              <span className="text-base font-bold text-slate-900">Inmobiliaria Calpe</span>
               <span className="ml-2 rounded bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700">Demo</span>
             </div>
           </div>
@@ -49,11 +53,11 @@ export default function DemoPage() {
         </div>
         <div className="relative mx-auto max-w-6xl px-6 py-16 text-center">
           <h1 className="text-4xl font-bold sm:text-5xl">
-            Tu inmobiliaria de confianza en <span className="text-amber-300">Calpe</span>
+            Tu inmobiliaria en <span className="text-amber-300">Calpe</span>
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-blue-100">
-            Más de 20 años ayudando a familias a encontrar el hogar de sus sueños en la Costa Blanca.
-            Especialistas en compra, venta y alquiler en Calpe y alrededores.
+            Especialistas en compra, venta y alquiler en Calpe y la Costa Blanca.
+            Te ayudamos a encontrar la propiedad que buscas.
           </p>
           <div className="mx-auto mt-8 flex max-w-lg items-center gap-2 rounded-xl bg-white/15 p-2 backdrop-blur-sm">
             <MapPin className="ml-2 h-5 w-5 shrink-0 text-blue-200" />
@@ -103,24 +107,22 @@ export default function DemoPage() {
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-2xl font-bold text-slate-900">Sobre nosotros</h2>
             <p className="mt-4 text-sm leading-relaxed text-slate-600">
-              Somos una inmobiliaria familiar con más de 20 años de experiencia en el mercado
-              de Calpe y la Costa Blanca. Nuestro equipo de profesionales multilingüe te
-              acompañará en cada paso del proceso, garantizando una experiencia transparente
-              y sin sorpresas.
+              Somos una inmobiliaria con experiencia en el mercado de Calpe y la Costa Blanca.
+              Nuestro equipo de profesionales multilingüe te acompañará en cada paso del proceso.
             </p>
           </div>
           <div className="mt-10 grid gap-6 text-center md:grid-cols-3">
             <div className="rounded-xl bg-white p-6 shadow-sm">
-              <div className="text-3xl font-bold text-blue-700">+500</div>
-              <p className="mt-2 text-sm text-slate-600">Propiedades vendidas</p>
+              <div className="text-3xl font-bold text-blue-700">+80</div>
+              <p className="mt-2 text-sm text-slate-600">Propiedades en cartera</p>
             </div>
             <div className="rounded-xl bg-white p-6 shadow-sm">
-              <div className="text-3xl font-bold text-blue-700">20+</div>
+              <div className="text-3xl font-bold text-blue-700">15</div>
               <p className="mt-2 text-sm text-slate-600">Años de experiencia</p>
             </div>
             <div className="rounded-xl bg-white p-6 shadow-sm">
-              <div className="text-3xl font-bold text-blue-700">100%</div>
-              <p className="mt-2 text-sm text-slate-600">Clientes satisfechos</p>
+              <div className="text-3xl font-bold text-blue-700">4.8</div>
+              <p className="mt-2 text-sm text-slate-600">Valoración media ★</p>
             </div>
           </div>
         </div>
@@ -157,7 +159,7 @@ export default function DemoPage() {
       </section>
 
       <footer className="border-t border-slate-200 bg-slate-50 py-8 text-center text-sm text-slate-500">
-        <p>© 2026 Calpe Propiedades · Inmobiliaria en Calpe · Costa Blanca</p>
+        <p>© 2026 Inmobiliaria Calpe · Inmobiliaria en Calpe · Costa Blanca</p>
         <p className="mt-1 text-xs text-slate-400">
           Esta es una plantilla demo. Tu web puede tener tu propia marca, colores y propiedades.
         </p>
