@@ -1,5 +1,6 @@
-import { MapPin, Bed, Bath, Maximize, Phone, Mail, ArrowRight, Building2 } from "lucide-react";
+import { MapPin, Phone, Mail, ArrowRight } from "lucide-react";
 import properties from "@/lib/demo-properties";
+import { DemoPropertyCard } from "@/components/demo-property-card";
 
 const propertyColors = [
   "from-blue-400 to-blue-600",
@@ -87,51 +88,11 @@ export default function DemoPage() {
           </div>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {properties.map((p, i) => (
-              <div
+              <DemoPropertyCard
                 key={p.ref}
-                className="group overflow-hidden rounded-2xl border border-slate-200 bg-white transition-shadow hover:shadow-lg"
-              >
-                <div className={`relative h-48 bg-gradient-to-br ${propertyColors[i % propertyColors.length]}`}>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Building2 className="h-12 w-12 text-white/30" />
-                  </div>
-                  <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-700 backdrop-blur-sm">
-                    {p.type}
-                  </span>
-                  <span className="absolute right-3 top-3 rounded-full bg-amber-500 px-3 py-1 text-xs font-bold text-white">
-                    {p.price}
-                  </span>
-                </div>
-                <div className="p-5">
-                  <h3 className="font-semibold text-slate-900 group-hover:text-blue-700">
-                    {p.title}
-                  </h3>
-                  <p className="mt-1 flex items-center gap-1 text-xs text-slate-500">
-                    <MapPin className="h-3 w-3" />
-                    {p.location}
-                  </p>
-                  <p className="mt-2 text-xs leading-relaxed text-slate-600">
-                    {p.desc}
-                  </p>
-                  {p.beds > 0 && (
-                    <div className="mt-4 flex items-center gap-4 border-t border-slate-100 pt-4 text-xs text-slate-500">
-                      <span className="flex items-center gap-1">
-                        <Bed className="h-3.5 w-3.5" />
-                        {p.beds} hab
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Bath className="h-3.5 w-3.5" />
-                        {p.baths} baños
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Maximize className="h-3.5 w-3.5" />
-                        {p.m2} m²
-                      </span>
-                    </div>
-                  )}
-                  <p className="mt-2 text-xs text-slate-400">Ref: {p.ref}</p>
-                </div>
-              </div>
+                property={p}
+                color={propertyColors[i % propertyColors.length]}
+              />
             ))}
           </div>
         </div>

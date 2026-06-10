@@ -1,4 +1,17 @@
-const properties = [
+export interface Property {
+  ref: string;
+  title: string;
+  location: string;
+  price: string;
+  beds: number;
+  baths: number;
+  m2: number;
+  type: string;
+  image: null;
+  desc: string;
+}
+
+const properties: Property[] = [
   {
     ref: "CP-101",
     title: "Apartamento en primera línea de playa",
