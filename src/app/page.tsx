@@ -47,21 +47,21 @@ export default function Home() {
 
   return (
     <div className="min-h-dvh">
-      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-md">
+      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-md dark:border-slate-800 dark:bg-slate-950/90">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-2">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-700 text-white text-sm font-bold">
               CBL
             </div>
-            <span className="text-lg font-bold text-slate-900">
-              Costa Blanca <span className="text-blue-700">Leads</span>
+            <span className="text-lg font-bold text-slate-900 dark:text-slate-100">
+              Costa Blanca <span className="text-blue-700 dark:text-blue-400">Leads</span>
             </span>
           </div>
-          <nav className="hidden items-center gap-6 text-sm font-medium text-slate-600 md:flex">
+          <nav className="hidden items-center gap-6 text-sm font-medium text-slate-600 md:flex dark:text-slate-400">
             <a href="#servicios">{t("nav.servicios")}</a>
             <a href="#como-funciona">{t("nav.como-funciona")}</a>
             <a href="#precios">{t("nav.precios")}</a>
-            <a href="/demo" className="text-blue-700">{t("nav.ver-demo")}</a>
+            <a href="/demo" className="text-blue-700 dark:text-blue-400">{t("nav.ver-demo")}</a>
             <a href="#agenda-tu-demo">{t("nav.contacto")}</a>
           </nav>
           <div className="flex items-center gap-2">
@@ -69,7 +69,7 @@ export default function Home() {
             <ThemeToggle />
             <a
               href="#agenda-tu-demo"
-              className="rounded-lg bg-blue-700 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-800"
+              className="rounded-lg bg-blue-700 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700"
             >
               {t("nav.solicitar-demo")}
             </a>
@@ -77,39 +77,39 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-amber-50">
+      <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-amber-50 dark:from-blue-950 dark:via-slate-950 dark:to-amber-950">
         <div className="mx-auto max-w-6xl px-6 pb-24 pt-16 md:pb-32 md:pt-24">
           <div className="mx-auto max-w-3xl text-center">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-1.5 text-sm font-medium text-blue-800">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-1.5 text-sm font-medium text-blue-800 dark:bg-blue-900/40 dark:text-blue-300">
               <MapPin className="h-4 w-4" />
               {t("hero.badge")}
             </div>
-            <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl dark:text-slate-100">
               {t("hero.title")}{" "}
-              <span className="text-blue-700">{t("hero.title-highlight")}</span>
+              <span className="text-blue-700 dark:text-blue-400">{t("hero.title-highlight")}</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-600">
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
               {t("hero.subtitle")}
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <a
                 href="#agenda-tu-demo"
-                className="inline-flex items-center gap-2 rounded-lg bg-blue-700 px-8 py-3.5 text-base font-semibold text-white transition-colors hover:bg-blue-800"
+                className="inline-flex items-center gap-2 rounded-lg bg-blue-700 px-8 py-3.5 text-base font-semibold text-white transition-colors hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700"
               >
                 {t("hero.cta")}
                 <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="/demo"
-                className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-8 py-3.5 text-base font-semibold text-slate-700 transition-colors hover:bg-slate-50"
+                className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-8 py-3.5 text-base font-semibold text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
               >
                 {t("hero.demo")}
               </a>
             </div>
-            <p className="mt-4 text-sm text-slate-500">
+            <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">
               {t("hero.tagline")}
             </p>
-            <p className="mt-2 text-sm font-medium text-amber-700">
+            <p className="mt-2 text-sm font-medium text-amber-700 dark:text-amber-400">
               {t("hero.launch-text")}
             </p>
           </div>
@@ -119,10 +119,10 @@ export default function Home() {
       <section id="servicios" className="scroll-mt-20 py-20">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-slate-900">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
               {t("benefits.title")}
             </h2>
-            <p className="mt-4 text-lg text-slate-600">
+            <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
               {t("benefits.subtitle")}
             </p>
           </div>
@@ -130,15 +130,15 @@ export default function Home() {
             {benefitItems.map(({ icon: Icon, title, description }) => (
               <div
                 key={title}
-                className="group rounded-2xl border border-slate-200 bg-white p-8 transition-shadow hover:shadow-lg"
+                className="group rounded-2xl border border-slate-200 bg-white p-8 transition-shadow hover:shadow-lg dark:border-slate-700 dark:bg-slate-900 dark:hover:shadow-slate-900/50"
               >
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-700 transition-colors group-hover:bg-blue-700 group-hover:text-white">
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-700 transition-colors group-hover:bg-blue-700 group-hover:text-white dark:bg-blue-900/30 dark:text-blue-400 dark:group-hover:bg-blue-600">
                   <Icon className="h-6 w-6" />
                 </div>
-                <h3 className="text-lg font-semibold text-slate-900">
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
                   {title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                   {description}
                 </p>
               </div>
@@ -147,18 +147,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-slate-200 bg-slate-50 py-20">
+      <section className="border-t border-slate-200 bg-slate-50 py-20 dark:border-slate-800 dark:bg-slate-900">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-slate-900">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
               {t("demo.title")}
             </h2>
-            <p className="mt-4 text-lg text-slate-600">
+            <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
               {t("demo.subtitle")}
             </p>
             <a
               href="/demo"
-              className="mt-6 inline-flex items-center gap-2 text-blue-700 font-semibold hover:underline"
+              className="mt-6 inline-flex items-center gap-2 text-blue-700 font-semibold hover:underline dark:text-blue-400"
             >
               {t("demo.cta")} <ArrowRight className="h-4 w-4" />
             </a>
@@ -175,39 +175,39 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-blue-700 py-20">
+      <section className="bg-blue-700 py-20 dark:bg-blue-900">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-2xl font-bold text-white">{t("works.title")}</h2>
-            <p className="mt-4 text-lg text-blue-100">
+            <p className="mt-4 text-lg text-blue-100 dark:text-blue-200">
               {t("works.subtitle")}
             </p>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             <div className="rounded-xl bg-white/10 p-8 text-white backdrop-blur-sm">
-              <HomeIcon className="h-8 w-8 text-amber-300" />
+              <HomeIcon className="h-8 w-8 text-amber-300 dark:text-amber-200" />
               <h3 className="mt-4 text-lg font-semibold">{t("works.0.title")}</h3>
-              <p className="mt-2 text-sm text-blue-100">
+              <p className="mt-2 text-sm text-blue-100 dark:text-blue-200">
                 {t("works.0.desc")}
               </p>
             </div>
             <div className="rounded-xl bg-white/10 p-8 text-white backdrop-blur-sm">
-              <HomeIcon className="h-8 w-8 text-amber-300" />
+              <HomeIcon className="h-8 w-8 text-amber-300 dark:text-amber-200" />
               <h3 className="mt-4 text-lg font-semibold">{t("works.1.title")}</h3>
-              <p className="mt-2 text-sm text-blue-100">
+              <p className="mt-2 text-sm text-blue-100 dark:text-blue-200">
                 {t("works.1.desc")}
               </p>
             </div>
             <div className="rounded-xl bg-white/10 p-8 text-white backdrop-blur-sm">
-              <HomeIcon className="h-8 w-8 text-amber-300" />
+              <HomeIcon className="h-8 w-8 text-amber-300 dark:text-amber-200" />
               <h3 className="mt-4 text-lg font-semibold">{t("works.2.title")}</h3>
-              <p className="mt-2 text-sm text-blue-100">
+              <p className="mt-2 text-sm text-blue-100 dark:text-blue-200">
                 {t("works.2.desc")}
               </p>
             </div>
           </div>
           <div className="mt-8 text-center">
-            <Target className="mx-auto h-6 w-6 text-amber-300" />
+            <Target className="mx-auto h-6 w-6 text-amber-300 dark:text-amber-200" />
             <p className="mt-4 text-lg font-semibold text-white">
               {t("works.tagline")}
             </p>
@@ -215,14 +215,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white py-20">
+      <section className="bg-white py-20 dark:bg-slate-950">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="mx-auto max-w-3xl rounded-2xl border border-amber-200 bg-amber-50 p-8 text-center md:p-12">
-            <Euro className="mx-auto h-8 w-8 text-amber-600" />
-            <h2 className="mt-4 text-2xl font-bold text-slate-900">
+          <div className="mx-auto max-w-3xl rounded-2xl border border-amber-200 bg-amber-50 p-8 text-center md:p-12 dark:border-amber-800 dark:bg-amber-950/40">
+            <Euro className="mx-auto h-8 w-8 text-amber-600 dark:text-amber-400" />
+            <h2 className="mt-4 text-2xl font-bold text-slate-900 dark:text-slate-100">
               {t("roi.title")}
             </h2>
-            <p className="mt-4 text-base text-slate-600 leading-relaxed">
+            <p className="mt-4 text-base text-slate-600 leading-relaxed dark:text-slate-400">
               {t("roi.desc")}
             </p>
           </div>
@@ -231,25 +231,25 @@ export default function Home() {
 
       <section
         id="como-funciona"
-        className="scroll-mt-20 border-t border-slate-200 bg-slate-50 py-20"
+        className="scroll-mt-20 border-t border-slate-200 bg-slate-50 py-20 dark:border-slate-800 dark:bg-slate-900"
       >
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-slate-900">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
               {t("steps.title")}
             </h2>
-            <p className="mt-4 text-lg text-slate-600">
+            <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
               {t("steps.subtitle")}
             </p>
           </div>
           <div className="mt-16 grid gap-8 md:grid-cols-4">
             {stepItems.map(({ num, title, desc }) => (
               <div key={num} className="relative text-center">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-blue-700 text-lg font-bold text-white">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-blue-700 text-lg font-bold text-white dark:bg-blue-600">
                   {num}
                 </div>
-                <h3 className="mt-5 font-semibold text-slate-900">{title}</h3>
-                <p className="mt-2 text-sm text-slate-600">{desc}</p>
+                <h3 className="mt-5 font-semibold text-slate-900 dark:text-slate-100">{title}</h3>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{desc}</p>
               </div>
             ))}
           </div>
@@ -259,133 +259,133 @@ export default function Home() {
       <section id="precios" className="scroll-mt-20 py-20">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-slate-900">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
               {t("pricing.title")}
             </h2>
-            <p className="mt-4 text-lg text-slate-600">
+            <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
               {t("pricing.subtitle")}
             </p>
           </div>
 
-          <div className="mx-auto mt-10 max-w-lg rounded-2xl border-2 border-amber-500 bg-amber-50 p-8 text-center">
+          <div className="mx-auto mt-10 max-w-lg rounded-2xl border-2 border-amber-500 bg-amber-50 p-8 text-center dark:border-amber-600 dark:bg-amber-950/40">
             <span className="inline-block rounded-full bg-amber-500 px-4 py-1 text-xs font-bold text-white uppercase tracking-wide">{t("pricing.launch-badge")}</span>
-            <p className="mt-3 text-sm font-medium text-amber-700 uppercase tracking-wide">{t("pricing.setup-label")}</p>
+            <p className="mt-3 text-sm font-medium text-amber-700 uppercase tracking-wide dark:text-amber-400">{t("pricing.setup-label")}</p>
             <p className="mt-2">
-              <span className="text-2xl text-slate-400 line-through">{t("pricing.setup-old-price")}</span>
+              <span className="text-2xl text-slate-400 line-through dark:text-slate-500">{t("pricing.setup-old-price")}</span>
             </p>
             <p className="mt-1">
-              <span className="text-4xl font-bold text-slate-900">{t("pricing.setup-price")}</span>
-              <span className="text-slate-500"> {t("pricing.setup-tag")}</span>
+              <span className="text-4xl font-bold text-slate-900 dark:text-slate-100">{t("pricing.setup-price")}</span>
+              <span className="text-slate-500 dark:text-slate-400"> {t("pricing.setup-tag")}</span>
             </p>
-            <p className="mt-3 text-sm text-slate-600">{t("pricing.setup-includes")}</p>
+            <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">{t("pricing.setup-includes")}</p>
           </div>
 
           <div className="mt-12 grid gap-8 md:grid-cols-3">
-            <div className="rounded-2xl border border-slate-200 bg-white p-8">
-              <h3 className="text-lg font-semibold text-slate-900">{t("pricing.basic.name")}</h3>
-              <p className="mt-2 text-sm text-slate-500">
+            <div className="rounded-2xl border border-slate-200 bg-white p-8 dark:border-slate-700 dark:bg-slate-900">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">{t("pricing.basic.name")}</h3>
+              <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
                 {t("pricing.basic.desc")}
               </p>
               <p className="mt-6">
-                <span className="text-3xl font-bold text-slate-900">{t("pricing.basic.price")}</span>
-                <span className="text-slate-500">{t("pricing.basic.per")}</span>
+                <span className="text-3xl font-bold text-slate-900 dark:text-slate-100">{t("pricing.basic.price")}</span>
+                <span className="text-slate-500 dark:text-slate-400">{t("pricing.basic.per")}</span>
               </p>
-              <ul className="mt-6 space-y-3 text-sm text-slate-600">
+              <ul className="mt-6 space-y-3 text-sm text-slate-600 dark:text-slate-400">
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700" />
+                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
                   {t("pricing.basic.0")}
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700" />
+                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
                   {t("pricing.basic.1")}
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700" />
+                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
                   {t("pricing.basic.2")}
                 </li>
               </ul>
               <a
                 href="#agenda-tu-demo"
-                className="mt-8 flex w-full items-center justify-center rounded-lg border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
+                className="mt-8 flex w-full items-center justify-center rounded-lg border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800"
               >
                 {t("pricing.basic.cta")}
               </a>
             </div>
-            <div className="relative rounded-2xl border-2 border-blue-700 bg-white p-8 shadow-lg shadow-blue-700/10">
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-blue-700 px-4 py-1 text-xs font-semibold text-white">
+            <div className="relative rounded-2xl border-2 border-blue-700 bg-white p-8 shadow-lg shadow-blue-700/10 dark:border-blue-500 dark:bg-slate-900 dark:shadow-blue-500/10">
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-blue-700 px-4 py-1 text-xs font-semibold text-white dark:bg-blue-600">
                 {t("pricing.pro.badge")}
               </span>
-              <h3 className="text-lg font-semibold text-slate-900">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
                 {t("pricing.pro.name")}
               </h3>
-              <p className="mt-2 text-sm text-slate-500">
+              <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
                 {t("pricing.pro.desc")}
               </p>
               <p className="mt-6">
-                <span className="text-3xl font-bold text-slate-900">{t("pricing.pro.price")}</span>
-                <span className="text-slate-500">{t("pricing.pro.per")}</span>
+                <span className="text-3xl font-bold text-slate-900 dark:text-slate-100">{t("pricing.pro.price")}</span>
+                <span className="text-slate-500 dark:text-slate-400">{t("pricing.pro.per")}</span>
               </p>
-              <ul className="mt-6 space-y-3 text-sm text-slate-600">
+              <ul className="mt-6 space-y-3 text-sm text-slate-600 dark:text-slate-400">
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700" />
+                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
                   {t("pricing.pro.0")}
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700" />
+                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
                   {t("pricing.pro.1")}
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700" />
+                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
                   {t("pricing.pro.2")}
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700" />
+                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
                   {t("pricing.pro.3")}
                 </li>
               </ul>
               <a
                 href="#agenda-tu-demo"
-                className="mt-8 flex w-full items-center justify-center rounded-lg bg-blue-700 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-800"
+                className="mt-8 flex w-full items-center justify-center rounded-lg bg-blue-700 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700"
               >
                 {t("pricing.pro.cta")}
               </a>
             </div>
-            <div className="rounded-2xl border border-slate-200 bg-white p-8">
-              <h3 className="text-lg font-semibold text-slate-900">
+            <div className="rounded-2xl border border-slate-200 bg-white p-8 dark:border-slate-700 dark:bg-slate-900">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
                 {t("pricing.premium.name")}
               </h3>
-              <p className="mt-2 text-sm text-slate-500">
+              <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
                 {t("pricing.premium.desc")}
               </p>
               <p className="mt-6">
-                <span className="text-3xl font-bold text-slate-900">{t("pricing.premium.price")}</span>
-                <span className="text-slate-500">{t("pricing.premium.per")}</span>
+                <span className="text-3xl font-bold text-slate-900 dark:text-slate-100">{t("pricing.premium.price")}</span>
+                <span className="text-slate-500 dark:text-slate-400">{t("pricing.premium.per")}</span>
               </p>
-              <ul className="mt-6 space-y-3 text-sm text-slate-600">
+              <ul className="mt-6 space-y-3 text-sm text-slate-600 dark:text-slate-400">
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700" />
+                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
                   {t("pricing.premium.0")}
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700" />
+                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
                   {t("pricing.premium.1")}
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700" />
+                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
                   {t("pricing.premium.2")}
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700" />
+                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
                   {t("pricing.premium.3")}
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700" />
+                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
                   {t("pricing.premium.4")}
                 </li>
               </ul>
               <a
                 href="#agenda-tu-demo"
-                className="mt-8 flex w-full items-center justify-center rounded-lg border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
+                className="mt-8 flex w-full items-center justify-center rounded-lg border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800"
               >
                 {t("pricing.premium.cta")}
               </a>
@@ -394,21 +394,21 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-slate-200 bg-white py-20">
+      <section className="border-t border-slate-200 bg-white py-20 dark:border-slate-800 dark:bg-slate-950">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-slate-900">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
               {t("faq.title")}
             </h2>
           </div>
           <div className="mx-auto mt-12 max-w-3xl space-y-6">
             {faqItems.map((item, i) => (
-              <details key={i} className="group cursor-pointer rounded-xl border border-slate-200 p-5 open:border-blue-200 open:bg-blue-50/50">
-                <summary className="flex items-center justify-between font-semibold text-slate-900 list-none [&::-webkit-details-marker]:hidden">
+              <details key={i} className="group cursor-pointer rounded-xl border border-slate-200 p-5 open:border-blue-200 open:bg-blue-50/50 dark:border-slate-700 dark:open:border-blue-800 dark:open:bg-blue-950/30">
+                <summary className="flex items-center justify-between font-semibold text-slate-900 list-none [&::-webkit-details-marker]:hidden dark:text-slate-100">
                   {item.q}
-                  <span className="text-blue-700 transition-transform group-open:rotate-45">+</span>
+                  <span className="text-blue-700 transition-transform group-open:rotate-45 dark:text-blue-400">+</span>
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                   {item.a}
                 </p>
               </details>
@@ -417,17 +417,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-slate-200 bg-blue-700 py-16">
+      <section className="border-t border-slate-200 bg-blue-700 py-16 dark:border-slate-800 dark:bg-blue-900">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <h2 className="text-2xl font-bold text-white">
             {t("cta.title")}
           </h2>
-          <p className="mt-4 text-lg text-blue-100">
+          <p className="mt-4 text-lg text-blue-100 dark:text-blue-200">
             {t("cta.desc")}
           </p>
           <a
             href="#agenda-tu-demo"
-            className="mt-8 inline-flex items-center gap-2 rounded-lg bg-amber-500 px-8 py-3.5 text-base font-semibold text-blue-900 transition-colors hover:bg-amber-400"
+            className="mt-8 inline-flex items-center gap-2 rounded-lg bg-amber-500 px-8 py-3.5 text-base font-semibold text-blue-900 transition-colors hover:bg-amber-400 dark:bg-amber-600 dark:text-blue-950 dark:hover:bg-amber-500"
           >
             {t("cta.button")}
             <ArrowRight className="h-4 w-4" />
@@ -437,14 +437,14 @@ export default function Home() {
 
       <section
         id="agenda-tu-demo"
-        className="scroll-mt-20 bg-slate-50 py-20"
+        className="scroll-mt-20 bg-slate-50 py-20 dark:bg-slate-900"
       >
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-slate-900">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
               {t("booking.title")}
             </h2>
-            <p className="mt-4 text-lg text-slate-600">
+            <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
               {t("booking.subtitle")}
             </p>
           </div>
@@ -454,7 +454,7 @@ export default function Home() {
                 href={`/api/whatsapp?text=${encodeURIComponent(t("booking.whatsapp-text"))}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-8 py-3.5 text-base font-semibold text-white transition-colors hover:bg-green-700"
+                className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-8 py-3.5 text-base font-semibold text-white transition-colors hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-600"
               >
                 <MessageCircle className="h-5 w-5" />
                 {t("booking.whatsapp")}
@@ -462,10 +462,10 @@ export default function Home() {
             </div>
             <div className="relative mb-8">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-slate-200" />
+                <div className="w-full border-t border-slate-200 dark:border-slate-700" />
               </div>
               <div className="relative flex justify-center">
-                <span className="bg-slate-50 px-4 text-sm text-slate-400">{t("booking.or")}</span>
+                <span className="bg-slate-50 px-4 text-sm text-slate-400 dark:bg-slate-900 dark:text-slate-500">{t("booking.or")}</span>
               </div>
             </div>
             <ContactForm />
@@ -473,18 +473,18 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="border-t border-slate-200 bg-white py-10">
+      <footer className="border-t border-slate-200 bg-white py-10 dark:border-slate-800 dark:bg-slate-950">
         <div className="mx-auto max-w-6xl px-6">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex items-center gap-2">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-700 text-white text-xs font-bold">
                 CBL
               </div>
-              <span className="text-sm font-semibold text-slate-900">
+              <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
                 {t("footer.brand")}
               </span>
             </div>
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-slate-500 dark:text-slate-400">
               {t("footer.copyright")}
             </p>
           </div>

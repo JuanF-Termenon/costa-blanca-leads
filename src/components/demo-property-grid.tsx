@@ -98,28 +98,28 @@ function DualRangeSlider({
   return (
     <div className="relative w-56">
       <div className="relative h-6" ref={trackRef}>
-        <div className="absolute top-1/2 left-0 right-0 h-1 -translate-y-1/2 rounded-full bg-slate-200" />
+        <div className="absolute top-1/2 left-0 right-0 h-1 -translate-y-1/2 rounded-full bg-slate-200 dark:bg-slate-700" />
         <div
-          className="absolute top-1/2 h-1 -translate-y-1/2 rounded-full bg-blue-700"
+          className="absolute top-1/2 h-1 -translate-y-1/2 rounded-full bg-blue-700 dark:bg-blue-500"
           style={{
             left: `${pct(valueMin)}%`,
             width: `${pct(valueMax) - pct(valueMin)}%`,
           }}
         />
         <div
-          className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 h-5 w-5 rounded-full bg-white border-2 border-blue-700 shadow-md cursor-grab active:cursor-grabbing"
+          className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 h-5 w-5 rounded-full bg-white border-2 border-blue-700 shadow-md cursor-grab active:cursor-grabbing dark:bg-slate-200 dark:border-blue-500"
           style={{ left: `${pct(valueMin)}%` }}
           onMouseDown={(e) => handlePointerDown(e, "min")}
           onTouchStart={(e) => handlePointerDown(e, "min")}
         />
         <div
-          className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 h-5 w-5 rounded-full bg-white border-2 border-blue-700 shadow-md cursor-grab active:cursor-grabbing"
+          className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 h-5 w-5 rounded-full bg-white border-2 border-blue-700 shadow-md cursor-grab active:cursor-grabbing dark:bg-slate-200 dark:border-blue-500"
           style={{ left: `${pct(valueMax)}%` }}
           onMouseDown={(e) => handlePointerDown(e, "max")}
           onTouchStart={(e) => handlePointerDown(e, "max")}
         />
       </div>
-      <div className="flex justify-between text-[10px] text-blue-700 font-semibold mt-1">
+      <div className="flex justify-between text-[10px] text-blue-700 font-semibold mt-1 dark:text-blue-400">
         <span>{valueMin.toLocaleString("es-ES")} €</span>
         <span>{valueMax.toLocaleString("es-ES")} €</span>
       </div>
@@ -157,28 +157,28 @@ function MultiselectDropdown<T extends string | number>({
         onClick={() => setOpen(!open)}
         className={`flex items-center gap-2 rounded-lg border px-3 py-2 text-sm transition-colors ${
           selected.length > 0
-            ? "border-blue-700 bg-blue-50 text-blue-700"
-            : "border-slate-300 text-slate-700 hover:border-slate-400"
+            ? "border-blue-700 bg-blue-50 text-blue-700 dark:border-blue-500 dark:bg-blue-900/30 dark:text-blue-300"
+            : "border-slate-300 text-slate-700 hover:border-slate-400 dark:border-slate-600 dark:text-slate-300 dark:hover:border-slate-500"
         }`}
       >
         <span className="whitespace-nowrap">{display}</span>
         <ChevronDown className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
       {open && (
-        <div className="absolute left-0 top-full z-20 mt-1 min-w-44 rounded-xl border border-slate-200 bg-white p-2 shadow-lg">
-          {options.length === 1 && <p className="px-2 py-1 text-xs text-slate-400">Sin opciones</p>}
+        <div className="absolute left-0 top-full z-20 mt-1 min-w-44 rounded-xl border border-slate-200 bg-white p-2 shadow-lg dark:border-slate-700 dark:bg-slate-800">
+          {options.length === 1 && <p className="px-2 py-1 text-xs text-slate-400 dark:text-slate-500">Sin opciones</p>}
           {options.map((opt) => {
             const isSelected = selected.includes(opt);
             return (
               <label
                 key={String(opt)}
-                className="flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50"
+                className="flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-700"
               >
                 <input
                   type="checkbox"
                   checked={isSelected}
                   onChange={() => onChange(isSelected ? selected.filter((v) => v !== opt) : [...selected, opt])}
-                  className="h-4 w-4 rounded border-slate-300 text-blue-700 focus:ring-blue-700/20"
+                  className="h-4 w-4 rounded border-slate-300 text-blue-700 focus:ring-blue-700/20 dark:border-slate-600 dark:bg-slate-700 dark:text-blue-500"
                 />
                 {opt}
               </label>
@@ -235,27 +235,27 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
     <section id="propiedades" className="scroll-mt-20 py-16">
       <div className="mx-auto max-w-6xl px-6">
         <div>
-          <h2 className="text-2xl font-bold text-slate-900">Propiedades destacadas</h2>
-          <p className="mt-2 text-sm text-slate-500">
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Propiedades destacadas</h2>
+          <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
             Las mejores oportunidades en Calpe
           </p>
         </div>
 
         <div className="mt-6">
-          <div className="flex gap-1 rounded-xl bg-slate-100 p-1 w-fit">
+          <div className="flex gap-1 rounded-xl bg-slate-100 p-1 w-fit dark:bg-slate-800">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`rounded-lg px-5 py-2 text-sm font-semibold transition-colors ${
                   activeTab === tab.id
-                    ? "bg-white text-slate-900 shadow-sm"
-                    : "text-slate-600 hover:text-slate-900"
+                    ? "bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-slate-100"
+                    : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200"
                 }`}
               >
                 {tab.label}
                 {tab.id !== "todas" && (
-                  <span className="ml-1.5 text-xs text-slate-400">
+                  <span className="ml-1.5 text-xs text-slate-400 dark:text-slate-500">
                     ({properties.filter((p) => p.purpose === tab.id).length})
                   </span>
                 )}
@@ -287,7 +287,7 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
             {hasFilters && (
               <button
                 onClick={clearFilters}
-                className="text-sm text-blue-700 hover:text-blue-800 hover:underline whitespace-nowrap"
+                className="text-sm text-blue-700 hover:text-blue-800 hover:underline whitespace-nowrap dark:text-blue-400 dark:hover:text-blue-300"
               >
                 Limpiar
               </button>
@@ -307,7 +307,7 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
         </div>
 
         {filtered.length === 0 && (
-          <p className="mt-12 text-center text-sm text-slate-500">
+          <p className="mt-12 text-center text-sm text-slate-500 dark:text-slate-400">
             No hay propiedades disponibles con estos filtros.
           </p>
         )}

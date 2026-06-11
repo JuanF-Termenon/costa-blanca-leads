@@ -30,7 +30,7 @@ export function DemoPropertyCard({
     <>
       <button
         onClick={() => setOpen(true)}
-        className="group w-full overflow-hidden rounded-2xl border border-slate-200 bg-white text-left transition-all hover:shadow-lg"
+        className="group w-full overflow-hidden rounded-2xl border border-slate-200 bg-white text-left transition-all hover:shadow-lg dark:border-slate-700 dark:bg-slate-900"
       >
         {hasImages ? (
           <div className="relative h-56 overflow-hidden">
@@ -40,7 +40,7 @@ export function DemoPropertyCard({
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-black/10" />
-            <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-700 backdrop-blur-sm">
+            <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-700 backdrop-blur-sm dark:bg-slate-800/90 dark:text-slate-300">
               {property.type}
             </span>
             <span className={`absolute left-3 top-12 rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white backdrop-blur-sm ${
@@ -57,7 +57,7 @@ export function DemoPropertyCard({
             <div className="absolute inset-0 flex items-center justify-center">
               <Building2 className="h-12 w-12 text-white/30" />
             </div>
-            <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-700 backdrop-blur-sm">
+            <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-700 backdrop-blur-sm dark:bg-slate-800/90 dark:text-slate-300">
               {property.type}
             </span>
             <span className={`absolute left-3 top-12 rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white backdrop-blur-sm ${
@@ -71,33 +71,35 @@ export function DemoPropertyCard({
           </div>
         )}
         <div className="p-5">
-          <h3 className="font-semibold text-slate-900 group-hover:text-blue-700">
+          <h3 className="font-semibold text-slate-900 group-hover:text-blue-700 dark:text-slate-100 dark:group-hover:text-blue-400">
             {property.title}
           </h3>
-          <p className="mt-1 flex items-center gap-1 text-xs text-slate-500">
+          <p className="mt-1 flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
             <MapPin className="h-3 w-3" />
             {property.location}
           </p>
-          <p className="mt-2 text-xs leading-relaxed text-slate-600 line-clamp-2">
+          <p className="mt-2 text-xs leading-relaxed text-slate-600 line-clamp-2 dark:text-slate-400">
             {property.desc}
           </p>
-          {property.beds > 0 && (
-            <div className="mt-4 flex items-center gap-4 border-t border-slate-100 pt-4 text-xs text-slate-500">
-              <span className="flex items-center gap-1">
-                <Bed className="h-3.5 w-3.5" />
-                {property.beds} hab
-              </span>
-              <span className="flex items-center gap-1">
-                <Bath className="h-3.5 w-3.5" />
-                {property.baths} baños
-              </span>
-              <span className="flex items-center gap-1">
-                <Maximize className="h-3.5 w-3.5" />
-                {property.m2} m²
-              </span>
-            </div>
-          )}
-          <p className="mt-2 text-xs text-slate-400">Ref: {property.ref} · Click para detalles</p>
+          <div className="mt-4 flex items-center gap-4 border-t border-slate-100 pt-4 text-xs text-slate-500 dark:border-slate-700 dark:text-slate-400">
+            {property.beds > 0 && (
+              <>
+                <span className="flex items-center gap-1">
+                  <Bed className="h-3.5 w-3.5" />
+                  {property.beds} hab
+                </span>
+                <span className="flex items-center gap-1">
+                  <Bath className="h-3.5 w-3.5" />
+                  {property.baths} baños
+                </span>
+              </>
+            )}
+            <span className="flex items-center gap-1">
+              <Maximize className="h-3.5 w-3.5" />
+              {property.m2} m²
+            </span>
+          </div>
+          <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">Ref: {property.ref} · Click para detalles</p>
         </div>
       </button>
 
@@ -107,7 +109,7 @@ export function DemoPropertyCard({
           onClick={() => setOpen(false)}
         >
           <div
-            className="mt-8 mb-8 w-full max-w-2xl overflow-hidden rounded-2xl bg-white shadow-2xl"
+            className="mt-8 mb-8 w-full max-w-2xl overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-slate-900"
             onClick={(e) => e.stopPropagation()}
           >
             {hasImages ? (
@@ -175,50 +177,52 @@ export function DemoPropertyCard({
             <div className="p-8">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <h2 className="text-2xl font-bold text-slate-900">{property.title}</h2>
-                  <p className="mt-1 flex items-center gap-1 text-sm text-slate-500">
+                  <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{property.title}</h2>
+                  <p className="mt-1 flex items-center gap-1 text-sm text-slate-500 dark:text-slate-400">
                     <MapPin className="h-4 w-4" />
                     {property.location}
                   </p>
                 </div>
                 <div className="flex shrink-0 gap-1.5">
                   <span className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                    property.purpose === "venta" ? "bg-blue-100 text-blue-700" : "bg-emerald-100 text-emerald-700"
+                    property.purpose === "venta" ? "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300" : "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300"
                   }`}>
                     {property.purpose === "venta" ? "En venta" : "En alquiler"}
                   </span>
-                  <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
+                  <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
                     {property.type}
                   </span>
                 </div>
               </div>
 
-              {property.beds > 0 && (
-                <div className="mt-6 flex gap-6 text-sm">
-                  <span className="flex items-center gap-2 text-slate-600">
-                    <Bed className="h-4 w-4 text-blue-700" />
-                    {property.beds} Dormitorios
-                  </span>
-                  <span className="flex items-center gap-2 text-slate-600">
-                    <Bath className="h-4 w-4 text-blue-700" />
-                    {property.baths} Baños
-                  </span>
-                  <span className="flex items-center gap-2 text-slate-600">
-                    <Maximize className="h-4 w-4 text-blue-700" />
-                    {property.m2} m² construidos
-                  </span>
-                </div>
-              )}
-
-              <div className="mt-6">
-                <h3 className="font-semibold text-slate-900">Descripción</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">{property.desc}</p>
+              <div className="mt-6 flex gap-6 text-sm">
+                {property.beds > 0 && (
+                  <>
+                    <span className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                      <Bed className="h-4 w-4 text-blue-700 dark:text-blue-400" />
+                      {property.beds} Dormitorios
+                    </span>
+                    <span className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                      <Bath className="h-4 w-4 text-blue-700 dark:text-blue-400" />
+                      {property.baths} Baños
+                    </span>
+                  </>
+                )}
+                <span className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                  <Maximize className="h-4 w-4 text-blue-700 dark:text-blue-400" />
+                  {property.m2} m² construidos
+                </span>
               </div>
 
-              <div className="mt-6 border-t border-slate-100 pt-6">
-                <h3 className="font-semibold text-slate-900">Ubicación</h3>
-                <p className="mt-1 text-sm text-slate-500">{property.location}</p>
-                <div className="mt-3 overflow-hidden rounded-xl border border-slate-200">
+              <div className="mt-6">
+                <h3 className="font-semibold text-slate-900 dark:text-slate-100">Descripción</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{property.desc}</p>
+              </div>
+
+              <div className="mt-6 border-t border-slate-100 pt-6 dark:border-slate-700">
+                <h3 className="font-semibold text-slate-900 dark:text-slate-100">Ubicación</h3>
+                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{property.location}</p>
+                <div className="mt-3 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700">
                   <iframe
                     title={`Mapa de ${property.location}`}
                     src={`https://www.openstreetmap.org/export/embed.html?bbox=${property.coords.lng - 0.015},${property.coords.lat - 0.015},${property.coords.lng + 0.015},${property.coords.lat + 0.015}&layer=mapnik&marker=${property.coords.lat},${property.coords.lng}`}
@@ -233,22 +237,22 @@ export function DemoPropertyCard({
                   href={`https://www.google.com/maps?q=${property.coords.lat},${property.coords.lng}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-2 inline-flex items-center gap-1 text-xs text-blue-700 hover:underline"
+                  className="mt-2 inline-flex items-center gap-1 text-xs text-blue-700 hover:underline dark:text-blue-400"
                 >
                   <MapPin className="h-3 w-3" />
                   Ver en Google Maps
                 </a>
               </div>
 
-              <div className="mt-6 border-t border-slate-100 pt-6">
-                <h3 className="font-semibold text-slate-900">¿Te interesa esta propiedad?</h3>
-                <p className="mt-1 text-sm text-slate-500">
+              <div className="mt-6 border-t border-slate-100 pt-6 dark:border-slate-700">
+                <h3 className="font-semibold text-slate-900 dark:text-slate-100">¿Te interesa esta propiedad?</h3>
+                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
                   Elige cómo quieres contactar — el mensaje incluirá la ref. <strong>{property.ref}</strong>
                 </p>
                 <div className="mt-4 grid grid-cols-3 gap-2">
                   <button
                     onClick={() => window.open(`tel:+34965830000`)}
-                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 px-3 py-2.5 text-sm font-semibold text-white transition-colors"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 px-3 py-2.5 text-sm font-semibold text-white transition-colors dark:bg-blue-600"
                   >
                     <Phone className="h-4 w-4" />
                     Teléfono
@@ -259,7 +263,7 @@ export function DemoPropertyCard({
                         `mailto:info@inmobiliaria.com?subject=${encodeURIComponent(`Consulta: ${property.ref} · ${property.title}`)}&body=${encodeURIComponent(`Hola,\n\nMe interesa la propiedad ref. ${property.ref} — ${property.title}.\nUbicación: ${property.location}\nPrecio: ${property.price}\n\nVer anuncio: https://costa-blanca-leads.vercel.app/demo?ref=${property.ref}\n\nPor favor, contactadme para más información.\n\nGracias.`)}`
                       )
                     }
-                    className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 px-3 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 px-3 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800"
                   >
                     <Mail className="h-4 w-4" />
                     Email
@@ -271,18 +275,18 @@ export function DemoPropertyCard({
                         "_blank"
                       )
                     }
-                    className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-green-600 px-3 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-green-700"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-green-600 px-3 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-green-700 dark:border-slate-700 dark:bg-green-700 dark:hover:bg-green-600"
                   >
                     <MessageCircle className="h-4 w-4" />
                     WhatsApp
                   </button>
                 </div>
-                <p className="mt-3 text-xs text-slate-400">
+                <p className="mt-3 text-xs text-slate-400 dark:text-slate-500">
                   Al contactar nos darás tu consentimiento para que te respondamos.
                 </p>
               </div>
 
-              <p className="mt-4 text-xs text-slate-400">Ref: {property.ref}</p>
+              <p className="mt-4 text-xs text-slate-400 dark:text-slate-500">Ref: {property.ref}</p>
             </div>
           </div>
         </div>

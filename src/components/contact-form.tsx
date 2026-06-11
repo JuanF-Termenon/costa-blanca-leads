@@ -41,12 +41,12 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-green-200 bg-green-50 p-8 text-center">
-        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-green-100 text-green-700 text-2xl">
+      <div className="rounded-2xl border border-green-200 bg-green-50 p-8 text-center dark:border-green-800 dark:bg-green-950/40">
+        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-green-100 text-green-700 text-2xl dark:bg-green-900/40 dark:text-green-400">
           ✓
         </div>
-        <h3 className="text-lg font-semibold text-green-900">Solicitud enviada</h3>
-        <p className="mt-2 text-sm text-green-700">
+        <h3 className="text-lg font-semibold text-green-900 dark:text-green-100">Solicitud enviada</h3>
+        <p className="mt-2 text-sm text-green-700 dark:text-green-300">
           Te escribo en breve para concretar el día y la hora de la videollamada.
         </p>
       </div>
@@ -61,14 +61,14 @@ export function ContactForm() {
           type="text"
           required
           placeholder="Nombre"
-          className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700/20"
+          className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700/20 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:border-blue-500 dark:focus:ring-blue-500/20"
         />
         <input
           name="email"
           type="email"
           required
           placeholder="Email"
-          className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700/20"
+          className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700/20 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:border-blue-500 dark:focus:ring-blue-500/20"
         />
       </div>
       <input
@@ -78,26 +78,26 @@ export function ContactForm() {
         placeholder="Teléfono"
         pattern="(\+34)?[679][0-9]{8}"
         title="Introduce un número de teléfono español válido (ej: 691157183 o +34691157183)"
-        className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700/20"
+        className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700/20 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:border-blue-500 dark:focus:ring-blue-500/20"
       />
       <input
         name="preferred_time"
         type="text"
         required
         placeholder="¿Cuándo prefieres? Ej: Mañana a las 11h / Martes por la tarde"
-        className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700/20"
+        className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700/20 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:border-blue-500 dark:focus:ring-blue-500/20"
       />
       <button
         type="submit"
         disabled={status === "loading"}
-        className="flex w-full items-center justify-center rounded-lg bg-blue-700 px-8 py-3.5 text-base font-semibold text-white transition-colors hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-60"
+        className="flex w-full items-center justify-center rounded-lg bg-blue-700 px-8 py-3.5 text-base font-semibold text-white transition-colors hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-blue-600 dark:hover:bg-blue-700"
       >
         {status === "loading" ? "Enviando..." : "Quiero ver la demo"}
       </button>
       {status === "error" && (
-        <p className="text-center text-sm text-red-600">{errorMsg}</p>
+        <p className="text-center text-sm text-red-600 dark:text-red-400">{errorMsg}</p>
       )}
-      <p className="text-center text-xs text-slate-500">
+      <p className="text-center text-xs text-slate-500 dark:text-slate-400">
         Te escribo por WhatsApp para concretar el día. Sin compromiso.
       </p>
     </form>
