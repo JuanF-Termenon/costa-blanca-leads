@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useMemo } from "react";
 import { ChevronDown } from "lucide-react";
 import { DemoPropertyCard } from "@/components/demo-property-card";
 import properties from "@/lib/demo-properties";
+import { useLang } from "@/lib/providers";
 
 function parsePrice(price: string): number {
   return parseInt(price.replace(/\./g, "").replace(/\s.*$/, "").replace(/\D/g, ""), 10) || 0;
@@ -25,12 +26,6 @@ const propertyColors = [
   "from-red-400 to-red-600",
   "from-yellow-400 to-yellow-600",
 ];
-
-const tabs = [
-  { id: "todas", label: "Todas" },
-  { id: "venta", label: "Comprar" },
-  { id: "alquiler", label: "Alquilar" },
-] as const;
 
 const types = [...new Set(properties.map((p) => p.type))].sort();
 const bedOptions = [1, 2, 3, 4];
@@ -132,11 +127,13 @@ function MultiselectDropdown<T extends string | number>({
   options,
   selected,
   onChange,
+  selectedLabel,
 }: {
   label: string;
   options: readonly T[];
   selected: T[];
   onChange: (val: T[]) => void;
+  selectedLabel?: string;
 }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -149,7 +146,7 @@ function MultiselectDropdown<T extends string | number>({
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
-  const display = selected.length === 0 ? label : `${selected.length} seleccionados`;
+  const display = selected.length === 0 ? label : (selectedLabel ?? `${selected.length} seleccionados`);
 
   return (
     <div ref={ref} className="relative">
@@ -195,6 +192,13 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
   const [activeTab, setActiveTab] = useState<"todas" | "venta" | "alquiler">("todas");
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [selectedBeds, setSelectedBeds] = useState<number[]>([]);
+  const { t } = useLang();
+
+  const tabs = [
+    { id: "todas" as const, label: t("demo.grid.tab-all") },
+    { id: "venta" as const, label: t("demo.grid.tab-buy") },
+    { id: "alquiler" as const, label: t("demo.grid.tab-rent") },
+  ];
 
   const currentBounds = useMemo(() => {
     const pool = activeTab === "todas" ? properties : properties.filter((p) => p.purpose === activeTab);
@@ -235,9 +239,9 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
     <section id="propiedades" className="scroll-mt-20 py-16">
       <div className="mx-auto max-w-6xl px-6">
         <div>
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Propiedades destacadas</h2>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{t("demo.grid.title")}</h2>
           <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
-            Las mejores oportunidades en Calpe
+            {t("demo.grid.subtitle")}
           </p>
         </div>
 
@@ -265,16 +269,18 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
 
           <div className="mt-3 flex flex-wrap items-center gap-3">
             <MultiselectDropdown
-              label="Tipo"
+              label={t("demo.grid.filter-type")}
               options={types as readonly string[]}
               selected={selectedTypes}
               onChange={setSelectedTypes}
+              selectedLabel={selectedTypes.length > 0 ? t("demo.grid.filter-selected").replace("{n}", String(selectedTypes.length)) : undefined}
             />
             <MultiselectDropdown
-              label="Dormitorios"
+              label={t("demo.grid.filter-beds")}
               options={bedOptions as readonly number[]}
               selected={selectedBeds}
               onChange={setSelectedBeds}
+              selectedLabel={selectedBeds.length > 0 ? t("demo.grid.filter-selected").replace("{n}", String(selectedBeds.length)) : undefined}
             />
             <DualRangeSlider
               min={currentBounds.min}
@@ -289,7 +295,7 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
                 onClick={clearFilters}
                 className="text-sm text-blue-700 hover:text-blue-800 hover:underline whitespace-nowrap dark:text-blue-400 dark:hover:text-blue-300"
               >
-                Limpiar
+                {t("demo.grid.filter-clear")}
               </button>
             )}
           </div>
@@ -308,7 +314,7 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
 
         {filtered.length === 0 && (
           <p className="mt-12 text-center text-sm text-slate-500 dark:text-slate-400">
-            No hay propiedades disponibles con estos filtros.
+            {t("demo.grid.empty")}
           </p>
         )}
       </div>

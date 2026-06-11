@@ -5,9 +5,11 @@ import { MapPin, Phone, Mail, ArrowLeft } from "lucide-react";
 import { DemoPropertyGrid } from "@/components/demo-property-grid";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { useLang } from "@/lib/providers";
 
 export function DemoPageContent({ initialRef }: { initialRef?: string }) {
   const [search, setSearch] = useState("");
+  const { t } = useLang();
 
   return (
     <div className="min-h-dvh bg-white dark:bg-slate-950">
@@ -17,7 +19,7 @@ export function DemoPageContent({ initialRef }: { initialRef?: string }) {
             <a
               href="/"
               className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-700 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200"
-              title="Volver a la página principal"
+              title={t("demo.header.back")}
             >
               <ArrowLeft className="h-4 w-4" />
             </a>
@@ -25,14 +27,14 @@ export function DemoPageContent({ initialRef }: { initialRef?: string }) {
               IC
             </div>
             <div>
-              <span className="text-base font-bold text-slate-900 dark:text-slate-100">Inmobiliaria Calpe</span>
-              <span className="ml-2 rounded bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">Demo</span>
+              <span className="text-base font-bold text-slate-900 dark:text-slate-100">{t("demo.header.brand")}</span>
+              <span className="ml-2 rounded bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">{t("demo.header.badge")}</span>
             </div>
           </div>
           <nav className="hidden items-center gap-6 text-sm font-medium text-slate-600 md:flex dark:text-slate-400">
-            <a href="#propiedades">Propiedades</a>
-            <a href="#nosotros">Nosotros</a>
-            <a href="#contacto">Contacto</a>
+            <a href="#propiedades">{t("demo.header.propiedades")}</a>
+            <a href="#nosotros">{t("demo.header.nosotros")}</a>
+            <a href="#contacto">{t("demo.header.contacto")}</a>
           </nav>
           <div className="flex items-center gap-2">
             <LanguageSwitcher />
@@ -56,11 +58,10 @@ export function DemoPageContent({ initialRef }: { initialRef?: string }) {
         </div>
         <div className="relative mx-auto max-w-6xl px-6 py-16 text-center">
           <h1 className="text-4xl font-bold sm:text-5xl">
-            Tu inmobiliaria en <span className="text-amber-300 dark:text-amber-200">Calpe</span>
+            {t("demo.hero.title")} <span className="text-amber-300 dark:text-amber-200">{t("demo.hero.title-highlight")}</span>
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-blue-100 dark:text-blue-200">
-            Especialistas en compra, venta y alquiler en Calpe y la Costa Blanca.
-            Te ayudamos a encontrar la propiedad que buscas.
+            {t("demo.hero.subtitle")}
           </p>
           <div className="mx-auto mt-8 flex max-w-lg items-center gap-2 rounded-xl bg-white/15 p-2 backdrop-blur-sm">
             <MapPin className="ml-2 h-5 w-5 shrink-0 text-blue-200" />
@@ -68,7 +69,7 @@ export function DemoPageContent({ initialRef }: { initialRef?: string }) {
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Buscar pisos, chalets, áticos en Calpe..."
+              placeholder={t("demo.hero.search")}
               className="w-full bg-transparent px-2 py-2 text-sm text-white placeholder-blue-200 outline-none"
             />
             {search && (
@@ -88,24 +89,23 @@ export function DemoPageContent({ initialRef }: { initialRef?: string }) {
       <section id="nosotros" className="scroll-mt-20 bg-slate-50 py-16 dark:bg-slate-900">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Sobre nosotros</h2>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{t("demo.about.title")}</h2>
             <p className="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-              Somos una inmobiliaria con experiencia en el mercado de Calpe y la Costa Blanca.
-              Nuestro equipo de profesionales multilingüe te acompañará en cada paso del proceso.
+              {t("demo.about.desc")}
             </p>
           </div>
           <div className="mt-10 grid gap-6 text-center md:grid-cols-3">
             <div className="rounded-xl bg-white p-6 shadow-sm dark:bg-slate-800">
               <div className="text-3xl font-bold text-blue-700 dark:text-blue-400">+80</div>
-              <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">Propiedades en cartera</p>
+              <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{t("demo.about.properties")}</p>
             </div>
             <div className="rounded-xl bg-white p-6 shadow-sm dark:bg-slate-800">
               <div className="text-3xl font-bold text-blue-700 dark:text-blue-400">15</div>
-              <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">Años de experiencia</p>
+              <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{t("demo.about.experience")}</p>
             </div>
             <div className="rounded-xl bg-white p-6 shadow-sm dark:bg-slate-800">
               <div className="text-3xl font-bold text-blue-700 dark:text-blue-400">4.8</div>
-              <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">Valoración media ★</p>
+              <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{t("demo.about.rating")}</p>
             </div>
           </div>
         </div>
@@ -114,37 +114,37 @@ export function DemoPageContent({ initialRef }: { initialRef?: string }) {
       <section id="contacto" className="scroll-mt-20 py-16">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Contacta con nosotros</h2>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{t("demo.contact.title")}</h2>
             <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
-              Visítanos en Calpe o llámanos para cualquier consulta
+              {t("demo.contact.subtitle")}
             </p>
           </div>
           <div className="mx-auto mt-10 grid max-w-2xl gap-6 sm:grid-cols-2">
             <div className="rounded-xl border border-slate-200 bg-white p-6 text-center dark:border-slate-700 dark:bg-slate-800">
               <Phone className="mx-auto h-6 w-6 text-blue-700 dark:text-blue-400" />
-              <p className="mt-3 text-sm font-semibold text-slate-900 dark:text-slate-100">Teléfono</p>
+              <p className="mt-3 text-sm font-semibold text-slate-900 dark:text-slate-100">{t("demo.contact.phone-label")}</p>
               <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">965 83 00 00</p>
             </div>
             <div className="rounded-xl border border-slate-200 bg-white p-6 text-center dark:border-slate-700 dark:bg-slate-800">
               <Mail className="mx-auto h-6 w-6 text-blue-700 dark:text-blue-400" />
-              <p className="mt-3 text-sm font-semibold text-slate-900 dark:text-slate-100">Email</p>
+              <p className="mt-3 text-sm font-semibold text-slate-900 dark:text-slate-100">{t("demo.contact.email-label")}</p>
               <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">info@calpepropiedades.com</p>
             </div>
           </div>
           <div className="mx-auto mt-6 max-w-xl rounded-xl border border-slate-200 bg-white p-6 text-center dark:border-slate-700 dark:bg-slate-800">
             <MapPin className="mx-auto h-6 w-6 text-blue-700 dark:text-blue-400" />
-            <p className="mt-3 text-sm font-semibold text-slate-900 dark:text-slate-100">Dirección</p>
+            <p className="mt-3 text-sm font-semibold text-slate-900 dark:text-slate-100">{t("demo.contact.address-label")}</p>
             <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
-              Avda. Gabriel Miró, 25 · 03710 Calpe (Alicante)
+              {t("demo.contact.address")}
             </p>
           </div>
         </div>
       </section>
 
       <footer className="border-t border-slate-200 bg-slate-50 py-8 text-center text-sm text-slate-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">
-        <p>© 2026 Inmobiliaria Calpe · Inmobiliaria en Calpe · Costa Blanca</p>
+        <p>{t("demo.footer.text")}</p>
         <p className="mt-1 text-xs text-slate-400 dark:text-slate-500">
-          Esta es una plantilla demo. Tu web puede tener tu propia marca, colores y propiedades.
+          {t("demo.footer.note")}
         </p>
       </footer>
     </div>

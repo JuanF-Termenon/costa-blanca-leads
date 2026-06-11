@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import { MapPin, Bed, Bath, Maximize, X, Phone, Mail, MessageCircle, Building2, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Property } from "@/lib/demo-properties";
+import { useLang } from "@/lib/providers";
 
 export function DemoPropertyCard({
   property,
@@ -15,6 +16,7 @@ export function DemoPropertyCard({
 }) {
   const [open, setOpen] = useState(defaultOpen);
   const [imgIdx, setImgIdx] = useState(0);
+  const { t } = useLang();
 
   const hasImages = property.images.length > 0;
 
@@ -25,6 +27,8 @@ export function DemoPropertyCard({
   const nextImg = useCallback(() => {
     setImgIdx((i) => (i === property.images.length - 1 ? 0 : i + 1));
   }, [property.images.length]);
+
+  const purposeLabel = property.purpose === "venta" ? t("demo.card.for-sale") : t("demo.card.for-rent");
 
   return (
     <>
@@ -46,7 +50,7 @@ export function DemoPropertyCard({
             <span className={`absolute left-3 top-12 rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white backdrop-blur-sm ${
               property.purpose === "venta" ? "bg-blue-600/80" : "bg-emerald-600/80"
             }`}>
-              {property.purpose === "venta" ? "En venta" : "En alquiler"}
+              {purposeLabel}
             </span>
             <span className="absolute right-3 top-3 rounded-full bg-amber-500 px-2.5 py-1 text-xs font-bold text-white">
               {property.price}
@@ -63,7 +67,7 @@ export function DemoPropertyCard({
             <span className={`absolute left-3 top-12 rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white backdrop-blur-sm ${
               property.purpose === "venta" ? "bg-blue-600/80" : "bg-emerald-600/80"
             }`}>
-              {property.purpose === "venta" ? "En venta" : "En alquiler"}
+              {purposeLabel}
             </span>
             <span className="absolute right-3 top-3 rounded-full bg-amber-500 px-2.5 py-1 text-xs font-bold text-white">
               {property.price}
@@ -86,20 +90,22 @@ export function DemoPropertyCard({
               <>
                 <span className="flex items-center gap-1">
                   <Bed className="h-3.5 w-3.5" />
-                  {property.beds} hab
+                  {t("demo.card.beds").replace("{n}", String(property.beds))}
                 </span>
                 <span className="flex items-center gap-1">
                   <Bath className="h-3.5 w-3.5" />
-                  {property.baths} baños
+                  {t("demo.card.baths").replace("{n}", String(property.baths))}
                 </span>
               </>
             )}
             <span className="flex items-center gap-1">
               <Maximize className="h-3.5 w-3.5" />
-              {property.m2} m²
+              {t("demo.card.m2").replace("{n}", String(property.m2))}
             </span>
           </div>
-          <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">Ref: {property.ref} · Click para detalles</p>
+          <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">
+            {t("demo.card.click-detail").replace("{ref}", property.ref)}
+          </p>
         </div>
       </button>
 
@@ -187,7 +193,7 @@ export function DemoPropertyCard({
                   <span className={`rounded-full px-3 py-1 text-xs font-semibold ${
                     property.purpose === "venta" ? "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300" : "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300"
                   }`}>
-                    {property.purpose === "venta" ? "En venta" : "En alquiler"}
+                    {purposeLabel}
                   </span>
                   <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
                     {property.type}
@@ -200,27 +206,27 @@ export function DemoPropertyCard({
                   <>
                     <span className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
                       <Bed className="h-4 w-4 text-blue-700 dark:text-blue-400" />
-                      {property.beds} Dormitorios
+                      {property.beds} {t("demo.card.beds").replace("{n}", String(property.beds)).replace(/^\d+\s/, "")}
                     </span>
                     <span className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
                       <Bath className="h-4 w-4 text-blue-700 dark:text-blue-400" />
-                      {property.baths} Baños
+                      {property.baths} {t("demo.card.baths").replace("{n}", String(property.baths)).replace(/^\d+\s/, "")}
                     </span>
                   </>
                 )}
                 <span className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
                   <Maximize className="h-4 w-4 text-blue-700 dark:text-blue-400" />
-                  {property.m2} m² construidos
+                  {t("demo.card.m2-built").replace("{n}", String(property.m2))}
                 </span>
               </div>
 
               <div className="mt-6">
-                <h3 className="font-semibold text-slate-900 dark:text-slate-100">Descripción</h3>
+                <h3 className="font-semibold text-slate-900 dark:text-slate-100">{t("demo.card.desc-title")}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{property.desc}</p>
               </div>
 
               <div className="mt-6 border-t border-slate-100 pt-6 dark:border-slate-700">
-                <h3 className="font-semibold text-slate-900 dark:text-slate-100">Ubicación</h3>
+                <h3 className="font-semibold text-slate-900 dark:text-slate-100">{t("demo.card.location-title")}</h3>
                 <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{property.location}</p>
                 <div className="mt-3 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700">
                   <iframe
@@ -240,14 +246,14 @@ export function DemoPropertyCard({
                   className="mt-2 inline-flex items-center gap-1 text-xs text-blue-700 hover:underline dark:text-blue-400"
                 >
                   <MapPin className="h-3 w-3" />
-                  Ver en Google Maps
+                  {t("demo.card.map-link")}
                 </a>
               </div>
 
               <div className="mt-6 border-t border-slate-100 pt-6 dark:border-slate-700">
-                <h3 className="font-semibold text-slate-900 dark:text-slate-100">¿Te interesa esta propiedad?</h3>
+                <h3 className="font-semibold text-slate-900 dark:text-slate-100">{t("demo.card.contact-title")}</h3>
                 <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                  Elige cómo quieres contactar — el mensaje incluirá la ref. <strong>{property.ref}</strong>
+                  {t("demo.card.contact-desc").replace("{ref}", property.ref)}
                 </p>
                 <div className="mt-4 grid grid-cols-3 gap-2">
                   <button
@@ -255,7 +261,7 @@ export function DemoPropertyCard({
                     className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 px-3 py-2.5 text-sm font-semibold text-white transition-colors dark:bg-blue-600"
                   >
                     <Phone className="h-4 w-4" />
-                    Teléfono
+                    {t("demo.card.phone")}
                   </button>
                   <button
                     onClick={() =>
@@ -266,7 +272,7 @@ export function DemoPropertyCard({
                     className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 px-3 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800"
                   >
                     <Mail className="h-4 w-4" />
-                    Email
+                    {t("demo.card.email")}
                   </button>
                   <button
                     onClick={() =>
@@ -278,15 +284,17 @@ export function DemoPropertyCard({
                     className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-green-600 px-3 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-green-700 dark:border-slate-700 dark:bg-green-700 dark:hover:bg-green-600"
                   >
                     <MessageCircle className="h-4 w-4" />
-                    WhatsApp
+                    {t("demo.card.whatsapp")}
                   </button>
                 </div>
                 <p className="mt-3 text-xs text-slate-400 dark:text-slate-500">
-                  Al contactar nos darás tu consentimiento para que te respondamos.
+                  {t("demo.card.consent")}
                 </p>
               </div>
 
-              <p className="mt-4 text-xs text-slate-400 dark:text-slate-500">Ref: {property.ref}</p>
+              <p className="mt-4 text-xs text-slate-400 dark:text-slate-500">
+                {t("demo.card.ref").replace("{ref}", property.ref)}
+              </p>
             </div>
           </div>
         </div>
