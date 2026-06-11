@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { WhatsAppButton } from "@/components/whatsapp-button";
+import { Providers } from "@/lib/providers";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Costa Blanca Leads · Más clientes para tu inmobiliaria",
   description:
-    "Creamos tu web con SEO local para que tu inmobiliaria aparezca en Google cuando buscan propiedades en Calpe, Altea, Benidorm y toda la Costa Blanca.",
+    "Aparece en Google cuando buscan propiedades en Calpe, Altea, Benidorm y toda la Costa Blanca. Genera más contactos para tu inmobiliaria.",
 };
 
 export default function RootLayout({
@@ -24,9 +26,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="min-h-dvh bg-white font-sans text-slate-900 antialiased">
-        {children}
+    <html lang="es" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
+      <body className="light min-h-dvh bg-white font-sans text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
+        <Providers>
+          {children}
+          <WhatsAppButton />
+        </Providers>
       </body>
     </html>
   );

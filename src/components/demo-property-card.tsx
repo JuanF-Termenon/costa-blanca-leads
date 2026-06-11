@@ -1,27 +1,30 @@
 "use client";
 
-import { useState } from "react";
-import { MapPin, Bed, Bath, Maximize, X, Phone, Mail, Building2 } from "lucide-react";
+import { useState, useCallback } from "react";
+import { MapPin, Bed, Bath, Maximize, X, Phone, Mail, MessageCircle, Building2, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Property } from "@/lib/demo-properties";
-
-const colorMap: Record<string, string> = {
-  "from-blue-400 to-blue-600": "bg-blue-500",
-  "from-emerald-400 to-emerald-600": "bg-emerald-500",
-  "from-amber-400 to-amber-600": "bg-amber-500",
-  "from-rose-400 to-rose-600": "bg-rose-500",
-  "from-violet-400 to-violet-600": "bg-violet-500",
-  "from-teal-400 to-teal-600": "bg-teal-500",
-};
 
 export function DemoPropertyCard({
   property,
   color,
+  defaultOpen = false,
 }: {
   property: Property;
   color: string;
+  defaultOpen?: boolean;
 }) {
-  const [open, setOpen] = useState(false);
-  const badgeColor = colorMap[color] || "bg-blue-500";
+  const [open, setOpen] = useState(defaultOpen);
+  const [imgIdx, setImgIdx] = useState(0);
+
+  const hasImages = property.images.length > 0;
+
+  const prevImg = useCallback(() => {
+    setImgIdx((i) => (i === 0 ? property.images.length - 1 : i - 1));
+  }, [property.images.length]);
+
+  const nextImg = useCallback(() => {
+    setImgIdx((i) => (i === property.images.length - 1 ? 0 : i + 1));
+  }, [property.images.length]);
 
   return (
     <>
@@ -29,17 +32,44 @@ export function DemoPropertyCard({
         onClick={() => setOpen(true)}
         className="group w-full overflow-hidden rounded-2xl border border-slate-200 bg-white text-left transition-all hover:shadow-lg"
       >
-        <div className={`relative h-48 bg-gradient-to-br ${color}`}>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <Building2 className="h-12 w-12 text-white/30" />
+        {hasImages ? (
+          <div className="relative h-56 overflow-hidden">
+            <img
+              src={property.images[0]}
+              alt={property.title}
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-black/10" />
+            <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-700 backdrop-blur-sm">
+              {property.type}
+            </span>
+            <span className={`absolute left-3 top-12 rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white backdrop-blur-sm ${
+              property.purpose === "venta" ? "bg-blue-600/80" : "bg-emerald-600/80"
+            }`}>
+              {property.purpose === "venta" ? "En venta" : "En alquiler"}
+            </span>
+            <span className="absolute right-3 top-3 rounded-full bg-amber-500 px-2.5 py-1 text-xs font-bold text-white">
+              {property.price}
+            </span>
           </div>
-          <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-700 backdrop-blur-sm">
-            {property.type}
-          </span>
-          <span className="absolute right-3 top-3 rounded-full bg-amber-500 px-3 py-1 text-xs font-bold text-white">
-            {property.price}
-          </span>
-        </div>
+        ) : (
+          <div className={`relative h-56 bg-gradient-to-br ${color}`}>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <Building2 className="h-12 w-12 text-white/30" />
+            </div>
+            <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-700 backdrop-blur-sm">
+              {property.type}
+            </span>
+            <span className={`absolute left-3 top-12 rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white backdrop-blur-sm ${
+              property.purpose === "venta" ? "bg-blue-600/80" : "bg-emerald-600/80"
+            }`}>
+              {property.purpose === "venta" ? "En venta" : "En alquiler"}
+            </span>
+            <span className="absolute right-3 top-3 rounded-full bg-amber-500 px-2.5 py-1 text-xs font-bold text-white">
+              {property.price}
+            </span>
+          </div>
+        )}
         <div className="p-5">
           <h3 className="font-semibold text-slate-900 group-hover:text-blue-700">
             {property.title}
@@ -80,20 +110,67 @@ export function DemoPropertyCard({
             className="mt-8 mb-8 w-full max-w-2xl overflow-hidden rounded-2xl bg-white shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className={`relative h-56 bg-gradient-to-br ${color}`}>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Building2 className="h-16 w-16 text-white/20" />
+            {hasImages ? (
+              <div className="relative h-72 sm:h-96 bg-slate-900">
+                <img
+                  src={property.images[imgIdx]}
+                  alt={`${property.title} — foto ${imgIdx + 1}`}
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
+                {property.images.length > 1 && (
+                  <>
+                    <button
+                      onClick={prevImg}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm transition-colors hover:bg-white/40"
+                    >
+                      <ChevronLeft className="h-5 w-5" />
+                    </button>
+                    <button
+                      onClick={nextImg}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm transition-colors hover:bg-white/40"
+                    >
+                      <ChevronRight className="h-5 w-5" />
+                    </button>
+                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                      {property.images.map((_, i) => (
+                        <button
+                          key={i}
+                          onClick={() => setImgIdx(i)}
+                          className={`h-1.5 rounded-full transition-all ${
+                            i === imgIdx ? "w-6 bg-white" : "w-1.5 bg-white/50"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
+                <button
+                  onClick={() => setOpen(false)}
+                  className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm transition-colors hover:bg-white/30"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+                <span className="absolute left-4 bottom-4 rounded-full bg-amber-500 px-4 py-1.5 text-base font-bold text-white shadow-lg">
+                  {property.price}
+                </span>
               </div>
-              <button
-                onClick={() => setOpen(false)}
-                className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm transition-colors hover:bg-white/30"
-              >
-                <X className="h-5 w-5" />
-              </button>
-              <span className="absolute left-4 bottom-4 rounded-full bg-amber-500 px-4 py-1.5 text-base font-bold text-white">
-                {property.price}
-              </span>
-            </div>
+            ) : (
+              <div className={`relative h-56 bg-gradient-to-br ${color}`}>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Building2 className="h-16 w-16 text-white/20" />
+                </div>
+                <button
+                  onClick={() => setOpen(false)}
+                  className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm transition-colors hover:bg-white/30"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+                <span className="absolute left-4 bottom-4 rounded-full bg-amber-500 px-4 py-1.5 text-base font-bold text-white">
+                  {property.price}
+                </span>
+              </div>
+            )}
 
             <div className="p-8">
               <div className="flex items-start justify-between gap-4">
@@ -104,9 +181,16 @@ export function DemoPropertyCard({
                     {property.location}
                   </p>
                 </div>
-                <span className="shrink-0 rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
-                  {property.type}
-                </span>
+                <div className="flex shrink-0 gap-1.5">
+                  <span className={`rounded-full px-3 py-1 text-xs font-semibold ${
+                    property.purpose === "venta" ? "bg-blue-100 text-blue-700" : "bg-emerald-100 text-emerald-700"
+                  }`}>
+                    {property.purpose === "venta" ? "En venta" : "En alquiler"}
+                  </span>
+                  <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
+                    {property.type}
+                  </span>
+                </div>
               </div>
 
               {property.beds > 0 && (
@@ -132,26 +216,70 @@ export function DemoPropertyCard({
               </div>
 
               <div className="mt-6 border-t border-slate-100 pt-6">
+                <h3 className="font-semibold text-slate-900">Ubicación</h3>
+                <p className="mt-1 text-sm text-slate-500">{property.location}</p>
+                <div className="mt-3 overflow-hidden rounded-xl border border-slate-200">
+                  <iframe
+                    title={`Mapa de ${property.location}`}
+                    src={`https://www.openstreetmap.org/export/embed.html?bbox=${property.coords.lng - 0.015},${property.coords.lat - 0.015},${property.coords.lng + 0.015},${property.coords.lat + 0.015}&layer=mapnik&marker=${property.coords.lat},${property.coords.lng}`}
+                    width="100%"
+                    height="220"
+                    className="block"
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <a
+                  href={`https://www.google.com/maps?q=${property.coords.lat},${property.coords.lng}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-flex items-center gap-1 text-xs text-blue-700 hover:underline"
+                >
+                  <MapPin className="h-3 w-3" />
+                  Ver en Google Maps
+                </a>
+              </div>
+
+              <div className="mt-6 border-t border-slate-100 pt-6">
                 <h3 className="font-semibold text-slate-900">¿Te interesa esta propiedad?</h3>
                 <p className="mt-1 text-sm text-slate-500">
-                  Contacta con el agente para más información o visita
+                  Elige cómo quieres contactar — el mensaje incluirá la ref. <strong>{property.ref}</strong>
                 </p>
-                <div className="mt-4 flex flex-wrap gap-3">
-                  <a
-                    href="tel:+34965830000"
-                    className={`inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-colors ${badgeColor} hover:opacity-90`}
+                <div className="mt-4 grid grid-cols-3 gap-2">
+                  <button
+                    onClick={() => window.open(`tel:+34965830000`)}
+                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 px-3 py-2.5 text-sm font-semibold text-white transition-colors"
                   >
                     <Phone className="h-4 w-4" />
-                    965 83 00 00
-                  </a>
-                  <a
-                    href="#"
-                    className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
+                    Teléfono
+                  </button>
+                  <button
+                    onClick={() =>
+                      window.open(
+                        `mailto:info@inmobiliaria.com?subject=${encodeURIComponent(`Consulta: ${property.ref} · ${property.title}`)}&body=${encodeURIComponent(`Hola,\n\nMe interesa la propiedad ref. ${property.ref} — ${property.title}.\nUbicación: ${property.location}\nPrecio: ${property.price}\n\nVer anuncio: https://costa-blanca-leads.vercel.app/demo?ref=${property.ref}\n\nPor favor, contactadme para más información.\n\nGracias.`)}`
+                      )
+                    }
+                    className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 px-3 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
                   >
                     <Mail className="h-4 w-4" />
-                    info@inmobiliaria.com
-                  </a>
+                    Email
+                  </button>
+                  <button
+                    onClick={() =>
+                      window.open(
+                        `/api/whatsapp?text=${encodeURIComponent(`Hola, me interesa la propiedad ${property.ref} · ${property.title}\n\nUbicación: ${property.location}\nPrecio: ${property.price}\n\nVer anuncio: https://costa-blanca-leads.vercel.app/demo?ref=${property.ref}`)}`,
+                        "_blank"
+                      )
+                    }
+                    className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-green-600 px-3 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-green-700"
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                    WhatsApp
+                  </button>
                 </div>
+                <p className="mt-3 text-xs text-slate-400">
+                  Al contactar nos darás tu consentimiento para que te respondamos.
+                </p>
               </div>
 
               <p className="mt-4 text-xs text-slate-400">Ref: {property.ref}</p>

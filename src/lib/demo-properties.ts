@@ -7,7 +7,9 @@ export interface Property {
   baths: number;
   m2: number;
   type: string;
-  image: null;
+  purpose: "venta" | "alquiler";
+  images: string[];
+  coords: { lat: number; lng: number };
   desc: string;
 }
 
@@ -21,7 +23,13 @@ const properties: Property[] = [
     baths: 1,
     m2: 72,
     type: "Apartamento",
-    image: null,
+    purpose: "venta",
+    images: [
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+    ],
+    coords: { lat: 38.640, lng: 0.050 },
     desc: "Precioso apartamento reformado con vistas al mar y al Peñón de Ifach. A 50m de la playa.",
   },
   {
@@ -33,7 +41,12 @@ const properties: Property[] = [
     baths: 3,
     m2: 220,
     type: "Villa",
-    image: null,
+    purpose: "venta",
+    images: [
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
+    ],
+    coords: { lat: 38.655, lng: 0.035 },
     desc: "Impresionante villa de diseño moderno con piscina infinita, jardín privado y vistas al Mediterráneo.",
   },
   {
@@ -45,7 +58,9 @@ const properties: Property[] = [
     baths: 2,
     m2: 110,
     type: "Ático",
-    image: null,
+    purpose: "venta",
+    images: [],
+    coords: { lat: 38.645, lng: 0.045 },
     desc: "Ático dúplex con gran terraza de 40m², cocina equipada y parking incluido.",
   },
   {
@@ -57,7 +72,9 @@ const properties: Property[] = [
     baths: 1,
     m2: 65,
     type: "Piso",
-    image: null,
+    purpose: "venta",
+    images: [],
+    coords: { lat: 38.644, lng: 0.043 },
     desc: "Piso totalmente reformado en el centro de Calpe. Listo para entrar a vivir.",
   },
   {
@@ -69,7 +86,9 @@ const properties: Property[] = [
     baths: 2,
     m2: 150,
     type: "Chalet",
-    image: null,
+    purpose: "venta",
+    images: [],
+    coords: { lat: 38.638, lng: 0.052 },
     desc: "Chalet adosado con jardín comunitario, piscina y garaje. Zona residencial tranquila.",
   },
   {
@@ -81,7 +100,9 @@ const properties: Property[] = [
     baths: 0,
     m2: 800,
     type: "Parcela",
-    image: null,
+    purpose: "venta",
+    images: [],
+    coords: { lat: 38.660, lng: 0.030 },
     desc: "Parcela con proyecto aprobado para villa de lujo. Vistas al mar y total privacidad.",
   },
   {
@@ -93,7 +114,9 @@ const properties: Property[] = [
     baths: 2,
     m2: 130,
     type: "Dúplex",
-    image: null,
+    purpose: "venta",
+    images: [],
+    coords: { lat: 38.637, lng: 0.053 },
     desc: "Dúplex a 100m de la playa con plaza de garaje y trastero. Vistas laterales al Peñón de Ifach.",
   },
   {
@@ -105,7 +128,9 @@ const properties: Property[] = [
     baths: 1,
     m2: 140,
     type: "Casa Rural",
-    image: null,
+    purpose: "venta",
+    images: [],
+    coords: { lat: 38.650, lng: 0.025 },
     desc: "Casa rústica rehabilitada con terreno de 5.000m², piscina y barbacoa. Ideal para desconectar.",
   },
   {
@@ -117,7 +142,9 @@ const properties: Property[] = [
     baths: 1,
     m2: 85,
     type: "Local",
-    image: null,
+    purpose: "venta",
+    images: [],
+    coords: { lat: 38.644, lng: 0.046 },
     desc: "Local comercial reformado en la calle principal. Ideal para negocio con mucha afluencia.",
   },
   {
@@ -129,8 +156,66 @@ const properties: Property[] = [
     baths: 3,
     m2: 280,
     type: "Chalet",
-    image: null,
+    purpose: "venta",
+    images: [],
+    coords: { lat: 38.648, lng: 0.038 },
     desc: "Chalet independiente con parcela de 600m², piscina privada y vistas panorámicas al mar.",
+  },
+  {
+    ref: "CBL-201",
+    title: "Apartamento de lujo con vistas al mar",
+    location: "Urbanización La Manzanera, Calpe",
+    price: "1.800 €/mes",
+    beds: 3,
+    baths: 2,
+    m2: 100,
+    type: "Apartamento",
+    purpose: "alquiler",
+    images: [],
+    coords: { lat: 38.636, lng: 0.048 },
+    desc: "Espectacular apartamento amueblado con vistas panorámicas al Peñón de Ifach. Piscina comunitaria, parking y trastero incluidos.",
+  },
+  {
+    ref: "CBL-202",
+    title: "Piso céntrico amueblado",
+    location: "Calle La Explanada, Calpe",
+    price: "950 €/mes",
+    beds: 2,
+    baths: 1,
+    m2: 65,
+    type: "Piso",
+    purpose: "alquiler",
+    images: [],
+    coords: { lat: 38.645, lng: 0.044 },
+    desc: "Piso en pleno centro de Calpe, totalmente amueblado y reformado. Ideal para parejas o pequeños inversores.",
+  },
+  {
+    ref: "CBL-203",
+    title: "Villa con piscina privada",
+    location: "Urbanización Maryvilla, Calpe",
+    price: "3.500 €/mes",
+    beds: 4,
+    baths: 3,
+    m2: 250,
+    type: "Villa",
+    purpose: "alquiler",
+    images: [],
+    coords: { lat: 38.656, lng: 0.036 },
+    desc: "Villa independiente de lujo con piscina privada, jardín y vistas al mar. Perfecta para estancias temporales de alto standing.",
+  },
+  {
+    ref: "CBL-204",
+    title: "Ático cerca de la playa",
+    location: "La Fossa, Calpe",
+    price: "1.200 €/mes",
+    beds: 2,
+    baths: 1,
+    m2: 80,
+    type: "Ático",
+    purpose: "alquiler",
+    images: [],
+    coords: { lat: 38.638, lng: 0.051 },
+    desc: "Ático en primera línea de La Fossa con terraza de 30m² y vistas laterales al mar. A 2 minutos andando de la playa.",
   },
 ];
 

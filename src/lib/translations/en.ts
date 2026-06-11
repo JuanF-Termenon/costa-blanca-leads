@@ -1,0 +1,141 @@
+export const en: Record<string, string> = {
+  // Nav
+  "nav.servicios": "Services",
+  "nav.como-funciona": "How it works",
+  "nav.precios": "Pricing",
+  "nav.ver-demo": "View demo",
+  "nav.contacto": "Contact",
+  "nav.solicitar-demo": "Book a demo",
+
+  // Hero
+  "hero.badge": "Specialists in Calpe and Costa Blanca real estate agencies",
+  "hero.title": "Turn Google into a constant source of buyers for your",
+  "hero.title-highlight": "real estate agency",
+  "hero.subtitle": "Appear when they search for properties in your area. Each property generates its own visits. Leads arrive directly to your email or WhatsApp. No effort.",
+  "hero.cta": "Book a free demo",
+  "hero.demo": "View demo",
+  "hero.tagline": "No fixed-term contract · Delivery in 2-5 days · Direct WhatsApp support",
+  "hero.launch-text": "Launch price for our first clients on the Costa Blanca.",
+
+  // Benefits
+  "benefits.title": "Turn Google into your best sales agent",
+  "benefits.subtitle": "90% of buyers search online before contacting an agency. If you don't appear when they search, your competition gets the client.",
+  "benefits.0.title": "Appear when they search for homes in your area",
+  "benefits.0.desc": "We optimize your website so they find you when searching 'buy apartment Calpe', 'real estate agency Benidorm' or 'villa Altea'. More visits = more leads.",
+  "benefits.1.title": "Each property attracts a different buyer",
+  "benefits.1.desc": "An apartment in Calpe center, a villa in Altea Hills and a flat in Benidorm have different searches. We create individual pages so Google shows each property to the right buyer.",
+  "benefits.2.title": "Leads arrive on your phone instantly",
+  "benefits.2.desc": "Contact form on every page. When someone is interested, you get an automatic email with their name and phone. Fully integrated with WhatsApp.",
+  "benefits.3.title": "Appear on Google Maps with your properties",
+  "benefits.3.desc": "We manage your Google Business profile and link each property to its location on the map. So they find you on mobile too, right in the area they're searching.",
+  "benefits.4.title": "Fast, professional website, no hassle",
+  "benefits.4.desc": "Responsive design optimized for mobile. No tech skills needed. We handle everything: domain, hosting, updates and maintenance.",
+  "benefits.5.title": "Know how many leads you're generating",
+  "benefits.5.desc": "Each month you receive a report with visits, leads received and which properties generate the most interest. No guesswork, you know what works.",
+
+  // Demo preview
+  "demo.title": "This is how your agency could look",
+  "demo.subtitle": "An interactive demo with properties, maps and WhatsApp. Click and try it.",
+  "demo.cta": "View full demo",
+
+  // How it works
+  "works.title": "How it works",
+  "works.subtitle": "An agency with 50 properties can have dozens of different pages appearing on Google. Each one attracts a different type of buyer.",
+  "works.0.title": "Apartment in Calpe center",
+  "works.0.desc": "Someone searches 'buy apartment Calpe center'. Your page appears. They see the price, photos, map. They call you.",
+  "works.1.title": "Villa in Altea Hills",
+  "works.1.desc": "Another buyer searches 'luxury villa Altea Hills'. Your page appears. Same agency, same Google, different client.",
+  "works.2.title": "Benidorm beach apartment",
+  "works.2.desc": "Another searches 'first-line apartment Benidorm'. Your page appears. Each property is a doorway to a buyer.",
+  "works.tagline": "More properties in your portfolio = more opportunities to appear on Google",
+
+  // ROI
+  "roi.title": "How much is a new client worth?",
+  "roi.desc": "If a sale gives you €4,000 commission and your website brings you just one extra sale per year, the investment pays for itself. Every new lead is money you're leaving on the table.",
+
+  // Steps
+  "steps.title": "How we get started",
+  "steps.subtitle": "In 4 steps your website starts generating leads.",
+  "steps.0.title": "We analyze your market",
+  "steps.0.desc": "We review your portfolio, your area and your competition. We define the keywords your ideal client uses to search for properties.",
+  "steps.1.title": "We create your website",
+  "steps.1.desc": "Professional design with catalog, individual pages, Google Maps and WhatsApp. Usually 2-5 business days.",
+  "steps.2.title": "You appear on Google",
+  "steps.2.desc": "We optimize every page so Google recognizes you as the reference agency in your area. No technical jargon. Real results.",
+  "steps.3.title": "You receive leads",
+  "steps.3.desc": "Leads arrive directly to your email. You can also receive them via WhatsApp if you prefer.",
+
+  // Pricing
+  "pricing.title": "Clear investment, no surprises",
+  "pricing.subtitle": "You pay once for the setup. The monthly fee covers hosting, maintenance, ongoing SEO and updates.",
+  "pricing.launch-badge": "Launch offer",
+  "pricing.setup-label": "Initial investment (one-time)",
+  "pricing.setup-old-price": "1,290 €",
+  "pricing.setup-price": "790 €",
+  "pricing.setup-tag": "launch price",
+  "pricing.setup-includes": "Includes: web design and development, domain (1 year), initial SEO setup, Google Maps listing and WhatsApp integration.",
+
+  "pricing.basic.name": "Basic",
+  "pricing.basic.desc": "For individual agents",
+  "pricing.basic.price": "79 €",
+  "pricing.basic.per": "/month",
+  "pricing.basic.0": "Web hosting and maintenance",
+  "pricing.basic.1": "Property updates",
+  "pricing.basic.2": "Contact via form + WhatsApp",
+  "pricing.basic.cta": "Get started",
+
+  "pricing.pro.name": "Professional",
+  "pricing.pro.desc": "For established agencies",
+  "pricing.pro.price": "149 €",
+  "pricing.pro.per": "/month",
+  "pricing.pro.badge": "Most popular",
+  "pricing.pro.0": "Everything in Basic",
+  "pricing.pro.1": "SEO pages for new locations",
+  "pricing.pro.2": "Integrated SEO blog",
+  "pricing.pro.3": "Advanced local positioning",
+  "pricing.pro.cta": "Get started",
+
+  "pricing.premium.name": "Premium",
+  "pricing.premium.desc": "For agencies that want maximum results",
+  "pricing.premium.price": "249 €",
+  "pricing.premium.per": "/month",
+  "pricing.premium.0": "Everything in Professional",
+  "pricing.premium.1": "Professional blog and SEO articles",
+  "pricing.premium.2": "Google Business Profile management",
+  "pricing.premium.3": "Detailed monthly reports",
+  "pricing.premium.4": "Priority support",
+  "pricing.premium.cta": "Get started",
+
+  // FAQ
+  "faq.title": "Frequently asked questions",
+  "faq.0.q": "Do I need an existing website?",
+  "faq.0.a": "No. We create it from scratch with your brand, your properties and your domain. You only need your photos and descriptions.",
+  "faq.1.q": "How long does it take to be ready?",
+  "faq.1.a": "Usually between 2 and 5 business days after you give us your information. We send you a link so you can see how it looks before publishing.",
+  "faq.2.q": "Can I cancel whenever I want?",
+  "faq.2.a": "Yes. No fixed term. Cancel whenever you want and keep your domain. No questions asked, no exit fees.",
+  "faq.3.q": "Do I appear on Google Maps?",
+  "faq.3.a": "Yes. In the Premium plan we manage your Google Business Profile so you appear on Google Maps with your properties.",
+  "faq.4.q": "Can I update properties myself?",
+  "faq.4.a": "For now, to save you time entering data, send them to us via WhatsApp or email and we update them within 24h. So you can focus on selling.",
+  "faq.5.q": "What happens when a client contacts from the website?",
+  "faq.5.a": "You get an automatic email with the name, phone and message of the interested party. You can also receive it via WhatsApp if you prefer.",
+  "faq.6.q": "Why do I have to pay every month?",
+  "faq.6.a": "The monthly fee covers hosting, domain, website updates, technical maintenance, ongoing SEO and monthly reports. It's not an expense — it's the investment that keeps your website generating leads every month.",
+
+  // CTA
+  "cta.title": "While you don't appear on Google, your competition does",
+  "cta.desc": "There are buyers searching for properties on the Costa Blanca right now. The question isn't whether they'll buy, but which agency they'll call.",
+  "cta.button": "I want to appear on Google",
+
+  // Booking
+  "booking.title": "Book your 15-minute demo",
+  "booking.subtitle": "No commitment. I'll show you how your website would look live and how many people are searching for properties in your area — and going to your competition.",
+  "booking.whatsapp": "Book via WhatsApp",
+  "booking.whatsapp-text": "Hi, I'd like to schedule a 15-minute video call to see the demo. When could we do it?",
+  "booking.or": "or if you prefer",
+
+  // Footer
+  "footer.brand": "Costa Blanca Leads",
+  "footer.copyright": "© 2026 Costa Blanca Leads · Specialists in Calpe, Benidorm, Altea, Moraira, Jávea, Denia and the entire Costa Blanca real estate market",
+};
