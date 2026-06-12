@@ -39,7 +39,7 @@ export function DemoPropertyCard({
         className="group w-full overflow-hidden rounded-2xl border border-slate-200 bg-white text-left transition-all hover:shadow-lg dark:border-slate-700 dark:bg-slate-900"
       >
         {hasImages ? (
-          <div className="relative h-56 overflow-hidden">
+          <div className="relative h-56 overflow-hidden bg-slate-200 dark:bg-slate-700">
             <img
               src={property.images[0]}
               alt={p.title}
@@ -121,7 +121,7 @@ export function DemoPropertyCard({
             onClick={(e) => e.stopPropagation()}
           >
             {hasImages ? (
-              <div className="relative h-72 sm:h-96 bg-slate-900">
+              <div className="relative h-72 sm:h-96 bg-slate-200 dark:bg-slate-700">
                 <img
                   src={property.images[imgIdx]}
                   alt={`${p.title} — foto ${imgIdx + 1}`}
