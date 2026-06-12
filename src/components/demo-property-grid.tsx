@@ -250,7 +250,7 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
-  const filtered = localizedProperties.filter((p) => {
+  const filtered = useMemo(() => localizedProperties.filter((p) => {
     if (!(activeTab === "todas" || p.purpose === activeTab)) return false;
     if (search && !p.title.toLowerCase().includes(search.toLowerCase()) &&
         !p.location.toLowerCase().includes(search.toLowerCase()) &&
@@ -260,7 +260,7 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
     if (price < rangeMin || price > rangeMax) return false;
     if (selectedBeds.length > 0 && !selectedBeds.includes(p.beds)) return false;
     return true;
-  });
+  }), [localizedProperties, activeTab, search, selectedTypes, rangeMin, rangeMax, selectedBeds]);
 
   const sortOptions = [
     { id: "default" as const, label: t("demo.grid.sort-default") },
