@@ -281,7 +281,9 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
   const pageStart = safePage * ITEMS_PER_PAGE;
   const paginated = sorted.slice(pageStart, pageStart + ITEMS_PER_PAGE);
 
+  const initial = useRef(true);
   useEffect(() => {
+    if (initial.current) { initial.current = false; return; }
     gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, [safePage]);
 
