@@ -39,11 +39,11 @@ export function DemoPropertyCard({
         className="group w-full overflow-hidden rounded-2xl border border-slate-200 bg-white text-left transition-all hover:shadow-lg dark:border-slate-700 dark:bg-slate-900"
       >
         {hasImages ? (
-          <div className="relative h-56 overflow-hidden bg-slate-200 dark:bg-slate-700">
+          <div className="relative aspect-[4/3] overflow-hidden bg-slate-200 dark:bg-slate-700">
             <img
               src={property.images[0]}
               alt={p.title}
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className="block h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-black/10" />
             <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-700 backdrop-blur-sm dark:bg-slate-800/90 dark:text-slate-300">
@@ -121,11 +121,11 @@ export function DemoPropertyCard({
             onClick={(e) => e.stopPropagation()}
           >
             {hasImages ? (
-              <div className="relative h-72 sm:h-96 bg-slate-200 dark:bg-slate-700">
+              <div className="relative bg-slate-200 dark:bg-slate-700">
                 <img
                   src={property.images[imgIdx]}
                   alt={`${p.title} — foto ${imgIdx + 1}`}
-                  className="h-full w-full object-cover"
+                  className="aspect-[16/9] w-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
                 {property.images.length > 1 && (
