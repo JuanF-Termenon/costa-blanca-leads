@@ -199,7 +199,14 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
   useEffect(() => {
     fetch("/api/properties")
       .then((r) => r.json())
-      .then((data) => setProperties(data))
+      .then((data) => {
+        setProperties(data);
+        const prices = data.map((p: Property) => parsePrice(p.price));
+        if (prices.length > 0) {
+          setRangeMin(Math.min(...prices));
+          setRangeMax(Math.max(...prices));
+        }
+      })
       .catch(() => {})
       .finally(() => setLoadingProps(false));
   }, []);
@@ -216,12 +223,13 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
 
   const currentBounds = useMemo(() => {
     const pool = activeTab === "todas" ? localizedProperties : localizedProperties.filter((p) => p.purpose === activeTab);
+    if (pool.length === 0) return { min: 0, max: 0 };
     const prices = pool.map((p) => parsePrice(p.price));
     return { min: Math.min(...prices), max: Math.max(...prices) };
-  }, [activeTab]);
+  }, [activeTab, localizedProperties]);
 
-  const [rangeMin, setRangeMin] = useState(currentBounds.min);
-  const [rangeMax, setRangeMax] = useState(currentBounds.max);
+  const [rangeMin, setRangeMin] = useState(0);
+  const [rangeMax, setRangeMax] = useState(0);
 
   useEffect(() => {
     setRangeMin(currentBounds.min);
