@@ -36,10 +36,10 @@ export function DemoPropertyCard({
     <>
       <button
         onClick={() => setOpen(true)}
-        className="group w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-200 text-left transition-all hover:shadow-lg dark:border-slate-700 dark:bg-slate-800"
+        className="group w-full overflow-hidden rounded-2xl border border-slate-200 bg-white text-left transition-all hover:shadow-lg dark:border-slate-700 dark:bg-slate-900"
       >
         {hasImages ? (
-          <div className="relative aspect-[4/3] overflow-hidden bg-slate-200 dark:bg-slate-700">
+          <div className="relative h-56 overflow-hidden bg-slate-200 dark:bg-slate-700">
             <img
               src={property.images[0]}
               alt={p.title}
@@ -76,7 +76,7 @@ export function DemoPropertyCard({
             </span>
           </div>
         )}
-        <div className="bg-white p-5 dark:bg-slate-900">
+        <div className="p-5">
           <h3 className="font-semibold text-slate-900 group-hover:text-blue-700 dark:text-slate-100 dark:group-hover:text-blue-400">
             {p.title}
           </h3>
