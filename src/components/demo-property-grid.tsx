@@ -295,7 +295,7 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
   }
 
   return (
-    <section id="propiedades" className="scroll-mt-20 py-16">
+    <section ref={gridRef} id="propiedades" className="scroll-mt-20 py-16">
       <div className="mx-auto max-w-6xl px-6">
         <div>
           <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{t("demo.grid.title")}</h2>
@@ -389,7 +389,7 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
           </div>
         </div>
 
-        <div ref={gridRef} className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {paginated.map((p, i) => (
             <DemoPropertyCard
               key={p.ref}
