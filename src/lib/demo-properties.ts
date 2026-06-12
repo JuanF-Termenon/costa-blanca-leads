@@ -67,7 +67,7 @@ const properties: Property[] = [
     ref: "CBL-104",
     title: "Piso céntrico reformado",
     location: "Calle La Libertad, Calpe",
-    price: "198.000 €",
+    price: "1.200 €/mes",
     beds: 2,
     baths: 1,
     m2: 65,
