@@ -96,8 +96,7 @@ export const ru: Record<string, string> = {
   "pricing.captacion.4": "Локальное SEO для Кальпе и Коста-Бланка",
   "pricing.captacion.5": "Страница привлечения собственников",
   "pricing.captacion.6": "Оптимизация скорости",
-  "pricing.captacion.7": "Интеграция с соцсетями",
-  "pricing.captacion.8": "Поддержка 30 дней",
+  "pricing.captacion.7": "Поддержка 30 дней",
   "pricing.captacion.cta": "Заказать",
 
   "pricing.premium-int.name": "Premium",

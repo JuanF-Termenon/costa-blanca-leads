@@ -96,8 +96,7 @@ export const es: Record<string, string> = {
   "pricing.captacion.4": "SEO local para toda la Costa Blanca",
   "pricing.captacion.5": "Página de captación de propietarios",
   "pricing.captacion.6": "Optimización de velocidad",
-  "pricing.captacion.7": "Integración con redes sociales",
-  "pricing.captacion.8": "Soporte durante 30 días",
+  "pricing.captacion.7": "Soporte durante 30 días",
   "pricing.captacion.cta": "Solicitar",
 
   "pricing.premium-int.name": "Premium",
