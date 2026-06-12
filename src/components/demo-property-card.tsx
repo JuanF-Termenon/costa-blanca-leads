@@ -36,7 +36,7 @@ export function DemoPropertyCard({
     <>
       <button
         onClick={() => setOpen(true)}
-        className="group w-full overflow-hidden rounded-2xl border border-slate-200 bg-white text-left transition-all hover:shadow-lg dark:border-slate-700 dark:bg-slate-900"
+        className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white text-left transition-all hover:shadow-lg dark:border-slate-700 dark:bg-slate-900"
       >
         {hasImages ? (
           <div className="relative h-56 overflow-hidden bg-slate-200 dark:bg-slate-700">
@@ -76,8 +76,9 @@ export function DemoPropertyCard({
             </span>
           </div>
         )}
-        <div className="p-5">
-          <h3 className="font-semibold text-slate-900 group-hover:text-blue-700 dark:text-slate-100 dark:group-hover:text-blue-400">
+        <div className="flex flex-1 flex-col justify-between p-5">
+          <div>
+            <h3 className="font-semibold text-slate-900 group-hover:text-blue-700 dark:text-slate-100 dark:group-hover:text-blue-400">
             {p.title}
           </h3>
           <p className="mt-1 flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
@@ -108,6 +109,7 @@ export function DemoPropertyCard({
           <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">
             {t("demo.card.click-detail").replace("{ref}", property.ref)}
           </p>
+        </div>
         </div>
       </button>
 
