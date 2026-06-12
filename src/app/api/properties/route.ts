@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { query, rowToProperty } from "@/lib/db";
+import { translateProperty } from "@/lib/auto-translate";
 
 async function defaultClientId(): Promise<string | null> {
   const result = await query('SELECT id FROM clients WHERE slug = $1', ['inmobiliaria-calpe']);
@@ -62,7 +63,22 @@ export async function POST(request: Request) {
       ]
     );
 
-    return NextResponse.json(rowToProperty(result.rows[0]), { status: 201 });
+    const property = result.rows[0];
+
+    try {
+      const translations = await translateProperty(type, title, location || "", desc);
+      if (Object.keys(translations).length > 0) {
+        await query(
+          `UPDATE properties SET translations = $1 WHERE id = $2`,
+          [JSON.stringify(translations), property.id]
+        );
+        property.translations = translations;
+      }
+    } catch (e) {
+      console.error("Translation error:", e);
+    }
+
+    return NextResponse.json(rowToProperty(property), { status: 201 });
   } catch (error) {
     console.error("Error creating property:", error);
     return NextResponse.json({ error: "Error creating property" }, { status: 500 });

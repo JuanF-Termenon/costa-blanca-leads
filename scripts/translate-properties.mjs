@@ -91,10 +91,12 @@ async function translateGoogle(properties, existing) {
     for (const { locale, code } of LANGUAGES) {
       if (out[locale][p.ref] && isTranslated(out[locale][p.ref], span[p.ref])) continue;
 
+      await sleep(1000);
+
       const mt = MANUAL_TYPES[locale]?.[p.type];
       let type = mt;
       if (!type && AUTO_TYPES.includes(p.type)) {
-        const r = await translate(p.type, { to: code }); type = r.text; await sleep(500);
+        const r = await translate(p.type, { to: code }); type = r.text;
       } else if (!type) type = p.type;
 
       const combined = `${p.title}${SEP}${p.location}${SEP}${p.desc}`;
@@ -103,7 +105,6 @@ async function translateGoogle(properties, existing) {
 
       out[locale][p.ref] = { title: parts[0] || p.title, location: parts[1] || p.location, type, desc: parts.slice(2).join(SEP) || p.desc };
       n++;
-      await sleep(500);
     }
   }
   return { out, n };
@@ -176,9 +177,13 @@ async function main() {
   // On Vercel: use Google Translate (their IP works)
   if (process.env.VERCEL) {
     console.log(`🌐 Vercel build: translating ${missing.length} items via Google...`);
-    const { out, n } = await translateGoogle(properties, existing);
-    writeFileSync(resolve(ROOT, "src/lib/property-translations.ts"), generateFile(out), "utf-8");
-    console.log(`✅ Translated ${n} items.`);
+    try {
+      const { out, n } = await translateGoogle(properties, existing);
+      writeFileSync(resolve(ROOT, "src/lib/property-translations.ts"), generateFile(out), "utf-8");
+      console.log(`✅ Translated ${n} items.`);
+    } catch (err) {
+      console.warn(`⚠️  Google Translate rate-limited (${err.message}). Properties will use Spanish fallback.`);
+    }
     return;
   }
 

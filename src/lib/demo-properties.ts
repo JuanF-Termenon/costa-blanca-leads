@@ -12,6 +12,7 @@ export interface Property {
   coords: { lat: number; lng: number };
   desc: string;
   available?: boolean;
+  translations?: Record<string, { title?: string; location?: string; type?: string; desc?: string }>;
 }
 
 const properties: Property[] = [

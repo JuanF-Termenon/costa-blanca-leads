@@ -103,6 +103,7 @@ Build and polish a SaaS landing page + interactive demo for selling SEO-optimize
 - `CONTACT_EMAIL` — email where leads arrive (jf.termenon@gmail.com)
 - `WHATSAPP_PHONE` — 34691157183 (server-side, for wa.me redirects)
 - `DEEPL_API_KEY` — optional, for local translation (not needed on Vercel)
+- `ADMIN_PASSWORD` — password to access `/admin` panel (default: `admin123`; CHANGE BEFORE DEPLOY)
 - (Pending) `WHATSAPP_PHONE_NUMBER_ID` + `WHATSAPP_ACCESS_TOKEN` + `WHATSAPP_TO` — for WhatsApp Business API
 
 ## WhatsApp Business API (Blocked)
@@ -124,12 +125,16 @@ Build and polish a SaaS landing page + interactive demo for selling SEO-optimize
 - `ContactForm` client component — booking form, sends to /api/contact
 - Layout is server component + WhatsAppButton added directly
 - API contact route uses Resend directly (no lazy singleton) for reliable sending
+- Admin auth via `src/proxy.ts` (Next.js 16 `proxy` file convention, replacing `middleware.ts`): checks `admin_session` cookie; login at `/admin/login` POSTs to `/api/admin/verify` which validates against `ADMIN_PASSWORD` env var
 
 ## Relevant Files
 - `src/app/page.tsx` — Main landing page (client, uses useLang)
 - `src/app/demo/page.tsx` — Demo page shell (reads searchParams.ref)
 - `src/app/layout.tsx` — Root layout with metadata, WhatsAppButton
 - `src/app/api/contact/route.ts` — POST handler (email via Resend)
+- `src/app/api/admin/verify/route.ts` — POST (login, sets cookie) + DELETE (logout, clears cookie)
+- `src/app/admin/login/page.tsx` — Password form page
+- `src/proxy.ts` — Protects `/admin` routes, redirects to `/admin/login` if no session cookie
 - `src/app/api/whatsapp/route.ts` — GET handler (redirects to wa.me)
 - `src/app/not-found.tsx`, `src/app/error.tsx` — Error pages
 - `src/components/demo-property-card.tsx` — Property card + modal with contact tabs
@@ -155,7 +160,8 @@ Build and polish a SaaS landing page + interactive demo for selling SEO-optimize
 4. To test locally: `$env:DEEPL_API_KEY="key"` then `npm run translate-props`
 
 ## Next Steps
-1. Get prepaid SIM for WhatsApp Business API number
-2. Set up Meta Developer app → obtain WHATSAPP_PHONE_NUMBER_ID + WHATSAPP_ACCESS_TOKEN
-3. Add env vars to Vercel + WHATSAPP_TO for WhatsApp lead forwarding
-4. Present to prospects via https://costa-blanca-leads.vercel.app
+1. Add `ADMIN_PASSWORD` to Vercel env vars (change from default `admin123`)
+2. Get prepaid SIM for WhatsApp Business API number
+3. Set up Meta Developer app → obtain WHATSAPP_PHONE_NUMBER_ID + WHATSAPP_ACCESS_TOKEN
+4. Add env vars to Vercel + WHATSAPP_TO for WhatsApp lead forwarding
+5. Present to prospects via https://costa-blanca-leads.vercel.app

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { Plus, Pencil, Trash2, X, Building2, Eye, EyeOff } from "lucide-react";
+import { Plus, Pencil, Trash2, X, Building2, Eye, EyeOff, Languages } from "lucide-react";
 import type { Property } from "@/lib/demo-properties";
 
 const emptyForm = {
@@ -12,15 +12,22 @@ const emptyForm = {
 
 type FormData = typeof emptyForm;
 
+const LOCALES = ["en", "de", "fr", "ru"] as const;
+const LOCALE_LABELS: Record<string, string> = { en: "English", de: "Deutsch", fr: "Français", ru: "Русский" };
+const EMPTY_TRANSLATIONS = { title: "", location: "", desc: "" };
+
 function PropertyFormModal({
   open, onClose, onSave, initial,
 }: {
   open: boolean;
   onClose: () => void;
-  onSave: (data: FormData) => void;
+  onSave: (data: FormData & { translations?: Record<string, { title: string; location: string; desc: string }> }) => void;
   initial?: Property;
 }) {
   const [form, setForm] = useState<FormData>(emptyForm);
+  const [translations, setTranslations] = useState<Record<string, { title: string; location: string; desc: string }>>({});
+  const [showTranslations, setShowTranslations] = useState(false);
+  const [transTab, setTransTab] = useState<string>("en");
 
   useEffect(() => {
     if (initial) {
@@ -38,8 +45,15 @@ function PropertyFormModal({
         lat: initial.coords.lat,
         lng: initial.coords.lng,
       });
+      const t: Record<string, { title: string; location: string; desc: string }> = {};
+      for (const loc of LOCALES) {
+        const src = initial.translations?.[loc];
+        t[loc] = { title: src?.title ?? "", location: src?.location ?? "", desc: src?.desc ?? "" };
+      }
+      setTranslations(t);
     } else {
       setForm(emptyForm);
+      setTranslations({});
     }
   }, [initial, open]);
 
@@ -47,11 +61,18 @@ function PropertyFormModal({
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    onSave(form);
+    onSave({ ...form, translations });
   }
 
   function update<K extends keyof FormData>(key: K, value: FormData[K]) {
     setForm((f) => ({ ...f, [key]: value }));
+  }
+
+  function updateTranslation(locale: string, field: "title" | "location" | "desc", value: string) {
+    setTranslations((prev) => ({
+      ...prev,
+      [locale]: { ...(prev[locale] ?? EMPTY_TRANSLATIONS), [field]: value },
+    }));
   }
 
   return (
@@ -105,12 +126,21 @@ function PropertyFormModal({
             </div>
             <div>
               <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Tipo *</label>
-              <input
+              <select
                 value={form.type} onChange={(e) => update("type", e.target.value)}
                 required
-                placeholder="Apartamento, Villa..."
                 className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200"
-              />
+              >
+                <option value="Apartamento">Apartamento</option>
+                <option value="Villa">Villa</option>
+                <option value="Ático">Ático</option>
+                <option value="Piso">Piso</option>
+                <option value="Chalet">Chalet</option>
+                <option value="Dúplex">Dúplex</option>
+                <option value="Parcela">Parcela</option>
+                <option value="Casa Rural">Casa Rural</option>
+                <option value="Local">Local</option>
+              </select>
             </div>
             <div>
               <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">m²</label>
@@ -164,6 +194,59 @@ function PropertyFormModal({
               />
             </div>
           </div>
+
+          {initial && (
+            <div className="col-span-2 border-t border-slate-200 pt-4 dark:border-slate-700">
+              <button type="button" onClick={() => setShowTranslations(!showTranslations)}
+                className="flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200"
+              >
+                <Languages className="h-4 w-4" />
+                Traducciones {showTranslations ? "▲" : "▼"}
+              </button>
+
+              {showTranslations && (
+                <div className="mt-3 space-y-3">
+                  <div className="flex gap-1 border-b border-slate-200 dark:border-slate-700">
+                    {LOCALES.map((loc) => (
+                      <button key={loc} type="button" onClick={() => setTransTab(loc)}
+                        className={`px-3 py-1.5 text-xs font-medium rounded-t border-b-2 transition-colors ${
+                          transTab === loc
+                            ? "border-blue-700 text-blue-700 dark:border-blue-400 dark:text-blue-400"
+                            : "border-transparent text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
+                        }`}
+                      >
+                        {LOCALE_LABELS[loc]}
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="space-y-2">
+                    <div>
+                      <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-0.5">Título</label>
+                      <input value={translations[transTab]?.title ?? ""}
+                        onChange={(e) => updateTranslation(transTab, "title", e.target.value)}
+                        className="w-full rounded border border-slate-300 px-2 py-1.5 text-xs dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-0.5">Ubicación</label>
+                      <input value={translations[transTab]?.location ?? ""}
+                        onChange={(e) => updateTranslation(transTab, "location", e.target.value)}
+                        className="w-full rounded border border-slate-300 px-2 py-1.5 text-xs dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-0.5">Descripción</label>
+                      <textarea value={translations[transTab]?.desc ?? ""}
+                        onChange={(e) => updateTranslation(transTab, "desc", e.target.value)} rows={2}
+                        className="w-full rounded border border-slate-300 px-2 py-1.5 text-xs dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200"
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
 
           <div className="flex justify-end gap-3 pt-4 border-t border-slate-200 dark:border-slate-700">
             <button type="button" onClick={onClose}
@@ -233,8 +316,8 @@ export default function AdminPage() {
 
   useEffect(() => { fetchProperties(); }, [fetchProperties]);
 
-  async function handleSave(form: FormData) {
-    const body = {
+  async function handleSave(form: FormData & { translations?: Record<string, { title: string; location: string; desc: string }> }) {
+    const body: Record<string, unknown> = {
       title: form.title,
       location: form.location,
       price: form.price,
@@ -247,6 +330,14 @@ export default function AdminPage() {
       images: form.images ? form.images.split("\n").map((s) => s.trim()).filter(Boolean) : [],
       coords: { lat: form.lat, lng: form.lng },
     };
+
+    if (editing && form.translations) {
+      const filled: Record<string, { title: string; location: string; desc: string }> = {};
+      for (const [loc, t] of Object.entries(form.translations)) {
+        if (t.title || t.location || t.desc) filled[loc] = t;
+      }
+      if (Object.keys(filled).length > 0) body.translations = filled;
+    }
 
     try {
       if (editing) {
@@ -301,6 +392,18 @@ export default function AdminPage() {
     }
   }
 
+  async function handleTranslate(p: Property) {
+    setMsg(`Traduciendo ${p.ref}...`);
+    try {
+      const res = await fetch(`/api/properties/${p.ref}/translate`, { method: "POST" });
+      if (!res.ok) throw new Error();
+      setMsg(`${p.ref} traducida correctamente`);
+      fetchProperties();
+    } catch {
+      setMsg(`Error al traducir ${p.ref}`);
+    }
+  }
+
   useEffect(() => {
     if (msg) {
       const t = setTimeout(() => setMsg(""), 3000);
@@ -317,7 +420,18 @@ export default function AdminPage() {
             <span className="text-base font-bold text-slate-900 dark:text-slate-100">Admin</span>
             <span className="rounded bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-900/40 dark:text-amber-300">panel</span>
           </div>
-          <a href="/" className="text-sm text-blue-700 hover:underline dark:text-blue-400">Ver web →</a>
+          <div className="flex items-center gap-3">
+            <a href="/" className="text-sm text-blue-700 hover:underline dark:text-blue-400">Ver web →</a>
+            <button
+              onClick={async () => {
+                await fetch("/api/admin/verify", { method: "DELETE" });
+                window.location.href = "/admin/login";
+              }}
+              className="text-sm text-slate-400 hover:text-red-600 dark:hover:text-red-400"
+            >
+              Cerrar sesión
+            </button>
+          </div>
         </div>
       </header>
 
@@ -396,6 +510,12 @@ export default function AdminPage() {
                           title={p.available !== false ? "Ocultar propiedad" : "Mostrar propiedad"}
                         >
                           {p.available !== false ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                        </button>
+                        <button onClick={() => handleTranslate(p)}
+                          className="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-sky-600 dark:hover:bg-slate-800 dark:hover:text-sky-400"
+                          title="Traducir a todos los idiomas"
+                        >
+                          <Languages className="h-4 w-4" />
                         </button>
                         <button onClick={() => { setEditing(p); setShowForm(true); }}
                           className="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-blue-700 dark:hover:bg-slate-800 dark:hover:text-blue-400"

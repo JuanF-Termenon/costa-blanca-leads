@@ -39,6 +39,7 @@ export function rowToProperty(row: Record<string, unknown>) {
     ...row,
     images: JSON.parse((row.images as string) || "[]"),
     coords: { lat: row.lat, lng: row.lng },
+    translations: typeof row.translations === "string" ? JSON.parse(row.translations) : (row.translations || {}),
     clientId: row.clientId,
     createdAt: row.createdAt,
     updatedAt: row.updatedAt,

@@ -45,3 +45,6 @@ CREATE INDEX IF NOT EXISTS idx_clients_domain ON clients(domain);
 
 -- Add available column to existing properties (safe to run even if column exists)
 ALTER TABLE properties ADD COLUMN IF NOT EXISTS "available" BOOLEAN NOT NULL DEFAULT true;
+
+-- Add translations column for auto-translated content
+ALTER TABLE properties ADD COLUMN IF NOT EXISTS "translations" JSONB NOT NULL DEFAULT '{}';

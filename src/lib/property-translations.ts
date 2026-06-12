@@ -406,14 +406,15 @@ const typeTranslations: Record<Locale, Record<string, string>> = {
 };
 
 export function localizeProperty(property: Property, locale: Locale): Property {
+  const db = property.translations?.[locale];
   const props = overrides[locale]?.[property.ref];
   const types = typeTranslations[locale] ?? {};
-  if (!props && !types[property.type]) return property;
+  if (!db && !props && !types[property.type]) return property;
   return {
     ...property,
-    title: props?.title ?? property.title,
-    location: props?.location ?? property.location,
-    type: types[property.type] ?? property.type,
-    desc: props?.desc ?? property.desc,
+    title: db?.title ?? props?.title ?? property.title,
+    location: db?.location ?? props?.location ?? property.location,
+    type: db?.type ?? props?.type ?? types[property.type] ?? property.type,
+    desc: db?.desc ?? props?.desc ?? property.desc,
   };
 }
