@@ -276,16 +276,8 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
   }, [filtered, sortBy]);
 
   const totalPages = Math.max(1, Math.ceil(sorted.length / ITEMS_PER_PAGE));
-
-  useEffect(() => {
-    if (page >= totalPages) setPage(0);
-  }, [totalPages, page]);
-
-  useEffect(() => {
-    setPage(0);
-  }, [sorted.length]);
-
-  const pageStart = page * ITEMS_PER_PAGE;
+  const safePage = Math.min(page, totalPages - 1);
+  const pageStart = safePage * ITEMS_PER_PAGE;
   const paginated = sorted.slice(pageStart, pageStart + ITEMS_PER_PAGE);
 
   const hasFilters = selectedTypes.length > 0 || selectedBeds.length > 0 || rangeMin > currentBounds.min || rangeMax < currentBounds.max;
@@ -406,18 +398,18 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
         {!loadingProps && sorted.length > 0 && totalPages > 1 && (
           <div className="mt-10 flex items-center justify-center gap-4">
             <button
-              onClick={() => setPage(Math.max(0, page - 1))}
-              disabled={page === 0}
+              onClick={() => setPage((p) => Math.max(0, p - 1))}
+              disabled={safePage === 0}
               className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-300 text-slate-600 transition-colors hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-30 dark:border-slate-600 dark:text-slate-400 dark:hover:bg-slate-800"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
             <span className="text-sm text-slate-500 dark:text-slate-400">
-              {page + 1} / {totalPages}
+              {safePage + 1} / {totalPages}
             </span>
             <button
-              onClick={() => setPage(Math.min(totalPages - 1, page + 1))}
-              disabled={page >= totalPages - 1}
+              onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
+              disabled={safePage >= totalPages - 1}
               className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-300 text-slate-600 transition-colors hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-30 dark:border-slate-600 dark:text-slate-400 dark:hover:bg-slate-800"
             >
               <ChevronRight className="h-5 w-5" />
