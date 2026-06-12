@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import { ChevronDown } from "lucide-react";
 import { DemoPropertyCard } from "@/components/demo-property-card";
-import properties from "@/lib/demo-properties";
+import type { Property } from "@/lib/demo-properties";
 import { useLang } from "@/lib/providers";
 import { localizeProperty } from "@/lib/property-translations";
 
@@ -192,9 +192,19 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
   const [activeTab, setActiveTab] = useState<"todas" | "venta" | "alquiler">("todas");
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [selectedBeds, setSelectedBeds] = useState<number[]>([]);
+  const [properties, setProperties] = useState<Property[]>([]);
+  const [loadingProps, setLoadingProps] = useState(true);
   const { t, locale } = useLang();
 
-  const localizedProperties = useMemo(() => properties.map((p) => localizeProperty(p, locale)), [locale]);
+  useEffect(() => {
+    fetch("/api/properties")
+      .then((r) => r.json())
+      .then((data) => setProperties(data))
+      .catch(() => {})
+      .finally(() => setLoadingProps(false));
+  }, []);
+
+  const localizedProperties = useMemo(() => properties.map((p) => localizeProperty(p, locale)), [properties, locale]);
 
   const types = useMemo(() => [...new Set(localizedProperties.map((p) => p.type))].sort(), [localizedProperties]);
 
@@ -316,7 +326,11 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
           ))}
         </div>
 
-        {filtered.length === 0 && (
+        {loadingProps && (
+          <p className="mt-12 text-center text-sm text-slate-400 dark:text-slate-500">Cargando propiedades...</p>
+        )}
+
+        {!loadingProps && filtered.length === 0 && (
           <p className="mt-12 text-center text-sm text-slate-500 dark:text-slate-400">
             {t("demo.grid.empty")}
           </p>

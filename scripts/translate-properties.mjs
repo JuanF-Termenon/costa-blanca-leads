@@ -35,13 +35,9 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // ---- Parsers ----
 function parseProperties() {
-  const f = readFileSync(resolve(ROOT, "src/lib/demo-properties.ts"), "utf-8");
-  const refs = [...f.matchAll(/ref:\s*"(CBL-\d+)"/g)].map((m) => m[1]);
-  const titles = [...f.matchAll(/title:\s*"([^"]+)"/g)].map((m) => m[1]);
-  const locs = [...f.matchAll(/location:\s*"([^"]+)"/g)].map((m) => m[1]);
-  const types = [...f.matchAll(/type:\s*"([^"]+)"/g)].map((m) => m[1]);
-  const descs = [...f.matchAll(/desc:\s*"([^"]+)"/g)].map((m) => m[1]);
-  return refs.map((r, i) => ({ ref: r, title: titles[i], location: locs[i], type: types[i], desc: descs[i] }));
+  const f = readFileSync(resolve(ROOT, "data/properties.json"), "utf-8");
+  const props = JSON.parse(f);
+  return props.map((p) => ({ ref: p.ref, title: p.title, location: p.location, type: p.type, desc: p.desc }));
 }
 
 function parseExisting() {
