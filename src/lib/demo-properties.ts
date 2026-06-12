@@ -72,7 +72,7 @@ const properties: Property[] = [
     baths: 1,
     m2: 65,
     type: "Piso",
-    purpose: "venta",
+    purpose: "temporal",
     images: [],
     coords: { lat: 38.644, lng: 0.043 },
     desc: "Piso totalmente reformado en el centro de Calpe. Listo para entrar a vivir.",
