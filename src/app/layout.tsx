@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Costa Blanca Leads · Más clientes para tu inmobiliaria",
   description:
-    "Aparece en Google cuando buscan propiedades en Calpe, Altea, Benidorm y toda la Costa Blanca. Genera más contactos para tu inmobiliaria.",
+    "Aparece en Google cuando buscan propiedades en Costa Blanca, Altea, Benidorm y toda la Costa Blanca. Genera más contactos para tu inmobiliaria.",
 };
 
 export default function RootLayout({

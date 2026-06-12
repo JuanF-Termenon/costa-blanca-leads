@@ -204,7 +204,7 @@ export const ru: Record<string, string> = {
   "demo.contact.phone-label": "Телефон",
   "demo.contact.email-label": "Email",
   "demo.contact.address-label": "Адрес",
-  "demo.contact.address": "Avda. Gabriel Miró, 25 · 03710 Calpe (Alicante)",
+  "demo.contact.address": "Avda. Gabriel Miró, 25 · 03710 Costa Blanca (Alicante)",
   "demo.footer.text": "© 2026 Недвижимость Кальпе · Агентство недвижимости в Кальпе · Коста-Бланка",
   "demo.footer.note": "Это демо-шаблон. Ваш сайт может иметь собственный бренд, цвета и объекты.",
 };

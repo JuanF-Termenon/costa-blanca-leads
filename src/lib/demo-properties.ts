@@ -17,7 +17,7 @@ const properties: Property[] = [
   {
     ref: "CBL-101",
     title: "Apartamento en primera línea de playa",
-    location: "Playa del Arenal-Bol, Calpe",
+    location: "Playa del Arenal-Bol, Costa Blanca",
     price: "295.000 €",
     beds: 2,
     baths: 1,
@@ -35,7 +35,7 @@ const properties: Property[] = [
   {
     ref: "CBL-102",
     title: "Villa con piscina y vistas panorámicas",
-    location: "Urbanización Maryvilla, Calpe",
+    location: "Urbanización Maryvilla, Costa Blanca",
     price: "890.000 €",
     beds: 4,
     baths: 3,
@@ -52,7 +52,7 @@ const properties: Property[] = [
   {
     ref: "CBL-103",
     title: "Ático dúplex con terraza",
-    location: "Centro, Calpe",
+    location: "Centro, Costa Blanca",
     price: "425.000 €",
     beds: 3,
     baths: 2,
@@ -66,7 +66,7 @@ const properties: Property[] = [
   {
     ref: "CBL-104",
     title: "Piso céntrico reformado",
-    location: "Calle La Libertad, Calpe",
+    location: "Calle La Libertad, Costa Blanca",
     price: "1.200 €/mes",
     beds: 2,
     baths: 1,
@@ -75,12 +75,12 @@ const properties: Property[] = [
     purpose: "temporal",
     images: [],
     coords: { lat: 38.644, lng: 0.043 },
-    desc: "Piso totalmente reformado en el centro de Calpe. Listo para entrar a vivir.",
+    desc: "Piso totalmente reformado en el centro de Costa Blanca. Listo para entrar a vivir.",
   },
   {
     ref: "CBL-105",
     title: "Chalet adosado en urbanización",
-    location: "La Fossa, Calpe",
+    location: "La Fossa, Costa Blanca",
     price: "550.000 €",
     beds: 3,
     baths: 2,
@@ -94,7 +94,7 @@ const properties: Property[] = [
   {
     ref: "CBL-106",
     title: "Parcela con proyecto de villa",
-    location: "Cucarres, Calpe",
+    location: "Cucarres, Costa Blanca",
     price: "350.000 €",
     beds: 0,
     baths: 0,
@@ -108,7 +108,7 @@ const properties: Property[] = [
   {
     ref: "CBL-107",
     title: "Dúplex en primera línea de la Fossa",
-    location: "La Fossa, Calpe",
+    location: "La Fossa, Costa Blanca",
     price: "480.000 €",
     beds: 3,
     baths: 2,
@@ -122,7 +122,7 @@ const properties: Property[] = [
   {
     ref: "CBL-108",
     title: "Casa rural con encanto",
-    location: "Partida Vallesa, Calpe",
+    location: "Partida Vallesa, Costa Blanca",
     price: "320.000 €",
     beds: 3,
     baths: 1,
@@ -136,7 +136,7 @@ const properties: Property[] = [
   {
     ref: "CBL-109",
     title: "Local comercial en pleno centro",
-    location: "Calle Mayor, Calpe",
+    location: "Calle Mayor, Costa Blanca",
     price: "180.000 €",
     beds: 0,
     baths: 1,
@@ -150,7 +150,7 @@ const properties: Property[] = [
   {
     ref: "CBL-110",
     title: "Chalet independiente con parcela",
-    location: "Urbanización Canuta, Calpe",
+    location: "Urbanización Canuta, Costa Blanca",
     price: "695.000 €",
     beds: 4,
     baths: 3,
@@ -164,7 +164,7 @@ const properties: Property[] = [
   {
     ref: "CBL-201",
     title: "Apartamento de lujo con vistas al mar",
-    location: "Urbanización La Manzanera, Calpe",
+    location: "Urbanización La Manzanera, Costa Blanca",
     price: "1.800 €/mes",
     beds: 3,
     baths: 2,
@@ -178,7 +178,7 @@ const properties: Property[] = [
   {
     ref: "CBL-202",
     title: "Piso céntrico amueblado",
-    location: "Calle La Explanada, Calpe",
+    location: "Calle La Explanada, Costa Blanca",
     price: "950 €/mes",
     beds: 2,
     baths: 1,
@@ -187,12 +187,12 @@ const properties: Property[] = [
     purpose: "alquiler",
     images: [],
     coords: { lat: 38.645, lng: 0.044 },
-    desc: "Piso en pleno centro de Calpe, totalmente amueblado y reformado. Ideal para parejas o pequeños inversores.",
+    desc: "Piso en pleno centro de Costa Blanca, totalmente amueblado y reformado. Ideal para parejas o pequeños inversores.",
   },
   {
     ref: "CBL-203",
     title: "Villa con piscina privada",
-    location: "Urbanización Maryvilla, Calpe",
+    location: "Urbanización Maryvilla, Costa Blanca",
     price: "3.500 €/mes",
     beds: 4,
     baths: 3,
@@ -206,7 +206,7 @@ const properties: Property[] = [
   {
     ref: "CBL-204",
     title: "Ático cerca de la playa",
-    location: "La Fossa, Calpe",
+    location: "La Fossa, Costa Blanca",
     price: "1.200 €/mes",
     beds: 2,
     baths: 1,

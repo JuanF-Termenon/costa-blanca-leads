@@ -128,7 +128,7 @@ export function DemoPageContent({ initialRef }: { initialRef?: string }) {
             <div className="rounded-xl border border-slate-200 bg-white p-6 text-center dark:border-slate-700 dark:bg-slate-800">
               <Mail className="mx-auto h-6 w-6 text-blue-700 dark:text-blue-400" />
               <p className="mt-3 text-sm font-semibold text-slate-900 dark:text-slate-100">{t("demo.contact.email-label")}</p>
-              <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">info@calpepropiedades.com</p>
+              <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">info@costablancapropiedades.com</p>
             </div>
           </div>
           <div className="mx-auto mt-6 max-w-xl rounded-xl border border-slate-200 bg-white p-6 text-center dark:border-slate-700 dark:bg-slate-800">

@@ -23,7 +23,7 @@ async function main() {
     const result = await pool.query(
       `INSERT INTO clients (name, slug, template, phone, email, address, "isActive")
        VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
-      ['Inmobiliaria Calpe', 'inmobiliaria-calpe', 'modern', '965 83 00 00', 'info@calpepropiedades.com', 'Calle La Libertad, 12, Calpe', true]
+      ['Inmobiliaria Costa Blanca', 'inmobiliaria-calpe', 'modern', '965 83 00 00', 'info@costablancapropiedades.com', 'Calle La Libertad, 12, Costa Blanca', true]
     );
     clientId = result.rows[0].id;
     console.log("✅ Created default client:", result.rows[0].name);
