@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useRef, useEffect, useMemo } from "react";
+import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import { ChevronDown } from "lucide-react";
 import { DemoPropertyCard } from "@/components/demo-property-card";
 import properties from "@/lib/demo-properties";
 import { useLang } from "@/lib/providers";
+import { localizeProperty } from "@/lib/property-translations";
 
 function parsePrice(price: string): number {
   return parseInt(price.replace(/\./g, "").replace(/\s.*$/, "").replace(/\D/g, ""), 10) || 0;
@@ -27,7 +28,6 @@ const propertyColors = [
   "from-yellow-400 to-yellow-600",
 ];
 
-const types = [...new Set(properties.map((p) => p.type))].sort();
 const bedOptions = [1, 2, 3, 4];
 
 function DualRangeSlider({
@@ -192,7 +192,11 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
   const [activeTab, setActiveTab] = useState<"todas" | "venta" | "alquiler">("todas");
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [selectedBeds, setSelectedBeds] = useState<number[]>([]);
-  const { t } = useLang();
+  const { t, locale } = useLang();
+
+  const localizedProperties = useMemo(() => properties.map((p) => localizeProperty(p, locale)), [locale]);
+
+  const types = useMemo(() => [...new Set(localizedProperties.map((p) => p.type))].sort(), [localizedProperties]);
 
   const tabs = [
     { id: "todas" as const, label: t("demo.grid.tab-all") },
@@ -201,7 +205,7 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
   ];
 
   const currentBounds = useMemo(() => {
-    const pool = activeTab === "todas" ? properties : properties.filter((p) => p.purpose === activeTab);
+    const pool = activeTab === "todas" ? localizedProperties : localizedProperties.filter((p) => p.purpose === activeTab);
     const prices = pool.map((p) => parsePrice(p.price));
     return { min: Math.min(...prices), max: Math.max(...prices) };
   }, [activeTab]);
@@ -214,7 +218,7 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
     setRangeMax(currentBounds.max);
   }, [currentBounds.min, currentBounds.max]);
 
-  const filtered = properties.filter((p) => {
+  const filtered = localizedProperties.filter((p) => {
     if (!(activeTab === "todas" || p.purpose === activeTab)) return false;
     if (search && !p.title.toLowerCase().includes(search.toLowerCase()) &&
         !p.location.toLowerCase().includes(search.toLowerCase()) &&
@@ -260,7 +264,7 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
                 {tab.label}
                 {tab.id !== "todas" && (
                   <span className="ml-1.5 text-xs text-slate-400 dark:text-slate-500">
-                    ({properties.filter((p) => p.purpose === tab.id).length})
+                    ({localizedProperties.filter((p) => p.purpose === tab.id).length})
                   </span>
                 )}
               </button>

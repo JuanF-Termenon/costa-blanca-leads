@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import { MapPin, Bed, Bath, Maximize, X, Phone, Mail, MessageCircle, Building2, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Property } from "@/lib/demo-properties";
 import { useLang } from "@/lib/providers";
+import { localizeProperty } from "@/lib/property-translations";
 
 export function DemoPropertyCard({
   property,
@@ -16,7 +17,8 @@ export function DemoPropertyCard({
 }) {
   const [open, setOpen] = useState(defaultOpen);
   const [imgIdx, setImgIdx] = useState(0);
-  const { t } = useLang();
+  const { t, locale } = useLang();
+  const p = localizeProperty(property, locale);
 
   const hasImages = property.images.length > 0;
 
@@ -28,7 +30,7 @@ export function DemoPropertyCard({
     setImgIdx((i) => (i === property.images.length - 1 ? 0 : i + 1));
   }, [property.images.length]);
 
-  const purposeLabel = property.purpose === "venta" ? t("demo.card.for-sale") : t("demo.card.for-rent");
+  const purposeLabel = p.purpose === "venta" ? t("demo.card.for-sale") : t("demo.card.for-rent");
 
   return (
     <>
@@ -40,12 +42,12 @@ export function DemoPropertyCard({
           <div className="relative h-56 overflow-hidden">
             <img
               src={property.images[0]}
-              alt={property.title}
+              alt={p.title}
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-black/10" />
             <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-700 backdrop-blur-sm dark:bg-slate-800/90 dark:text-slate-300">
-              {property.type}
+              {p.type}
             </span>
             <span className={`absolute left-3 top-12 rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white backdrop-blur-sm ${
               property.purpose === "venta" ? "bg-blue-600/80" : "bg-emerald-600/80"
@@ -62,7 +64,7 @@ export function DemoPropertyCard({
               <Building2 className="h-12 w-12 text-white/30" />
             </div>
             <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-700 backdrop-blur-sm dark:bg-slate-800/90 dark:text-slate-300">
-              {property.type}
+              {p.type}
             </span>
             <span className={`absolute left-3 top-12 rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white backdrop-blur-sm ${
               property.purpose === "venta" ? "bg-blue-600/80" : "bg-emerald-600/80"
@@ -76,14 +78,14 @@ export function DemoPropertyCard({
         )}
         <div className="p-5">
           <h3 className="font-semibold text-slate-900 group-hover:text-blue-700 dark:text-slate-100 dark:group-hover:text-blue-400">
-            {property.title}
+            {p.title}
           </h3>
           <p className="mt-1 flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
             <MapPin className="h-3 w-3" />
-            {property.location}
+            {p.location}
           </p>
           <p className="mt-2 text-xs leading-relaxed text-slate-600 line-clamp-2 dark:text-slate-400">
-            {property.desc}
+            {p.desc}
           </p>
           <div className="mt-4 flex items-center gap-4 border-t border-slate-100 pt-4 text-xs text-slate-500 dark:border-slate-700 dark:text-slate-400">
             {property.beds > 0 && (
@@ -122,7 +124,7 @@ export function DemoPropertyCard({
               <div className="relative h-72 sm:h-96 bg-slate-900">
                 <img
                   src={property.images[imgIdx]}
-                  alt={`${property.title} — foto ${imgIdx + 1}`}
+                  alt={`${p.title} — foto ${imgIdx + 1}`}
                   className="h-full w-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
@@ -183,10 +185,10 @@ export function DemoPropertyCard({
             <div className="p-8">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{property.title}</h2>
+                  <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{p.title}</h2>
                   <p className="mt-1 flex items-center gap-1 text-sm text-slate-500 dark:text-slate-400">
                     <MapPin className="h-4 w-4" />
-                    {property.location}
+                    {p.location}
                   </p>
                 </div>
                 <div className="flex shrink-0 gap-1.5">
@@ -196,7 +198,7 @@ export function DemoPropertyCard({
                     {purposeLabel}
                   </span>
                   <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
-                    {property.type}
+                    {p.type}
                   </span>
                 </div>
               </div>
@@ -222,15 +224,15 @@ export function DemoPropertyCard({
 
               <div className="mt-6">
                 <h3 className="font-semibold text-slate-900 dark:text-slate-100">{t("demo.card.desc-title")}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{property.desc}</p>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{p.desc}</p>
               </div>
 
               <div className="mt-6 border-t border-slate-100 pt-6 dark:border-slate-700">
                 <h3 className="font-semibold text-slate-900 dark:text-slate-100">{t("demo.card.location-title")}</h3>
-                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{property.location}</p>
+                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{p.location}</p>
                 <div className="mt-3 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700">
                   <iframe
-                    title={`Mapa de ${property.location}`}
+                    title={`Mapa de ${p.location}`}
                     src={`https://www.openstreetmap.org/export/embed.html?bbox=${property.coords.lng - 0.015},${property.coords.lat - 0.015},${property.coords.lng + 0.015},${property.coords.lat + 0.015}&layer=mapnik&marker=${property.coords.lat},${property.coords.lng}`}
                     width="100%"
                     height="220"

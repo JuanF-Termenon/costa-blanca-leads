@@ -1,5 +1,3 @@
-import { Resend } from "resend";
-
 export interface SendWhatsAppParams {
   to: string;
   body: string;
@@ -84,38 +82,4 @@ export async function sendWhatsApp({
   }
 
   return { success: false, error: "WhatsApp no configurado" };
-}
-
-let resend: Resend | null = null;
-function getResend() {
-  if (!resend && process.env.RESEND_API_KEY) {
-    resend = new Resend(process.env.RESEND_API_KEY);
-  }
-  return resend;
-}
-
-export async function sendEmail({
-  to,
-  subject,
-  html,
-}: {
-  to: string;
-  subject: string;
-  html: string;
-}) {
-  const r = getResend();
-  if (!r) {
-    console.log(`[Email DEV] To: ${to}\nSubject: ${subject}\n${html}`);
-    return { success: true, messageId: `dev_${Date.now()}` };
-  }
-
-  const { data, error } = await r.emails.send({
-    from: "Costa Blanca Leads <onboarding@resend.dev>",
-    to,
-    subject,
-    html,
-  });
-
-  if (error) return { success: false, error: error.message };
-  return { success: true, messageId: data?.id };
 }

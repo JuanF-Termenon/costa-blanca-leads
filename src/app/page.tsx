@@ -84,11 +84,11 @@ export default function Home() {
               <MapPin className="h-4 w-4" />
               {t("hero.badge")}
             </div>
-            <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl dark:text-slate-100">
+            <h1 className="text-4xl font-bold tracking-tight text-slate-900 text-balance sm:text-5xl lg:text-6xl dark:text-slate-100">
               {t("hero.title")}{" "}
               <span className="text-blue-700 dark:text-blue-400">{t("hero.title-highlight")}</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-600 text-pretty dark:text-slate-400">
               {t("hero.subtitle")}
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -119,10 +119,10 @@ export default function Home() {
       <section id="servicios" className="scroll-mt-20 py-20">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
+            <h2 className="text-3xl font-bold text-slate-900 text-balance dark:text-slate-100">
               {t("benefits.title")}
             </h2>
-            <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
+            <p className="mt-4 text-lg text-slate-600 text-pretty dark:text-slate-400">
               {t("benefits.subtitle")}
             </p>
           </div>
@@ -150,10 +150,10 @@ export default function Home() {
       <section className="border-t border-slate-200 bg-slate-50 py-20 dark:border-slate-800 dark:bg-slate-900">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
+            <h2 className="text-3xl font-bold text-slate-900 text-balance dark:text-slate-100">
               {t("demo.title")}
             </h2>
-            <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
+            <p className="mt-4 text-lg text-slate-600 text-pretty dark:text-slate-400">
               {t("demo.subtitle")}
             </p>
             <a
@@ -178,8 +178,8 @@ export default function Home() {
       <section className="bg-blue-700 py-20 dark:bg-blue-900">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-2xl font-bold text-white">{t("works.title")}</h2>
-            <p className="mt-4 text-lg text-blue-100 dark:text-blue-200">
+            <h2 className="text-2xl font-bold text-white text-balance">{t("works.title")}</h2>
+            <p className="mt-4 text-lg text-blue-100 text-pretty dark:text-blue-200">
               {t("works.subtitle")}
             </p>
           </div>
@@ -219,10 +219,10 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-3xl rounded-2xl border border-amber-200 bg-amber-50 p-8 text-center md:p-12 dark:border-amber-800 dark:bg-amber-950/40">
             <Euro className="mx-auto h-8 w-8 text-amber-600 dark:text-amber-400" />
-            <h2 className="mt-4 text-2xl font-bold text-slate-900 dark:text-slate-100">
+            <h2 className="mt-4 text-2xl font-bold text-slate-900 text-balance dark:text-slate-100">
               {t("roi.title")}
             </h2>
-            <p className="mt-4 text-base text-slate-600 leading-relaxed dark:text-slate-400">
+            <p className="mt-4 text-base text-slate-600 leading-relaxed text-pretty dark:text-slate-400">
               {t("roi.desc")}
             </p>
           </div>
@@ -235,10 +235,10 @@ export default function Home() {
       >
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
+            <h2 className="text-3xl font-bold text-slate-900 text-balance dark:text-slate-100">
               {t("steps.title")}
             </h2>
-            <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
+            <p className="mt-4 text-lg text-slate-600 text-pretty dark:text-slate-400">
               {t("steps.subtitle")}
             </p>
           </div>
@@ -259,137 +259,101 @@ export default function Home() {
       <section id="precios" className="scroll-mt-20 py-20">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
+            <h2 className="text-3xl font-bold text-slate-900 text-balance dark:text-slate-100">
               {t("pricing.title")}
             </h2>
-            <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
+            <p className="mt-4 text-lg text-slate-600 text-pretty dark:text-slate-400">
               {t("pricing.subtitle")}
             </p>
           </div>
 
-          <div className="mx-auto mt-10 max-w-lg rounded-2xl border-2 border-amber-500 bg-amber-50 p-8 text-center dark:border-amber-600 dark:bg-amber-950/40">
-            <span className="inline-block rounded-full bg-amber-500 px-4 py-1 text-xs font-bold text-white uppercase tracking-wide">{t("pricing.launch-badge")}</span>
-            <p className="mt-3 text-sm font-medium text-amber-700 uppercase tracking-wide dark:text-amber-400">{t("pricing.setup-label")}</p>
-            <p className="mt-2">
-              <span className="text-2xl text-slate-400 line-through dark:text-slate-500">{t("pricing.setup-old-price")}</span>
-            </p>
-            <p className="mt-1">
-              <span className="text-4xl font-bold text-slate-900 dark:text-slate-100">{t("pricing.setup-price")}</span>
-              <span className="text-slate-500 dark:text-slate-400"> {t("pricing.setup-tag")}</span>
-            </p>
-            <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">{t("pricing.setup-includes")}</p>
-          </div>
-
           <div className="mt-12 grid gap-8 md:grid-cols-3">
             <div className="rounded-2xl border border-slate-200 bg-white p-8 dark:border-slate-700 dark:bg-slate-900">
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">{t("pricing.basic.name")}</h3>
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">{t("pricing.presencia.name")}</h3>
               <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
-                {t("pricing.basic.desc")}
+                {t("pricing.presencia.desc")}
               </p>
-              <p className="mt-6">
-                <span className="text-3xl font-bold text-slate-900 dark:text-slate-100">{t("pricing.basic.price")}</span>
-                <span className="text-slate-500 dark:text-slate-400">{t("pricing.basic.per")}</span>
-              </p>
+              <div className="mt-6">
+                <p className="text-xl text-slate-400 line-through dark:text-slate-500">{t("pricing.presencia.old-price")}</p>
+                <p className="text-3xl font-bold text-slate-900 dark:text-slate-100">{t("pricing.presencia.price")}</p>
+                <p className="text-xs text-amber-600 font-medium dark:text-amber-400">{t("pricing.launch-tag")}</p>
+              </div>
               <ul className="mt-6 space-y-3 text-sm text-slate-600 dark:text-slate-400">
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
-                  {t("pricing.basic.0")}
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
-                  {t("pricing.basic.1")}
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
-                  {t("pricing.basic.2")}
-                </li>
+                {[0,1,2,3,4,5,6,7,8].map((i) => (
+                  <li key={i} className="flex items-center gap-2">
+                    <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
+                    {t(`pricing.presencia.${i}`)}
+                  </li>
+                ))}
               </ul>
               <a
                 href="#agenda-tu-demo"
                 className="mt-8 flex w-full items-center justify-center rounded-lg border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800"
               >
-                {t("pricing.basic.cta")}
+                {t("pricing.presencia.cta")}
               </a>
             </div>
             <div className="relative rounded-2xl border-2 border-blue-700 bg-white p-8 shadow-lg shadow-blue-700/10 dark:border-blue-500 dark:bg-slate-900 dark:shadow-blue-500/10">
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-blue-700 px-4 py-1 text-xs font-semibold text-white dark:bg-blue-600">
-                {t("pricing.pro.badge")}
+                {t("pricing.captacion.badge")}
               </span>
               <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
-                {t("pricing.pro.name")}
+                {t("pricing.captacion.name")}
               </h3>
               <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
-                {t("pricing.pro.desc")}
+                {t("pricing.captacion.desc")}
               </p>
-              <p className="mt-6">
-                <span className="text-3xl font-bold text-slate-900 dark:text-slate-100">{t("pricing.pro.price")}</span>
-                <span className="text-slate-500 dark:text-slate-400">{t("pricing.pro.per")}</span>
-              </p>
+              <div className="mt-6">
+                <p className="text-xl text-slate-400 line-through dark:text-slate-500">{t("pricing.captacion.old-price")}</p>
+                <p className="text-3xl font-bold text-slate-900 dark:text-slate-100">{t("pricing.captacion.price")}</p>
+                <p className="text-xs text-amber-600 font-medium dark:text-amber-400">{t("pricing.launch-tag")}</p>
+              </div>
               <ul className="mt-6 space-y-3 text-sm text-slate-600 dark:text-slate-400">
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
-                  {t("pricing.pro.0")}
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
-                  {t("pricing.pro.1")}
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
-                  {t("pricing.pro.2")}
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
-                  {t("pricing.pro.3")}
-                </li>
+                {[0,1,2,3,4,5,6,7,8].map((i) => (
+                  <li key={i} className="flex items-center gap-2">
+                    <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
+                    {t(`pricing.captacion.${i}`)}
+                  </li>
+                ))}
               </ul>
               <a
                 href="#agenda-tu-demo"
                 className="mt-8 flex w-full items-center justify-center rounded-lg bg-blue-700 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700"
               >
-                {t("pricing.pro.cta")}
+                {t("pricing.captacion.cta")}
               </a>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-8 dark:border-slate-700 dark:bg-slate-900">
               <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
-                {t("pricing.premium.name")}
+                {t("pricing.premium-int.name")}
               </h3>
               <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
-                {t("pricing.premium.desc")}
+                {t("pricing.premium-int.desc")}
               </p>
-              <p className="mt-6">
-                <span className="text-3xl font-bold text-slate-900 dark:text-slate-100">{t("pricing.premium.price")}</span>
-                <span className="text-slate-500 dark:text-slate-400">{t("pricing.premium.per")}</span>
-              </p>
+              <div className="mt-6">
+                <p className="text-xl text-slate-400 line-through dark:text-slate-500">{t("pricing.premium-int.old-price")}</p>
+                <p className="text-3xl font-bold text-slate-900 dark:text-slate-100">{t("pricing.premium-int.price")}</p>
+                <p className="text-xs text-amber-600 font-medium dark:text-amber-400">{t("pricing.launch-tag")}</p>
+              </div>
               <ul className="mt-6 space-y-3 text-sm text-slate-600 dark:text-slate-400">
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
-                  {t("pricing.premium.0")}
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
-                  {t("pricing.premium.1")}
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
-                  {t("pricing.premium.2")}
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
-                  {t("pricing.premium.3")}
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
-                  {t("pricing.premium.4")}
-                </li>
+                {[0,1,2,3,4,5,6,7].map((i) => (
+                  <li key={i} className="flex items-center gap-2">
+                    <Check className="h-4 w-4 shrink-0 text-blue-700 dark:text-blue-400" />
+                    {t(`pricing.premium-int.${i}`)}
+                  </li>
+                ))}
               </ul>
               <a
                 href="#agenda-tu-demo"
                 className="mt-8 flex w-full items-center justify-center rounded-lg border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800"
               >
-                {t("pricing.premium.cta")}
+                {t("pricing.premium-int.cta")}
               </a>
             </div>
+          </div>
+
+          <div className="mx-auto mt-12 max-w-2xl text-center text-sm font-medium text-slate-600 dark:text-slate-400">
+            {t("pricing.bullets")}
           </div>
         </div>
       </section>
@@ -397,7 +361,7 @@ export default function Home() {
       <section className="border-t border-slate-200 bg-white py-20 dark:border-slate-800 dark:bg-slate-950">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
+            <h2 className="text-3xl font-bold text-slate-900 text-balance dark:text-slate-100">
               {t("faq.title")}
             </h2>
           </div>
@@ -419,10 +383,10 @@ export default function Home() {
 
       <section className="border-t border-slate-200 bg-blue-700 py-16 dark:border-slate-800 dark:bg-blue-900">
         <div className="mx-auto max-w-3xl px-6 text-center">
-          <h2 className="text-2xl font-bold text-white">
+          <h2 className="text-2xl font-bold text-white text-balance">
             {t("cta.title")}
           </h2>
-          <p className="mt-4 text-lg text-blue-100 dark:text-blue-200">
+          <p className="mt-4 text-lg text-blue-100 text-pretty dark:text-blue-200">
             {t("cta.desc")}
           </p>
           <a
@@ -441,10 +405,10 @@ export default function Home() {
       >
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
+            <h2 className="text-3xl font-bold text-slate-900 text-balance dark:text-slate-100">
               {t("booking.title")}
             </h2>
-            <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
+            <p className="mt-4 text-lg text-slate-600 text-pretty dark:text-slate-400">
               {t("booking.subtitle")}
             </p>
           </div>

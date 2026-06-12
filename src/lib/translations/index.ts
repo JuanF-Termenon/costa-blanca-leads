@@ -21,7 +21,7 @@ const dictionaries: Record<Locale, Record<string, string>> = { es, en, de, fr, r
 export function getTranslator(locale: Locale) {
   const dict = dictionaries[locale] ?? es;
   return (key: string, fallback?: string): string => {
-    return dict[key] ?? fallback ?? key;
+    return dict[key] ?? es[key] ?? fallback ?? key;
   };
 }
 
