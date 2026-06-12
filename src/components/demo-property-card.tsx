@@ -30,7 +30,7 @@ export function DemoPropertyCard({
     setImgIdx((i) => (i === property.images.length - 1 ? 0 : i + 1));
   }, [property.images.length]);
 
-  const purposeLabel = p.purpose === "venta" ? t("demo.card.for-sale") : t("demo.card.for-rent");
+  const purposeLabel = p.purpose === "venta" ? t("demo.card.for-sale") : p.purpose === "alquiler" ? t("demo.card.for-rent") : t("demo.card.for-season");
 
   return (
     <>
@@ -50,24 +50,24 @@ export function DemoPropertyCard({
               {p.type}
             </span>
             <span className={`absolute left-3 top-12 rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white backdrop-blur-sm ${
-              property.purpose === "venta" ? "bg-blue-600/80" : "bg-emerald-600/80"
-            }`}>
-              {purposeLabel}
-            </span>
-            <span className="absolute right-3 top-3 rounded-full bg-amber-500 px-2.5 py-1 text-xs font-bold text-white">
-              {property.price}
-            </span>
-          </div>
-        ) : (
-          <div className={`relative h-56 bg-gradient-to-br ${color}`}>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <Building2 className="h-12 w-12 text-white/30" />
-            </div>
-            <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-700 backdrop-blur-sm dark:bg-slate-800/90 dark:text-slate-300">
-              {p.type}
-            </span>
-            <span className={`absolute left-3 top-12 rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white backdrop-blur-sm ${
-              property.purpose === "venta" ? "bg-blue-600/80" : "bg-emerald-600/80"
+      property.purpose === "venta" ? "bg-blue-600/80" : property.purpose === "alquiler" ? "bg-emerald-600/80" : "bg-amber-600/80"
+    }`}>
+      {purposeLabel}
+    </span>
+    <span className="absolute right-3 top-3 rounded-full bg-amber-500 px-2.5 py-1 text-xs font-bold text-white">
+      {property.price}
+    </span>
+  </div>
+) : (
+  <div className={`relative h-56 bg-gradient-to-br ${color}`}>
+    <div className="absolute inset-0 flex items-center justify-center">
+      <Building2 className="h-12 w-12 text-white/30" />
+    </div>
+    <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-700 backdrop-blur-sm dark:bg-slate-800/90 dark:text-slate-300">
+      {p.type}
+    </span>
+    <span className={`absolute left-3 top-12 rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white backdrop-blur-sm ${
+      property.purpose === "venta" ? "bg-blue-600/80" : property.purpose === "alquiler" ? "bg-emerald-600/80" : "bg-amber-600/80"
             }`}>
               {purposeLabel}
             </span>
@@ -193,7 +193,7 @@ export function DemoPropertyCard({
                 </div>
                 <div className="flex shrink-0 gap-1.5">
                   <span className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                    property.purpose === "venta" ? "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300" : "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300"
+                    property.purpose === "venta" ? "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300" : property.purpose === "alquiler" ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300" : "bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300"
                   }`}>
                     {purposeLabel}
                   </span>

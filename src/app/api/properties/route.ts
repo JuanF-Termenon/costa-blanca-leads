@@ -24,7 +24,7 @@ export async function GET() {
 }
 
 function nextRef(properties: { ref: string }[], purpose: string) {
-  const prefix = purpose === "venta" ? "CBL-1" : "CBL-2";
+  const prefix = purpose === "venta" ? "CBL-1" : purpose === "alquiler" ? "CBL-2" : "CBL-3";
   const existing = properties
     .filter((p) => p.ref.startsWith(prefix))
     .map((p) => parseInt(p.ref.slice(5), 10));

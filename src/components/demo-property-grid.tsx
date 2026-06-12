@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef, useEffect, useMemo, useCallback } from "react";
-import { ChevronDown } from "lucide-react";
+import { useState, useRef, useEffect, useMemo } from "react";
+import { ChevronDown, ArrowUpDown } from "lucide-react";
 import { DemoPropertyCard } from "@/components/demo-property-card";
 import type { Property } from "@/lib/demo-properties";
 import { useLang } from "@/lib/providers";
@@ -189,7 +189,10 @@ function MultiselectDropdown<T extends string | number>({
 
 
 export function DemoPropertyGrid({ search = "", initialRef }: { search?: string; initialRef?: string }) {
-  const [activeTab, setActiveTab] = useState<"todas" | "venta" | "alquiler">("todas");
+  const [activeTab, setActiveTab] = useState<"todas" | "venta" | "alquiler" | "temporal">("todas");
+  const [sortBy, setSortBy] = useState<"default" | "price-asc" | "price-desc">("default");
+  const [sortOpen, setSortOpen] = useState(false);
+  const sortRef = useRef<HTMLDivElement>(null);
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [selectedBeds, setSelectedBeds] = useState<number[]>([]);
   const [properties, setProperties] = useState<Property[]>([]);
@@ -219,6 +222,7 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
     { id: "todas" as const, label: t("demo.grid.tab-all") },
     { id: "venta" as const, label: t("demo.grid.tab-buy") },
     { id: "alquiler" as const, label: t("demo.grid.tab-rent") },
+    { id: "temporal" as const, label: t("demo.grid.tab-season") },
   ];
 
   const currentBounds = useMemo(() => {
@@ -236,6 +240,14 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
     setRangeMax(currentBounds.max);
   }, [currentBounds.min, currentBounds.max]);
 
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (sortRef.current && !sortRef.current.contains(e.target as Node)) setSortOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
   const filtered = localizedProperties.filter((p) => {
     if (!(activeTab === "todas" || p.purpose === activeTab)) return false;
     if (search && !p.title.toLowerCase().includes(search.toLowerCase()) &&
@@ -247,6 +259,19 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
     if (selectedBeds.length > 0 && !selectedBeds.includes(p.beds)) return false;
     return true;
   });
+
+  const sortOptions = [
+    { id: "default" as const, label: t("demo.grid.sort-default") },
+    { id: "price-asc" as const, label: t("demo.grid.sort-price-asc") },
+    { id: "price-desc" as const, label: t("demo.grid.sort-price-desc") },
+  ];
+
+  const sorted = useMemo(() => {
+    const list = [...filtered];
+    if (sortBy === "price-asc") list.sort((a, b) => parsePrice(a.price) - parsePrice(b.price));
+    if (sortBy === "price-desc") list.sort((a, b) => parsePrice(b.price) - parsePrice(a.price));
+    return list;
+  }, [filtered, sortBy]);
 
   const hasFilters = selectedTypes.length > 0 || selectedBeds.length > 0 || rangeMin > currentBounds.min || rangeMax < currentBounds.max;
 
@@ -320,11 +345,38 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
                 {t("demo.grid.filter-clear")}
               </button>
             )}
+            <div className="relative ml-auto" ref={sortRef}>
+              <button
+                onClick={() => setSortOpen(!sortOpen)}
+                className="flex items-center gap-2 rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-700 hover:border-slate-400 dark:border-slate-600 dark:text-slate-300 dark:hover:border-slate-500"
+              >
+                <ArrowUpDown className="h-4 w-4" />
+                <span className="whitespace-nowrap">{sortOptions.find((o) => o.id === sortBy)?.label}</span>
+                <ChevronDown className={`h-4 w-4 transition-transform ${sortOpen ? "rotate-180" : ""}`} />
+              </button>
+              {sortOpen && (
+                <div className="absolute z-20 mt-1 min-w-44 rounded-xl border border-slate-200 bg-white p-2 shadow-lg dark:border-slate-700 dark:bg-slate-800">
+                  {sortOptions.map((opt) => (
+                    <button
+                      key={opt.id}
+                      onClick={() => { setSortBy(opt.id); setSortOpen(false); }}
+                      className={`flex w-full items-center rounded-lg px-3 py-2 text-sm text-left ${
+                        sortBy === opt.id
+                          ? "bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300"
+                          : "text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-700"
+                      }`}
+                    >
+                      {opt.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
         <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((p, i) => (
+          {sorted.map((p, i) => (
             <DemoPropertyCard
               key={p.ref}
               property={p}
@@ -338,7 +390,7 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
           <p className="mt-12 text-center text-sm text-slate-400 dark:text-slate-500">Cargando propiedades...</p>
         )}
 
-        {!loadingProps && filtered.length === 0 && (
+        {!loadingProps && sorted.length === 0 && (
           <p className="mt-12 text-center text-sm text-slate-500 dark:text-slate-400">
             {t("demo.grid.empty")}
           </p>

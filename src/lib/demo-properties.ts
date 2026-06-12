@@ -7,7 +7,7 @@ export interface Property {
   baths: number;
   m2: number;
   type: string;
-  purpose: "venta" | "alquiler";
+  purpose: "venta" | "alquiler" | "temporal";
   images: string[];
   coords: { lat: number; lng: number };
   desc: string;

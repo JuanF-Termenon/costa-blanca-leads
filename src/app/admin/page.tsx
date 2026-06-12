@@ -6,7 +6,7 @@ import type { Property } from "@/lib/demo-properties";
 
 const emptyForm = {
   title: "", location: "", price: "", beds: 0, baths: 0, m2: 0,
-  type: "Apartamento", purpose: "venta" as "venta" | "alquiler",
+  type: "Apartamento", purpose: "venta" as "venta" | "alquiler" | "temporal",
   desc: "", images: "", lat: 38.645, lng: 0.045,
 };
 
@@ -95,11 +95,12 @@ function PropertyFormModal({
             <div>
               <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Propósito *</label>
               <select
-                value={form.purpose} onChange={(e) => update("purpose", e.target.value as "venta" | "alquiler")}
+                value={form.purpose} onChange={(e) => update("purpose", e.target.value as "venta" | "alquiler" | "temporal")}
                 className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200"
               >
                 <option value="venta">Venta</option>
                 <option value="alquiler">Alquiler</option>
+                <option value="temporal">Temporada</option>
               </select>
             </div>
             <div>
@@ -351,9 +352,11 @@ export default function AdminPage() {
                       <span className={`inline-block rounded-full px-2 py-0.5 text-xs font-medium ${
                         p.purpose === "venta"
                           ? "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300"
-                          : "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300"
+                          : p.purpose === "alquiler"
+                          ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300"
+                          : "bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300"
                       }`}>
-                        {p.purpose === "venta" ? "Venta" : "Alquiler"}
+                        {p.purpose === "venta" ? "Venta" : p.purpose === "alquiler" ? "Alquiler" : "Temporada"}
                       </span>
                     </td>
                     <td className="px-4 py-3 text-right">
