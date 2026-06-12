@@ -290,6 +290,16 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
     setRangeMax(currentBounds.max);
   }
 
+  const scrollRef = useRef(false);
+  useEffect(() => {
+    if (!scrollRef.current) { scrollRef.current = true; return; }
+    const el = document.getElementById('propiedades');
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  }, [page]);
+
   return (
     <section id="propiedades" className="scroll-mt-20 py-16">
       <div className="mx-auto max-w-6xl px-6">
@@ -399,7 +409,7 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
         {!loadingProps && sorted.length > 0 && totalPages > 1 && (
           <div className="mt-10 flex items-center justify-center gap-4">
             <button
-              onClick={() => { setPage((p) => Math.max(0, p - 1)); document.getElementById('propiedades')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
+              onClick={() => { setPage((p) => Math.max(0, p - 1)); }}
               disabled={safePage === 0}
               className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-300 text-slate-600 transition-colors hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-30 dark:border-slate-600 dark:text-slate-400 dark:hover:bg-slate-800"
             >
@@ -409,7 +419,7 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
               {safePage + 1} / {totalPages}
             </span>
             <button
-              onClick={() => { setPage((p) => Math.min(totalPages - 1, p + 1)); document.getElementById('propiedades')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
+              onClick={() => { setPage((p) => Math.min(totalPages - 1, p + 1)); }}
               disabled={safePage >= totalPages - 1}
               className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-300 text-slate-600 transition-colors hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-30 dark:border-slate-600 dark:text-slate-400 dark:hover:bg-slate-800"
             >
