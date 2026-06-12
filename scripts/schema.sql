@@ -42,3 +42,6 @@ CREATE INDEX IF NOT EXISTS idx_properties_client ON properties("clientId");
 CREATE INDEX IF NOT EXISTS idx_properties_ref ON properties(ref);
 CREATE INDEX IF NOT EXISTS idx_clients_slug ON clients(slug);
 CREATE INDEX IF NOT EXISTS idx_clients_domain ON clients(domain);
+
+-- Add available column to existing properties (safe to run even if column exists)
+ALTER TABLE properties ADD COLUMN IF NOT EXISTS "available" BOOLEAN NOT NULL DEFAULT true;
