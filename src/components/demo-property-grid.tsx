@@ -91,7 +91,7 @@ function DualRangeSlider({
   const pct = (v: number) => ((v - min) / (max - min)) * 100;
 
   return (
-    <div className="relative w-56">
+    <div className="relative">
       <div className="relative h-6" ref={trackRef}>
         <div className="absolute top-1/2 left-0 right-0 h-1 -translate-y-1/2 rounded-full bg-slate-200 dark:bg-slate-700" />
         <div
@@ -344,14 +344,16 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
               onChange={setSelectedBeds}
               selectedLabel={selectedBeds.length > 0 ? t("demo.grid.filter-selected").replace("{n}", String(selectedBeds.length)) : undefined}
             />
-            <DualRangeSlider
-              min={currentBounds.min}
-              max={currentBounds.max}
-              valueMin={rangeMin}
-              valueMax={rangeMax}
-              onChangeMin={setRangeMin}
-              onChangeMax={setRangeMax}
-            />
+            <div className="flex-1 min-w-[200px] max-w-xs">
+              <DualRangeSlider
+                min={currentBounds.min}
+                max={currentBounds.max}
+                valueMin={rangeMin}
+                valueMax={rangeMax}
+                onChangeMin={setRangeMin}
+                onChangeMax={setRangeMax}
+              />
+            </div>
             {hasFilters && (
               <button
                 onClick={clearFilters}
