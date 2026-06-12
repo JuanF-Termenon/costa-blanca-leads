@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { Plus, Pencil, Trash2, X, Building2, Eye, EyeOff, Languages } from "lucide-react";
+import { Plus, Pencil, Trash2, X, Building2, Eye, EyeOff, Languages, Upload, ImageIcon, Loader } from "lucide-react";
 import type { Property } from "@/lib/demo-properties";
 
 const emptyForm = {
@@ -28,6 +28,10 @@ function PropertyFormModal({
   const [translations, setTranslations] = useState<Record<string, { title: string; location: string; desc: string }>>({});
   const [showTranslations, setShowTranslations] = useState(false);
   const [transTab, setTransTab] = useState<string>("en");
+  const [pendingFiles, setPendingFiles] = useState<File[]>([]);
+  const [pendingPreviews, setPendingPreviews] = useState<string[]>([]);
+  const [uploading, setUploading] = useState(false);
+  const [uploadMsg, setUploadMsg] = useState("");
 
   useEffect(() => {
     if (initial) {
@@ -55,7 +59,18 @@ function PropertyFormModal({
       setForm(emptyForm);
       setTranslations({});
     }
+    setPendingFiles([]);
+    setPendingPreviews((prev) => { prev.forEach((p) => URL.revokeObjectURL(p)); return []; });
+    setUploadMsg("");
+    setUploading(false);
   }, [initial, open]);
+
+  useEffect(() => {
+    if (uploadMsg) {
+      const t = setTimeout(() => setUploadMsg(""), 3000);
+      return () => clearTimeout(t);
+    }
+  }, [uploadMsg]);
 
   if (!open) return null;
 
@@ -66,6 +81,74 @@ function PropertyFormModal({
 
   function update<K extends keyof FormData>(key: K, value: FormData[K]) {
     setForm((f) => ({ ...f, [key]: value }));
+  }
+
+  function handleFileSelect(e: React.ChangeEvent<HTMLInputElement>) {
+    const files = Array.from(e.target.files || []);
+    const previews = files.map((f) => URL.createObjectURL(f));
+    setPendingFiles((prev) => [...prev, ...files]);
+    setPendingPreviews((prev) => [...prev, ...previews]);
+    e.target.value = "";
+  }
+
+  function removePending(index: number) {
+    URL.revokeObjectURL(pendingPreviews[index]);
+    setPendingFiles((prev) => prev.filter((_, i) => i !== index));
+    setPendingPreviews((prev) => prev.filter((_, i) => i !== index));
+  }
+
+  async function uploadPending(index: number) {
+    const file = pendingFiles[index];
+    if (!file) return;
+    setUploading(true);
+    try {
+      const body = new FormData();
+      body.append("file", file);
+      const res = await fetch("/api/upload", { method: "POST", body });
+      if (!res.ok) throw new Error();
+      const { url } = await res.json();
+      removePending(index);
+      setForm((f) => ({ ...f, images: f.images ? f.images + "\n" + url : url }));
+    } catch {
+      setUploadMsg("Error al subir imagen");
+    } finally {
+      setUploading(false);
+    }
+  }
+
+  async function uploadAllPending() {
+    if (pendingFiles.length === 0) return;
+    setUploading(true);
+    for (const file of pendingFiles) {
+      try {
+        const body = new FormData();
+        body.append("file", file);
+        const res = await fetch("/api/upload", { method: "POST", body });
+        if (!res.ok) throw new Error();
+        const { url } = await res.json();
+        setForm((f) => ({ ...f, images: f.images ? f.images + "\n" + url : url }));
+      } catch {
+        setUploadMsg("Error al subir alguna imagen");
+      }
+    }
+    pendingPreviews.forEach((p) => URL.revokeObjectURL(p));
+    setPendingFiles([]);
+    setPendingPreviews([]);
+    setUploading(false);
+  }
+
+  async function removeImage(url: string) {
+    setUploading(true);
+    try {
+      await fetch("/api/upload", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ url }) });
+    } catch {
+      // ignore blob delete errors (orphaned URL is fine)
+    }
+    setForm((f) => {
+      const urls = f.images.split("\n").map((s) => s.trim()).filter(Boolean).filter((u) => u !== url);
+      return { ...f, images: urls.join("\n") };
+    });
+    setUploading(false);
   }
 
   function updateTranslation(locale: string, field: "title" | "location" | "desc", value: string) {
@@ -185,13 +268,67 @@ function PropertyFormModal({
                 className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200"
               />
             </div>
-            <div className="col-span-2">
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Imágenes (URLs, una por línea)</label>
-              <textarea
-                value={form.images} onChange={(e) => update("images", e.target.value)}
-                rows={3} placeholder="https://images.unsplash.com/..."
-                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200"
-              />
+            <div className="col-span-2 space-y-3">
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Imágenes</label>
+
+              {uploadMsg && (
+                <div className="rounded bg-emerald-50 px-3 py-2 text-xs text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
+                  {uploadMsg}
+                </div>
+              )}
+
+              <div className="flex flex-wrap gap-3">
+                {form.images.split("\n").map((s) => s.trim()).filter(Boolean).map((url, i) => (
+                  <div key={i} className="group relative h-24 w-32 overflow-hidden rounded-lg border border-slate-200 bg-slate-100 dark:border-slate-700 dark:bg-slate-800">
+                    <img src={url} alt="" className="h-full w-full object-cover" />
+                    <button type="button" onClick={() => removeImage(url)}
+                      className="absolute top-1 right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-white opacity-0 transition-opacity group-hover:opacity-100"
+                    >
+                      <X className="h-3 w-3" />
+                    </button>
+                  </div>
+                ))}
+                {!form.images && (
+                  <div className="flex h-24 w-32 items-center justify-center rounded-lg border border-dashed border-slate-300 dark:border-slate-600">
+                    <ImageIcon className="h-6 w-6 text-slate-300 dark:text-slate-600" />
+                  </div>
+                )}
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                {pendingPreviews.map((preview, i) => (
+                  <div key={i} className="relative h-24 w-32 overflow-hidden rounded-lg border border-blue-300 bg-slate-100 dark:border-blue-700 dark:bg-slate-800">
+                    <img src={preview} alt="" className="h-full w-full object-cover" />
+                    <button type="button" onClick={() => removePending(i)}
+                      className="absolute top-1 right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-white"
+                    >
+                      <X className="h-3 w-3" />
+                    </button>
+                    <button type="button" onClick={() => uploadPending(i)} disabled={uploading}
+                      className="absolute bottom-1 left-1/2 -translate-x-1/2 rounded bg-blue-700 px-2 py-0.5 text-xs text-white hover:bg-blue-800 disabled:opacity-50"
+                    >
+                      Subir
+                    </button>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-3">
+                <label className="cursor-pointer rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-600 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-400 dark:hover:bg-slate-800">
+                  <Upload className="mr-2 inline h-4 w-4" />
+                  Seleccionar imágenes
+                  <input type="file" accept="image/*" multiple onChange={handleFileSelect} className="hidden" />
+                </label>
+                {pendingFiles.length > 1 && (
+                  <button type="button" onClick={uploadAllPending} disabled={uploading}
+                    className="rounded-lg bg-blue-700 px-3 py-2 text-sm font-medium text-white hover:bg-blue-800 disabled:opacity-50"
+                  >
+                    {uploading ? <Loader className="inline h-4 w-4 animate-spin" /> : null}
+                    Subir todas ({pendingFiles.length})
+                  </button>
+                )}
+                {uploading && <span className="text-xs text-slate-400">Subiendo...</span>}
+              </div>
             </div>
           </div>
 

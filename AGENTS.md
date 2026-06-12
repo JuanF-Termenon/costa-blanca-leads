@@ -19,10 +19,11 @@ Build and polish a SaaS landing page + interactive demo for selling SEO-optimize
 ## Tech Stack
 - Next.js 16.2.9 (Turbopack), React, TypeScript
 - Resend (email via API), WhatsApp API (pending SIM)
-- Vercel hosting, Geist fonts, Lucide icons
+- Vercel hosting (Blob for image storage), Geist fonts, Lucide icons
 - App Router, server components, client components where needed
 - i18n: 5 locales (es/en/de/fr/ru) via flat dictionaries + property translation overrides
 - Auto-translation: Google Translate on Vercel build (prebuild script), DeepL locally with API key
+- Image storage: Vercel Blob (public store), upload via POST /api/upload, delete via DELETE /api/upload
 
 ## Completed Features
 
@@ -99,6 +100,7 @@ Build and polish a SaaS landing page + interactive demo for selling SEO-optimize
 - Pre-existing lint warnings (not blockers): img→Image, a→Link, ref in render, setState in effect
 
 ## Environment Variables (Vercel)
+- `BLOB_READ_WRITE_TOKEN` — Vercel Blob read-write token (auto-generated, linked via `vercel blob create-store --yes`)
 - `RESEND_API_KEY` — Resend API key for email
 - `CONTACT_EMAIL` — email where leads arrive (jf.termenon@gmail.com)
 - `WHATSAPP_PHONE` — 34691157183 (server-side, for wa.me redirects)
@@ -117,6 +119,7 @@ Build and polish a SaaS landing page + interactive demo for selling SEO-optimize
 - `getTranslator()` in translations/index.ts falls back to Spanish dict for missing keys
 - `localizeProperty()` in property-translations.ts falls back to property's Spanish fields
 - Auto-translation: Vercel build uses Google, local with DeepL key, no API calls otherwise
+- Image upload: Vercel Blob via server upload (POST /api/upload), file ≤4.5MB; admin form uploads one-by-one with local preview via URL.createObjectURL before upload
 - Properties live in same file as interface, exported as default array
 - `DemoPropertyCard` client component — card + modal, uses `useLang()` + `localizeProperty()`
 - `DemoPropertyGrid` client component — filter tabs + search, localized filtering
@@ -136,6 +139,7 @@ Build and polish a SaaS landing page + interactive demo for selling SEO-optimize
 - `src/app/admin/login/page.tsx` — Password form page
 - `src/proxy.ts` — Protects `/admin` routes, redirects to `/admin/login` if no session cookie
 - `src/app/api/whatsapp/route.ts` — GET handler (redirects to wa.me)
+- `src/app/api/upload/route.ts` — POST (upload to Vercel Blob) + DELETE (delete from Blob)
 - `src/app/not-found.tsx`, `src/app/error.tsx` — Error pages
 - `src/components/demo-property-card.tsx` — Property card + modal with contact tabs
 - `src/components/demo-property-grid.tsx` — Filtered/searchable grid with DualRangeSlider
@@ -152,6 +156,17 @@ Build and polish a SaaS landing page + interactive demo for selling SEO-optimize
 - `scripts/translate-properties.mjs` — Auto-translation script (prebuild)
 - `.env.local` — Local env vars
 - `.vercel/project.json` — Vercel project (costa-blanca-leads)
+
+## Image Upload Workflow
+1. From admin panel "Editar" → scroll to "Imágenes" section
+2. Click "Seleccionar imágenes" → pick files from PC
+3. Local preview appears via `URL.createObjectURL` before any upload
+4. Click "Subir" on individual previews or "Subir todas (N)" for batch upload
+5. `POST /api/upload` sends file to Vercel Blob, returns public URL
+6. URL is appended to the images list; preview switches from local to Blob URL
+7. Remove images via × button (deletes from Blob + removes from list)
+8. Save property to persist URLs
+9. VPS images are stored in Vercel Blob public store (store ID in project env vars)
 
 ## Workflow: Adding a Property
 1. Add property in Spanish to `src/lib/demo-properties.ts` (follow existing format)
