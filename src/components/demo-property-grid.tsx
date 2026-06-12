@@ -192,6 +192,7 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
   const [activeTab, setActiveTab] = useState<"todas" | "venta" | "alquiler" | "temporal">("todas");
   const [sortBy, setSortBy] = useState<"default" | "price-asc" | "price-desc">("default");
   const [page, setPage] = useState(0);
+  const gridRef = useRef<HTMLDivElement>(null);
   const ITEMS_PER_PAGE = 12;
   const [sortOpen, setSortOpen] = useState(false);
   const sortRef = useRef<HTMLDivElement>(null);
@@ -279,6 +280,10 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
   const safePage = Math.min(page, totalPages - 1);
   const pageStart = safePage * ITEMS_PER_PAGE;
   const paginated = sorted.slice(pageStart, pageStart + ITEMS_PER_PAGE);
+
+  useEffect(() => {
+    gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [safePage]);
 
   const hasFilters = selectedTypes.length > 0 || selectedBeds.length > 0 || rangeMin > currentBounds.min || rangeMax < currentBounds.max;
 
@@ -384,7 +389,7 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
           </div>
         </div>
 
-        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div ref={gridRef} className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {paginated.map((p, i) => (
             <DemoPropertyCard
               key={p.ref}
