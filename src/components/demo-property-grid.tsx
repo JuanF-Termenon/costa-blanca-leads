@@ -283,7 +283,7 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
 
   useEffect(() => {
     setPage(0);
-  }, [filtered, sortBy]);
+  }, [sorted.length]);
 
   const pageStart = page * ITEMS_PER_PAGE;
   const paginated = sorted.slice(pageStart, pageStart + ITEMS_PER_PAGE);
