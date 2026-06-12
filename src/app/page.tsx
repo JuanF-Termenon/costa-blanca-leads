@@ -164,11 +164,11 @@ export default function Home() {
             </a>
           </div>
           <div className="mx-auto mt-10 grid max-w-5xl gap-6 sm:grid-cols-3">
-            {properties.slice(0, 3).map((property, i) => (
+            {["CBL-101", "CBL-104", "CBL-201"].map((ref) => properties.find((p) => p.ref === ref)!).map((property, i) => (
               <DemoPropertyCard
                 key={property.ref}
                 property={property}
-                color={["from-blue-400 to-blue-600", "from-emerald-400 to-emerald-600", "from-amber-400 to-amber-600"][i]}
+                color={["from-blue-400 to-blue-600", "from-amber-400 to-amber-600", "from-emerald-400 to-emerald-600"][i]}
               />
             ))}
           </div>
