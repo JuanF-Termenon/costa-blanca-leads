@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useMemo } from "react";
-import { ChevronDown, ArrowUpDown } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronDown, ArrowUpDown } from "lucide-react";
 import { DemoPropertyCard } from "@/components/demo-property-card";
 import type { Property } from "@/lib/demo-properties";
 import { useLang } from "@/lib/providers";
@@ -191,6 +191,8 @@ function MultiselectDropdown<T extends string | number>({
 export function DemoPropertyGrid({ search = "", initialRef }: { search?: string; initialRef?: string }) {
   const [activeTab, setActiveTab] = useState<"todas" | "venta" | "alquiler" | "temporal">("todas");
   const [sortBy, setSortBy] = useState<"default" | "price-asc" | "price-desc">("default");
+  const [page, setPage] = useState(0);
+  const ITEMS_PER_PAGE = 12;
   const [sortOpen, setSortOpen] = useState(false);
   const sortRef = useRef<HTMLDivElement>(null);
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
@@ -272,6 +274,19 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
     if (sortBy === "price-desc") list.sort((a, b) => parsePrice(b.price) - parsePrice(a.price));
     return list;
   }, [filtered, sortBy]);
+
+  const totalPages = Math.max(1, Math.ceil(sorted.length / ITEMS_PER_PAGE));
+
+  useEffect(() => {
+    if (page >= totalPages) setPage(0);
+  }, [totalPages, page]);
+
+  useEffect(() => {
+    setPage(0);
+  }, [filtered, sortBy]);
+
+  const pageStart = page * ITEMS_PER_PAGE;
+  const paginated = sorted.slice(pageStart, pageStart + ITEMS_PER_PAGE);
 
   const hasFilters = selectedTypes.length > 0 || selectedBeds.length > 0 || rangeMin > currentBounds.min || rangeMax < currentBounds.max;
 
@@ -376,15 +391,37 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
         </div>
 
         <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {sorted.map((p, i) => (
+          {paginated.map((p, i) => (
             <DemoPropertyCard
               key={p.ref}
               property={p}
-              color={propertyColors[i % propertyColors.length]}
+              color={propertyColors[(pageStart + i) % propertyColors.length]}
               defaultOpen={p.ref === initialRef}
             />
           ))}
         </div>
+
+        {!loadingProps && sorted.length > 0 && totalPages > 1 && (
+          <div className="mt-10 flex items-center justify-center gap-4">
+            <button
+              onClick={() => setPage(Math.max(0, page - 1))}
+              disabled={page === 0}
+              className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-300 text-slate-600 transition-colors hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-30 dark:border-slate-600 dark:text-slate-400 dark:hover:bg-slate-800"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <span className="text-sm text-slate-500 dark:text-slate-400">
+              {page + 1} / {totalPages}
+            </span>
+            <button
+              onClick={() => setPage(Math.min(totalPages - 1, page + 1))}
+              disabled={page >= totalPages - 1}
+              className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-300 text-slate-600 transition-colors hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-30 dark:border-slate-600 dark:text-slate-400 dark:hover:bg-slate-800"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+        )}
 
         {loadingProps && (
           <p className="mt-12 text-center text-sm text-slate-400 dark:text-slate-500">Cargando propiedades...</p>
