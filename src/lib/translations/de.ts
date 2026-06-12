@@ -200,11 +200,11 @@ export const de: Record<string, string> = {
   "demo.about.experience": "Jahre Erfahrung",
   "demo.about.rating": "Durchschnittsbewertung ★",
   "demo.contact.title": "Kontaktieren Sie uns",
-  "demo.contact.subtitle": "Besuchen Sie uns in Costa Blanca oder rufen Sie uns an",
+  "demo.contact.subtitle": "Besuchen Sie uns oder rufen Sie uns an",
   "demo.contact.phone-label": "Telefon",
   "demo.contact.email-label": "E-Mail",
   "demo.contact.address-label": "Adresse",
-  "demo.contact.address": "Avda. Gabriel Miró, 25 · 03710 Costa Blanca (Alicante)",
+  "demo.contact.address": "Avda. Gabriel Miró, 25 · 03710 Calpe (Alicante)",
   "demo.footer.text": "© 2026 Immobilien Costa Blanca · Immobilienagentur in Costa Blanca",
   "demo.footer.note": "Dies ist eine Demo-Vorlage. Ihre Website kann Ihre eigene Marke, Farben und Immobilien haben.",
 };

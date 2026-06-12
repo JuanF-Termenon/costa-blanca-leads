@@ -200,11 +200,11 @@ export const es: Record<string, string> = {
   "demo.about.experience": "Años de experiencia",
   "demo.about.rating": "Valoración media ★",
   "demo.contact.title": "Contacta con nosotros",
-  "demo.contact.subtitle": "Visítanos en Costa Blanca o llámanos para cualquier consulta",
+  "demo.contact.subtitle": "Visítanos o llámanos para cualquier consulta",
   "demo.contact.phone-label": "Teléfono",
   "demo.contact.email-label": "Email",
   "demo.contact.address-label": "Dirección",
-  "demo.contact.address": "Avda. Gabriel Miró, 25 · 03710 Costa Blanca (Alicante)",
+  "demo.contact.address": "Avda. Gabriel Miró, 25 · 03710 Calpe (Alicante)",
   "demo.footer.text": "© 2026 Inmobiliaria Costa Blanca · Inmobiliaria en Costa Blanca",
   "demo.footer.note": "Esta es una plantilla demo. Tu web puede tener tu propia marca, colores y propiedades.",
 };

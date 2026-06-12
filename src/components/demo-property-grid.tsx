@@ -251,6 +251,7 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
   }, []);
 
   const filtered = useMemo(() => localizedProperties.filter((p) => {
+    if (p.available === false) return false;
     if (!(activeTab === "todas" || p.purpose === activeTab)) return false;
     if (search && !p.title.toLowerCase().includes(search.toLowerCase()) &&
         !p.location.toLowerCase().includes(search.toLowerCase()) &&

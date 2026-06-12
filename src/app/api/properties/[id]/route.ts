@@ -26,8 +26,8 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
 
     const cur = existing.rows[0];
     const result = await query(
-      `UPDATE properties SET title=$1, location=$2, price=$3, beds=$4, baths=$5, m2=$6, type=$7, purpose=$8, "desc"=$9, images=$10, lat=$11, lng=$12, "updatedAt"=now()
-       WHERE ref=$13 RETURNING *`,
+      `UPDATE properties SET title=$1, location=$2, price=$3, beds=$4, baths=$5, m2=$6, type=$7, purpose=$8, "desc"=$9, images=$10, lat=$11, lng=$12, "available"=$13, "updatedAt"=now()
+       WHERE ref=$14 RETURNING *`,
       [
         body.title ?? cur.title,
         body.location ?? cur.location,
@@ -41,6 +41,7 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
         body.images ? JSON.stringify(body.images) : cur.images,
         body.coords?.lat ?? cur.lat,
         body.coords?.lng ?? cur.lng,
+        body.available !== undefined ? body.available : cur.available,
         id,
       ]
     );

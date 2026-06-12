@@ -11,6 +11,7 @@ export interface Property {
   images: string[];
   coords: { lat: number; lng: number };
   desc: string;
+  available?: boolean;
 }
 
 const properties: Property[] = [

@@ -38,7 +38,7 @@ export async function POST(request: Request) {
     if (!clientId) return NextResponse.json({ error: "No default client" }, { status: 500 });
 
     const body = await request.json();
-    const { title, location, price, beds, baths, m2, type, purpose, images, coords, desc } = body;
+    const { title, location, price, beds, baths, m2, type, purpose, images, coords, desc, available } = body;
 
     if (!title || !price || !type || !purpose || !desc) {
       return NextResponse.json({ error: "Faltan campos obligatorios" }, { status: 400 });
@@ -51,13 +51,14 @@ export async function POST(request: Request) {
     const ref = nextRef(existing.rows, purpose);
 
     const result = await query(
-      `INSERT INTO properties (ref, "clientId", title, location, price, beds, baths, m2, type, purpose, "desc", images, lat, lng)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
+      `INSERT INTO properties (ref, "clientId", title, location, price, beds, baths, m2, type, purpose, "desc", images, lat, lng, "available")
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)
        RETURNING *`,
       [
         ref, clientId, title, location || "", price,
         beds ?? 0, baths ?? 0, m2 ?? 0, type, purpose, desc,
         JSON.stringify(images || []), coords?.lat ?? 38.645, coords?.lng ?? 0.045,
+        available !== false,
       ]
     );
 

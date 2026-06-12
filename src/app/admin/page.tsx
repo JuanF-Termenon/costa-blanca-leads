@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { Plus, Pencil, Trash2, X, Building2 } from "lucide-react";
+import { Plus, Pencil, Trash2, X, Building2, Eye, EyeOff } from "lucide-react";
 import type { Property } from "@/lib/demo-properties";
 
 const emptyForm = {
@@ -286,6 +286,21 @@ export default function AdminPage() {
     }
   }
 
+  async function handleToggleAvailable(p: Property) {
+    try {
+      const res = await fetch(`/api/properties/${p.ref}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ available: !(p.available ?? true) }),
+      });
+      if (!res.ok) throw new Error();
+      setMsg(p.available === false ? "Propiedad visible" : "Propiedad oculta");
+      fetchProperties();
+    } catch {
+      setMsg("Error al actualizar");
+    }
+  }
+
   useEffect(() => {
     if (msg) {
       const t = setTimeout(() => setMsg(""), 3000);
@@ -337,17 +352,28 @@ export default function AdminPage() {
                   <th className="px-4 py-3">Título</th>
                   <th className="px-4 py-3">Tipo</th>
                   <th className="px-4 py-3">Precio</th>
+                  <th className="px-4 py-3 hidden sm:table-cell">Estado</th>
                   <th className="px-4 py-3 hidden sm:table-cell">Propósito</th>
                   <th className="px-4 py-3 text-right">Acciones</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                 {properties.map((p) => (
-                  <tr key={p.ref} className="hover:bg-slate-50 dark:hover:bg-slate-900/50">
+                  <tr key={p.ref} className={`hover:bg-slate-50 dark:hover:bg-slate-900/50 ${p.available === false ? "opacity-50" : ""}`}>
                     <td className="px-4 py-3 font-mono text-xs text-slate-500 dark:text-slate-400">{p.ref}</td>
                     <td className="px-4 py-3 font-medium text-slate-900 dark:text-slate-100 max-w-xs truncate">{p.title}</td>
                     <td className="px-4 py-3 text-slate-600 dark:text-slate-400">{p.type}</td>
                     <td className="px-4 py-3 text-slate-600 dark:text-slate-400 whitespace-nowrap">{p.price}</td>
+                    <td className="px-4 py-3 hidden sm:table-cell">
+                      <span className={`inline-flex items-center gap-1.5 text-xs font-medium ${
+                        p.available !== false ? "text-emerald-600 dark:text-emerald-400" : "text-red-500 dark:text-red-400"
+                      }`}>
+                        <span className={`inline-block h-2 w-2 rounded-full ${
+                          p.available !== false ? "bg-emerald-500" : "bg-red-400"
+                        }`} />
+                        {p.available !== false ? "Visible" : "Oculta"}
+                      </span>
+                    </td>
                     <td className="px-4 py-3 hidden sm:table-cell">
                       <span className={`inline-block rounded-full px-2 py-0.5 text-xs font-medium ${
                         p.purpose === "venta"
@@ -361,6 +387,16 @@ export default function AdminPage() {
                     </td>
                     <td className="px-4 py-3 text-right">
                       <div className="flex items-center justify-end gap-1">
+                        <button onClick={() => handleToggleAvailable(p)}
+                          className={`rounded-lg p-2 transition-colors ${
+                            p.available !== false
+                              ? "text-slate-400 hover:bg-slate-100 hover:text-amber-600 dark:hover:bg-slate-800 dark:hover:text-amber-400"
+                              : "text-emerald-500 hover:bg-slate-100 dark:hover:bg-slate-800"
+                          }`}
+                          title={p.available !== false ? "Ocultar propiedad" : "Mostrar propiedad"}
+                        >
+                          {p.available !== false ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                        </button>
                         <button onClick={() => { setEditing(p); setShowForm(true); }}
                           className="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-blue-700 dark:hover:bg-slate-800 dark:hover:text-blue-400"
                           title="Editar"
@@ -379,7 +415,7 @@ export default function AdminPage() {
                 ))}
                 {properties.length === 0 && (
                   <tr>
-                    <td colSpan={6} className="px-4 py-12 text-center text-slate-400">
+                    <td colSpan={7} className="px-4 py-12 text-center text-slate-400">
                       <Building2 className="mx-auto h-8 w-8 mb-2 opacity-50" />
                       <p>No hay propiedades aún</p>
                     </td>

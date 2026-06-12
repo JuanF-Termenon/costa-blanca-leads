@@ -52,9 +52,9 @@ async function main() {
       continue;
     }
     await pool.query(
-      `INSERT INTO properties (ref, "clientId", title, location, price, beds, baths, m2, type, purpose, "desc", images, lat, lng)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)`,
-      [p.ref, clientId, p.title, p.location, p.price, p.beds, p.baths, p.m2, p.type, p.purpose, p.desc, JSON.stringify(p.images || []), p.coords?.lat ?? 38.645, p.coords?.lng ?? 0.045]
+      `INSERT INTO properties (ref, "clientId", title, location, price, beds, baths, m2, type, purpose, "desc", images, lat, lng, "available")
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)`,
+      [p.ref, clientId, p.title, p.location, p.price, p.beds, p.baths, p.m2, p.type, p.purpose, p.desc, JSON.stringify(p.images || []), p.coords?.lat ?? 38.645, p.coords?.lng ?? 0.045, p.available !== false]
     );
     console.log(`  ✅ ${p.ref}: ${p.title}`);
     created++;
