@@ -192,7 +192,6 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
   const [activeTab, setActiveTab] = useState<"todas" | "venta" | "alquiler" | "temporal">("todas");
   const [sortBy, setSortBy] = useState<"default" | "price-asc" | "price-desc">("default");
   const [page, setPage] = useState(0);
-  const gridRef = useRef<HTMLDivElement>(null);
   const ITEMS_PER_PAGE = 12;
   const [sortOpen, setSortOpen] = useState(false);
   const sortRef = useRef<HTMLDivElement>(null);
@@ -281,12 +280,6 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
   const pageStart = safePage * ITEMS_PER_PAGE;
   const paginated = sorted.slice(pageStart, pageStart + ITEMS_PER_PAGE);
 
-  const initial = useRef(true);
-  useEffect(() => {
-    if (initial.current) { initial.current = false; return; }
-    gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, [safePage]);
-
   const hasFilters = selectedTypes.length > 0 || selectedBeds.length > 0 || rangeMin > currentBounds.min || rangeMax < currentBounds.max;
 
   function clearFilters() {
@@ -297,7 +290,7 @@ export function DemoPropertyGrid({ search = "", initialRef }: { search?: string;
   }
 
   return (
-    <section ref={gridRef} id="propiedades" className="scroll-mt-20 py-16">
+    <section id="propiedades" className="scroll-mt-20 py-16">
       <div className="mx-auto max-w-6xl px-6">
         <div>
           <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{t("demo.grid.title")}</h2>
