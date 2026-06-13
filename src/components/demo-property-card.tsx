@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { MapPin, Bed, Bath, Maximize, X, Phone, Mail, MessageCircle, Building2, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Property } from "@/lib/demo-properties";
 import { useLang } from "@/lib/providers";
@@ -29,6 +29,17 @@ export function DemoPropertyCard({
   const nextImg = useCallback(() => {
     setImgIdx((i) => (i === property.images.length - 1 ? 0 : i + 1));
   }, [property.images.length]);
+
+  useEffect(() => {
+    if (!open) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") prevImg();
+      if (e.key === "ArrowRight") nextImg();
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [open, prevImg, nextImg]);
 
   const purposeLabel = p.purpose === "venta" ? t("demo.card.for-sale") : p.purpose === "alquiler" ? t("demo.card.for-rent") : t("demo.card.for-season");
 
@@ -134,13 +145,13 @@ export function DemoPropertyCard({
                   <>
                     <button
                       onClick={prevImg}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm transition-colors hover:bg-white/40"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm transition-colors hover:bg-black/50"
                     >
                       <ChevronLeft className="h-5 w-5" />
                     </button>
                     <button
                       onClick={nextImg}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm transition-colors hover:bg-white/40"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm transition-colors hover:bg-black/50"
                     >
                       <ChevronRight className="h-5 w-5" />
                     </button>
@@ -157,15 +168,40 @@ export function DemoPropertyCard({
                     </div>
                   </>
                 )}
+                <div className="absolute right-3 bottom-3 rounded-full bg-black/40 px-3 py-0.5 text-xs text-white backdrop-blur-sm">
+                  {imgIdx + 1} / {property.images.length}
+                </div>
                 <button
                   onClick={() => setOpen(false)}
-                  className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm transition-colors hover:bg-white/30"
+                  className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm transition-colors hover:bg-black/50"
                 >
                   <X className="h-5 w-5" />
                 </button>
-                <span className="absolute left-4 bottom-4 rounded-full bg-amber-500 px-4 py-1.5 text-base font-bold text-white shadow-lg">
+                <span className="absolute left-4 top-4 rounded-full bg-amber-500 px-4 py-1.5 text-base font-bold text-white shadow-lg">
                   {property.price}
                 </span>
+
+                {property.images.length > 1 && (
+                  <div className="flex gap-1.5 overflow-x-auto bg-slate-100 p-2 dark:bg-slate-800">
+                    {property.images.map((url, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setImgIdx(i)}
+                        className={`shrink-0 overflow-hidden rounded-lg border-2 transition-all ${
+                          i === imgIdx
+                            ? "border-blue-500 opacity-100"
+                            : "border-transparent opacity-60 hover:opacity-90"
+                        }`}
+                      >
+                        <img
+                          src={url}
+                          alt=""
+                          className="h-14 w-20 object-cover"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             ) : (
               <div className={`relative h-56 bg-gradient-to-br ${color}`}>
