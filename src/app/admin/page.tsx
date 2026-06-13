@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { Plus, Pencil, Trash2, X, Building2, Eye, EyeOff, Languages, Upload, ImageIcon, Loader } from "lucide-react";
+import { useTheme } from "@/lib/providers";
+import { Plus, Pencil, Trash2, X, Building2, Eye, EyeOff, Languages, Upload, ImageIcon, Loader, Moon, Sun } from "lucide-react";
 import type { Property } from "@/lib/demo-properties";
 
 const emptyForm = {
@@ -432,6 +433,7 @@ function DeleteConfirm({ open, onClose, onConfirm, title }: {
 }
 
 export default function AdminPage() {
+  const { theme, toggleTheme } = useTheme();
   const [properties, setProperties] = useState<Property[]>([]);
   const [loading, setLoading] = useState(true);
   const [editing, setEditing] = useState<Property | undefined>(undefined);
@@ -558,7 +560,14 @@ export default function AdminPage() {
             <span className="rounded bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-900/40 dark:text-amber-300">panel</span>
           </div>
           <div className="flex items-center gap-3">
-            <a href="/" className="text-sm text-blue-700 hover:underline dark:text-blue-400">Ver web →</a>
+            <a href="/demo" className="text-sm text-blue-700 hover:underline dark:text-blue-400">Ver demo →</a>
+            <button
+              onClick={toggleTheme}
+              className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 transition-colors hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
+              aria-label={theme === "light" ? "Activar modo oscuro" : "Activar modo claro"}
+            >
+              {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+            </button>
             <button
               onClick={async () => {
                 await fetch("/api/admin/verify", { method: "DELETE" });
