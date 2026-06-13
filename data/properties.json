@@ -10,11 +10,13 @@
     "type": "Apartamento",
     "purpose": "venta",
     "images": [
-      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80",
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop"
     ],
-    "coords": { "lat": 38.640, "lng": 0.050 },
+    "coords": {
+      "lat": 38.64,
+      "lng": 0.05
+    },
     "desc": "Precioso apartamento reformado con vistas al mar y al Peñón de Ifach. A 50m de la playa.",
     "available": true
   },
@@ -29,10 +31,13 @@
     "type": "Villa",
     "purpose": "venta",
     "images": [
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80"
+      "https://images.unsplash.com/photo-1613977257363-707ba9340b1e?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop"
     ],
-    "coords": { "lat": 38.655, "lng": 0.035 },
+    "coords": {
+      "lat": 38.655,
+      "lng": 0.035
+    },
     "desc": "Impresionante villa de diseño moderno con piscina infinita, jardín privado y vistas al Mediterráneo.",
     "available": true
   },
@@ -46,13 +51,19 @@
     "m2": 110,
     "type": "Ático",
     "purpose": "venta",
-    "images": [],
-    "coords": { "lat": 38.645, "lng": 0.045 },
+    "images": [
+      "https://images.unsplash.com/photo-1600566753086-00f18e0b3b10?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=800&h=600&fit=crop"
+    ],
+    "coords": {
+      "lat": 38.645,
+      "lng": 0.045
+    },
     "desc": "Ático dúplex con gran terraza de 40m², cocina equipada y parking incluido.",
     "available": true
   },
   {
-    "ref": "CBL-104",
+    "ref": "CBL-301",
     "title": "Piso céntrico reformado",
     "location": "Calle La Libertad, Costa Blanca",
     "price": "1.200 €/mes",
@@ -61,8 +72,14 @@
     "m2": 65,
     "type": "Piso",
     "purpose": "temporal",
-    "images": [],
-    "coords": { "lat": 38.644, "lng": 0.043 },
+    "images": [
+      "https://images.unsplash.com/photo-1598928506311-c55e3e1e7?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&h=600&fit=crop"
+    ],
+    "coords": {
+      "lat": 38.644,
+      "lng": 0.043
+    },
     "desc": "Piso totalmente reformado en el centro de Costa Blanca. Listo para entrar a vivir.",
     "available": true
   },
@@ -76,8 +93,14 @@
     "m2": 150,
     "type": "Chalet",
     "purpose": "venta",
-    "images": [],
-    "coords": { "lat": 38.638, "lng": 0.052 },
+    "images": [
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=600&fit=crop"
+    ],
+    "coords": {
+      "lat": 38.638,
+      "lng": 0.052
+    },
     "desc": "Chalet adosado con jardín comunitario, piscina y garaje. Zona residencial tranquila.",
     "available": true
   },
@@ -91,8 +114,14 @@
     "m2": 800,
     "type": "Parcela",
     "purpose": "venta",
-    "images": [],
-    "coords": { "lat": 38.660, "lng": 0.030 },
+    "images": [
+      "https://images.unsplash.com/photo-1600573472591-ee6b68c14fdf?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&h=600&fit=crop"
+    ],
+    "coords": {
+      "lat": 38.66,
+      "lng": 0.03
+    },
     "desc": "Parcela con proyecto aprobado para villa de lujo. Vistas al mar y total privacidad.",
     "available": true
   },
@@ -106,8 +135,14 @@
     "m2": 130,
     "type": "Dúplex",
     "purpose": "venta",
-    "images": [],
-    "coords": { "lat": 38.637, "lng": 0.053 },
+    "images": [
+      "https://images.unsplash.com/photo-1600566752229-250ed79470f8?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1560185009-dddeb5b10317?w=800&h=600&fit=crop"
+    ],
+    "coords": {
+      "lat": 38.637,
+      "lng": 0.053
+    },
     "desc": "Dúplex a 100m de la playa con plaza de garaje y trastero. Vistas laterales al Peñón de Ifach.",
     "available": true
   },
@@ -121,8 +156,14 @@
     "m2": 140,
     "type": "Casa Rural",
     "purpose": "venta",
-    "images": [],
-    "coords": { "lat": 38.650, "lng": 0.025 },
+    "images": [
+      "https://images.unsplash.com/photo-1600585152915-d208bec9eb12?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=800&h=600&fit=crop"
+    ],
+    "coords": {
+      "lat": 38.65,
+      "lng": 0.025
+    },
     "desc": "Casa rústica rehabilitada con terreno de 5.000m², piscina y barbacoa. Ideal para desconectar.",
     "available": true
   },
@@ -136,8 +177,14 @@
     "m2": 85,
     "type": "Local",
     "purpose": "venta",
-    "images": [],
-    "coords": { "lat": 38.644, "lng": 0.046 },
+    "images": [
+      "https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1563903530908-af5f8a19819b?w=800&h=600&fit=crop"
+    ],
+    "coords": {
+      "lat": 38.644,
+      "lng": 0.046
+    },
     "desc": "Local comercial reformado en la calle principal. Ideal para negocio con mucha afluencia.",
     "available": true
   },
@@ -151,8 +198,14 @@
     "m2": 280,
     "type": "Chalet",
     "purpose": "venta",
-    "images": [],
-    "coords": { "lat": 38.648, "lng": 0.038 },
+    "images": [
+      "https://images.unsplash.com/photo-1600573472590-840c23fe0b3a?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&h=600&fit=crop"
+    ],
+    "coords": {
+      "lat": 38.648,
+      "lng": 0.038
+    },
     "desc": "Chalet independiente con parcela de 600m², piscina privada y vistas panorámicas al mar.",
     "available": true
   },
@@ -166,8 +219,14 @@
     "m2": 100,
     "type": "Apartamento",
     "purpose": "alquiler",
-    "images": [],
-    "coords": { "lat": 38.636, "lng": 0.048 },
+    "images": [
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=800&h=600&fit=crop"
+    ],
+    "coords": {
+      "lat": 38.636,
+      "lng": 0.048
+    },
     "desc": "Espectacular apartamento amueblado con vistas panorámicas al Peñón de Ifach. Piscina comunitaria, parking y trastero incluidos.",
     "available": true
   },
@@ -181,8 +240,14 @@
     "m2": 65,
     "type": "Piso",
     "purpose": "alquiler",
-    "images": [],
-    "coords": { "lat": 38.645, "lng": 0.044 },
+    "images": [
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&h=600&fit=crop"
+    ],
+    "coords": {
+      "lat": 38.645,
+      "lng": 0.044
+    },
     "desc": "Piso en pleno centro de Costa Blanca, totalmente amueblado y reformado. Ideal para parejas o pequeños inversores.",
     "available": true
   },
@@ -196,8 +261,14 @@
     "m2": 250,
     "type": "Villa",
     "purpose": "alquiler",
-    "images": [],
-    "coords": { "lat": 38.656, "lng": 0.036 },
+    "images": [
+      "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop"
+    ],
+    "coords": {
+      "lat": 38.656,
+      "lng": 0.036
+    },
     "desc": "Villa independiente de lujo con piscina privada, jardín y vistas al mar. Perfecta para estancias temporales de alto standing.",
     "available": true
   },
@@ -211,8 +282,14 @@
     "m2": 80,
     "type": "Ático",
     "purpose": "alquiler",
-    "images": [],
-    "coords": { "lat": 38.638, "lng": 0.051 },
+    "images": [
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1600047509358-9dc75507daeb?w=800&h=600&fit=crop"
+    ],
+    "coords": {
+      "lat": 38.638,
+      "lng": 0.051
+    },
     "desc": "Ático en primera línea de La Fossa con terraza de 30m² y vistas laterales al mar. A 2 minutos andando de la playa.",
     "available": true
   }

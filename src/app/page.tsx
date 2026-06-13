@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import {
   Search,
   MapPin,
@@ -18,11 +19,24 @@ import { ContactForm } from "@/components/contact-form";
 import { DemoPropertyCard } from "@/components/demo-property-card";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { LanguageSwitcher } from "@/components/language-switcher";
-import properties from "@/lib/demo-properties";
 import { useLang } from "@/lib/providers";
+import type { Property } from "@/lib/demo-properties";
 
 export default function Home() {
   const { t } = useLang();
+  const [previewProps, setPreviewProps] = useState<Property[]>([]);
+  const [loadingPreview, setLoadingPreview] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/properties")
+      .then((r) => r.json())
+      .then((data: Property[]) => {
+        const refs = ["CBL-101", "CBL-301", "CBL-201"];
+        setPreviewProps(refs.map((ref) => data.find((p: Property) => p.ref === ref)).filter(Boolean) as Property[]);
+      })
+      .catch(() => {})
+      .finally(() => setLoadingPreview(false));
+  }, []);
 
   const benefitItems = [
     { icon: Search, title: t("benefits.0.title"), description: t("benefits.0.desc") },
@@ -164,13 +178,30 @@ export default function Home() {
             </a>
           </div>
           <div className="mx-auto mt-10 grid max-w-5xl gap-6 sm:grid-cols-3">
-            {["CBL-101", "CBL-104", "CBL-201"].map((ref) => properties.find((p) => p.ref === ref)!).map((property, i) => (
-              <DemoPropertyCard
-                key={property.ref}
-                property={property}
-                color={["from-blue-400 to-blue-600", "from-amber-400 to-amber-600", "from-emerald-400 to-emerald-600"][i]}
-              />
-            ))}
+            {loadingPreview ? (
+              Array.from({ length: 3 }).map((_, i) => (
+                <div key={i} className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700">
+                  <div className="h-56 animate-pulse bg-slate-200 dark:bg-slate-700" />
+                  <div className="space-y-3 p-4">
+                    <div className="h-4 w-3/4 animate-pulse rounded bg-slate-200 dark:bg-slate-700" />
+                    <div className="h-3 w-1/2 animate-pulse rounded bg-slate-200 dark:bg-slate-700" />
+                    <div className="h-5 w-1/3 animate-pulse rounded bg-slate-200 dark:bg-slate-700" />
+                  </div>
+                </div>
+              ))
+            ) : (
+              ["CBL-101", "CBL-301", "CBL-201"].map((ref, i) => {
+                const p = previewProps.find((pr) => pr.ref === ref);
+                if (!p) return null;
+                return (
+                  <DemoPropertyCard
+                    key={p.ref}
+                    property={p}
+                    color={["from-blue-400 to-blue-600", "from-amber-400 to-amber-600", "from-emerald-400 to-emerald-600"][i]}
+                  />
+                );
+              })
+            )}
           </div>
         </div>
       </section>

@@ -27,7 +27,7 @@ const en: Record<string, PropertyOverride> = {
     type: "Penthouse",
     desc: "Duplex penthouse with large 40m² terrace, fitted kitchen and included parking.",
   },
-  "CBL-104": {
+  "CBL-301": {
     title: "Renovated central apartment",
     location: "Calle La Libertad, Costa Blanca",
     type: "Apartment",
@@ -114,7 +114,7 @@ const de: Record<string, PropertyOverride> = {
     type: "Penthouse",
     desc: "Ático dúplex con gran terraza de 40m², cocina equipada y parking incluido.",
   },
-  "CBL-104": {
+  "CBL-301": {
     title: "Piso céntrico reformado",
     location: "Calle La Libertad, Costa Blanca",
     type: "Wohnung",
@@ -201,7 +201,7 @@ const fr: Record<string, PropertyOverride> = {
     type: "Penthouse",
     desc: "Ático dúplex con gran terraza de 40m², cocina equipada y parking incluido.",
   },
-  "CBL-104": {
+  "CBL-301": {
     title: "Piso céntrico reformado",
     location: "Calle La Libertad, Costa Blanca",
     type: "Appartement",
@@ -288,7 +288,7 @@ const ru: Record<string, PropertyOverride> = {
     type: "Пентхаус",
     desc: "Ático dúplex con gran terraza de 40m², cocina equipada y parking incluido.",
   },
-  "CBL-104": {
+  "CBL-301": {
     title: "Piso céntrico reformado",
     location: "Calle La Libertad, Costa Blanca",
     type: "Квартира",
